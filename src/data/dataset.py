@@ -78,7 +78,8 @@ class HAM10000Dataset(Dataset):
                 f"Image not found: {image_path}"
             )
 
-        image = Image.open(image_path).convert("RGB")
+        with Image.open(image_path) as img:
+            image = img.convert("RGB")
 
         if self.transforms is not None:
             image = self.transforms(image)

@@ -31,3 +31,16 @@ This makes the application safer and more trustworthy than always forcing a pred
 ### Status
 
 Approved
+
+## Data Loading
+- Implemented PyTorch DataLoader for efficient batch loading.
+- Training DataLoader uses shuffle=True.
+- Validation DataLoader uses shuffle=False.
+- Default batch size is 32.
+- drop_last=False to ensure all training samples are used.
+
+## Model Architecture
+- Selected EfficientNet-B0 as the backbone model.
+- Loaded pretrained ImageNet weights.
+- Applied transfer learning by replacing the final classifier.
+- Final output layer predicts 7 HAM10000 skin disease classes.

@@ -1,0 +1,36 @@
+"""
+Training utilities for the DermaAI project.
+
+Provides functions to train and validate the EfficientNet model.
+"""
+
+import torch
+from torch import nn
+from torch.optim import Optimizer
+from torch.utils.data import DataLoader
+
+
+def train_one_epoch(
+    model: nn.Module,
+    dataloader: DataLoader,
+    criterion: nn.Module,
+    optimizer: Optimizer,
+    device: torch.device,
+) -> float:
+    """
+    Train the model for one epoch.
+
+    Args:
+        model: Neural network model.
+        dataloader: Training DataLoader.
+        criterion: Loss function.
+        optimizer: Optimizer.
+        device: CPU or GPU.
+
+    Returns:
+        Average training loss.
+    """
+
+    model.train()
+
+    running_loss = 0.0
