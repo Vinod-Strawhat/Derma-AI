@@ -57,10 +57,12 @@ full_dataset = HAM10000Dataset(
 
 train_size = int(0.8 * len(full_dataset))
 validation_size = len(full_dataset) - train_size
+generator = torch.Generator().manual_seed(42)
 
 train_dataset, validation_dataset = random_split(
     full_dataset,
     [train_size, validation_size],
+    generator=generator,
 )
 
 print(f"Training Samples   : {len(train_dataset)}")
