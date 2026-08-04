@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Datasets
+datasets/
+
+# Trained models
+*.pth
+*.pt
+
+# VS Code
+.vscode/
+
+# Workspace files
+*.code-workspace

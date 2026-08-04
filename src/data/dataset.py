@@ -1,8 +1,8 @@
 """
-PyTorch Dataset implementation for the HAM10000 dataset.
+Universal PyTorch Dataset for DermaAI Version 2.
 
-This module provides a reusable Dataset class that loads skin lesion
-images along with their labels and applies preprocessing transforms.
+Loads images from multiple datasets using master_metadata.csv
+and returns image + metadata for multimodal learning.
 """
 
 from pathlib import Path
@@ -13,65 +13,63 @@ from torch import Tensor
 from torch.utils.data import Dataset
 
 
-class HAM10000Dataset(Dataset):
-    """
-    PyTorch Dataset for the HAM10000 skin lesion dataset.
-    """
+class SkinDiseaseDataset(Dataset):
 
     LABEL_MAPPING = {
-        "akiec": 0,
-        "bcc": 1,
-        "bkl": 2,
-        "df": 3,
-        "mel": 4,
-        "nv": 5,
-        "vasc": 6,
+        "Actinic Keratosis": 0,
+        "Basal Cell Carcinoma": 1,
+        "Benign Keratosis": 2,
+        "Dermatofibroma": 3,
+        "Melanoma": 4,
+        "Melanocytic Nevus": 5,
+        "Squamous Cell Carcinoma": 6,
+        "Vascular Lesion": 7,
     }
 
     def __init__(
         self,
         metadata_path: Path,
-        image_dir: Path,
+        ham_image_dir: Path,
+        pad_image_dir: Path,
         transforms=None,
-    ) -> None:
-        """
-        Initialize the dataset.
-
-        Args:
-            metadata_path: Path to HAM10000_metadata.csv
-            image_dir: Directory containing all images
-            transforms: Optional torchvision transforms
-        """
+    ):
 
         self.metadata = pd.read_csv(metadata_path)
-        self.image_dir = Path(image_dir)
+
+        self.ham_image_dir = Path(ham_image_dir)
+        self.pad_image_dir = Path(pad_image_dir)
+
         self.transforms = transforms
 
-    def __len__(self) -> int:
-        """
-        Return the total number of samples.
-        """
+        # Gender Encoding
+        self.gender_mapping = {
+            "Male": 0,
+            "Female": 1,
+        }
+
+        # Region Encoding
+        regions = sorted(self.metadata["region"].dropna().unique())
+        self.region_mapping = {
+            region: idx for idx, region in enumerate(regions)
+        }
+
+    def __len__(self):
+
         return len(self.metadata)
 
-    def __getitem__(self, index: int) -> tuple[Tensor, int]:
-        """
-        Return one image and its corresponding label.
-
-        Args:
-            index: Index of the sample.
-
-        Returns:
-            Tuple containing:
-                image tensor
-                numeric label
-        """
+    def __getitem__(self, index):
 
         row = self.metadata.iloc[index]
 
-        image_id = row["image_id"]
-        diagnosis = row["dx"]
+        filename = row["filename"]
+        dataset = row["dataset"]
 
-        image_path = self.image_dir / f"{image_id}.jpg"
+        if dataset == "HAM10000":
+            image_path = self.ham_image_dir / filename
+        elif dataset == "PAD-UFES":
+            image_path = self.pad_image_dir / filename
+        else:
+            raise ValueError(f"Unknown dataset: {dataset}")
 
         if not image_path.exists():
             raise FileNotFoundError(
@@ -81,9 +79,38 @@ class HAM10000Dataset(Dataset):
         with Image.open(image_path) as img:
             image = img.convert("RGB")
 
-        if self.transforms is not None:
+        if self.transforms:
             image = self.transforms(image)
 
-        label = self.LABEL_MAPPING[diagnosis]
+        # -------- Metadata -------- #
 
-        return image, label
+        age = row["age"]
+
+        if pd.isna(age):
+            age = 0
+
+        age = float(age)
+
+        gender = row["gender"]
+
+        if gender in self.gender_mapping:
+            gender = self.gender_mapping[gender]
+        else:
+            gender = 0
+
+        region = row["region"]
+
+        if region in self.region_mapping:
+            region = self.region_mapping[region]
+        else:
+            region = 0
+
+        label = self.LABEL_MAPPING[row["label"]]
+
+        return (
+            image,
+            age,
+            gender,
+            region,
+            label,
+        )

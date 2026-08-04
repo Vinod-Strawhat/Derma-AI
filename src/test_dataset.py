@@ -1,30 +1,19 @@
 from pathlib import Path
 
-from data.dataset import HAM10000Dataset
-from preprocessing.image_preprocessing import get_validation_transforms
+from src.data.dataset import SkinDiseaseDataset
 
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-METADATA_PATH = PROJECT_ROOT / "dataset" / "metadata" / "HAM10000_metadata.csv"
-
-IMAGE_DIR = PROJECT_ROOT / "dataset" / "images"
-
-
-dataset = HAM10000Dataset(
-    metadata_path=METADATA_PATH,
-    image_dir=IMAGE_DIR,
-    transforms=get_validation_transforms(),
+dataset = SkinDiseaseDataset(
+    metadata_path=Path("datasets/merged/master_metadata.csv"),
+    ham_image_dir=Path("datasets/HAM-10000/images"),
+    pad_image_dir=Path("datasets/PAD-UFES-20/images"),
 )
 
-print("=" * 50)
-print("Dataset Test")
-print("=" * 50)
+print("Total Samples:", len(dataset))
 
-print(f"Dataset Size: {len(dataset)}")
+image, age, gender, region, label = dataset[0]
 
-image, label = dataset[0]
-
-print(f"Image Shape : {image.shape}")
-print(f"Image Type  : {type(image)}")
-print(f"Label       : {label}")
+print("Age:", age)
+print("Gender:", gender)
+print("Region:", region)
+print("Label:", label)
+print("Image Shape:", image.size)
