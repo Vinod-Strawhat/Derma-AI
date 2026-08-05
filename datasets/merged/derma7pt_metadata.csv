@@ -1,0 +1,729 @@
+image_path,dataset,age,gender,region,label
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel026.jpg,Derm7pt,,Female,abdomen,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel028.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel033.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel035.jpg,Derm7pt,,Male,lower limbs,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel037.jpg,Derm7pt,,Female,upper limbs,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel039.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel041.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel085.jpg,Derm7pt,,Male,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel087.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel089.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel091.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel092.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel095.jpg,Derm7pt,,Male,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel097.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel098.jpg,Derm7pt,,Female,upper limbs,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel100.jpg,Derm7pt,,Male,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl068.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl047.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NHL\Nhl011.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml098.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml102.jpg,Derm7pt,,Female,upper limbs,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml104.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml106.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl379.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael455.jpg,Derm7pt,,Male,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael469.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael502.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael505.jpg,Derm7pt,,Male,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl02.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl06.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl38.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal098.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal096.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl062.jpg,Derm7pt,,Female,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl070.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl028.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl030.jpg,Derm7pt,,Male,back,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl082.jpg,Derm7pt,,Female,chest,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl088.jpg,Derm7pt,,Female,upper limbs,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl053.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl050.jpg,Derm7pt,,Female,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl052.jpg,Derm7pt,,Male,head neck,Basal Cell Carcinoma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl040.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl046.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl048.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl050.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl072.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl090.jpg,Derm7pt,,Male,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml043.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml087.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml089.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal068.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl325.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael442.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael444.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael446.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael508.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael510.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael512.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl24.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl88.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl42.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal012.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\FBL032.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl088.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\FDL026.JPG,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl004.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl006.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl063.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl090.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl005.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl076.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl081.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl086.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl095.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl098.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl004.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl006.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl008.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl010.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl012.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl014.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl022.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl030.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl035.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl044.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl048.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl050.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl051.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl053.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl056.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl063.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl064.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl069.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl076.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl079.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl083.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl085.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl009.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl012.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\ndl013.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl018.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl021.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl022.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl025.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl027.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl028.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl031.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl033.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl035.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl037.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl039.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl040.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl032.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl052.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl023.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl043.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl049.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl053.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl074.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl076.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl092.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl094.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl096.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NHL\Nhl013.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NHL\Nhl015.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil002.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil006.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil008.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil010.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil021.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil025.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil027.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil033.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil035.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil037.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil043.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil045.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil048.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil052.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil054.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil056.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil060.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll016.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll018.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll020.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\nll022.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\nll026.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll030.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\nll032.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\NLL034.JPG,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll042.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll046.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll060.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll062.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\NLL067.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll069.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll072.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll076.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll084.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll094.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll098.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll102.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll104.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll106.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml002.jpg,Derm7pt,,Male,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml006.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml008.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml014.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml018.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml030.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml034.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml085.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl381.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl387.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl101.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl108.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl112.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl116.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl118.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl121.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl123.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl127.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl129.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl201.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl243.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl245.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl247.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl249.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl251.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl253.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl264.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl333.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl344.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl375.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal044.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal046.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal048.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal052.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal056.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal062.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal064.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal066.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal078.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal086.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal088.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal090.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal094.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal096.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal099bis.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael477.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl135.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl137.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl139.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl141.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl191.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl219.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl223.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl281.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl283.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl287.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl319.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl391.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael435.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael448.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael481.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl362.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal010.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal012.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl143.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl145.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl151.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl153.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl155.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl147.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl157.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl161.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl163.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl165.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl167.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl168.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl171.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl175.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl177.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl179.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl185.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl195.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl215.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl217.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl221.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl235.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl239.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl241.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl259.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl271.jpg,Derm7pt,,Male,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl279.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl299.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal004.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl311.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl321.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl329.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl335.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl340.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl346.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl348.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl350.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl356.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl366.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl371.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael413.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael419.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael425.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael431.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael433.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael452.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael467.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael471.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal006.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael517.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael523.jpg,Derm7pt,,Male,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael525.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal008.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl56.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl08.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl62.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl66.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl22.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl70.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl10.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl80.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl84.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl86.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl32.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl34.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl36.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl54.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal232.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal010.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal016.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal025.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal045.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal047.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal049.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal043.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal006.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal058.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal230.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal152.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal020.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal024.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL036.JPG,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL038.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL042.JPG,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL044.JPG,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal050.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL054.JPG,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal064.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal072.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal090.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal100.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl002.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl004.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl006.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl010.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\FBL012.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll019.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll021.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl022.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl024.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll023.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl036.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl038.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl044.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl048.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl054.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl056.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\FBL062.JPG,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl064.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl068.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl072.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl074.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl076.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl080.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl088.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl090.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl092.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl094.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl098.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll035.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll037.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll039.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl010.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl012.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl014.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\FCL018.JPG,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll041.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl024.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl028.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl030.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl032.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl034.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl036.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl038.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll043.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl048.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl050.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\FCL052.JPG,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\FCL066.JPG,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl070.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl076.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl080.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl090.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl094.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl096.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FCL\Fcl098.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel002.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel016.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel018.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel024.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel030.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel034.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel052.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel064.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel068.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel070.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel072.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel082.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel084.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel086.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel088.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel096.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel100.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\FFL002.JPG,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\FFL004.JPG,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\FFL006.JPG,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\FFL008.JPG,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl010.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl014.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl016.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\FFL032.JPG,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl066.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl078.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl082.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl100.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl002.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl020.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll065.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl028.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl030.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl054.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll083.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl002.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gcl\Gcl073.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl024.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl052.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl060.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl062.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl034.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl074.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl076.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl078.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl088.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl036.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl008.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl010.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl012.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl014.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll087.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl005.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll091.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl042.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl047.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl051.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl055.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl068.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl072.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl078.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl030.jpg,Derm7pt,,Female,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl032.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl034.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl038.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl040.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl042.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl064.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl066.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl070.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl072.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl074.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl076.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl078.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl080.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl082.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl084.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl086.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl088.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl090.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl092.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl094.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl096.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl098.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl100.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll142.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fil\Fil062.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fml\Fml010.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fml\Fml020.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fil\Fil088.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fil\Fil094.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml067.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll024.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel012.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl034.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl086.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl098.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml045.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml047.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl285.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal216.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal218.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL022.JPG,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl062.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gdl\Gdl100.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl090.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl027.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl071.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl100.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel008.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel010.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl036.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml039.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl193.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl377.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael475.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl183.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal062.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl062.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl096.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\FDL016.JPG,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\FDL022.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl002.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl080.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel005.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl042.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl044.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll038.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll040.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll048.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll050.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\NLL052.JPG,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll056.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll058.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll088.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\NML032.JPG,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml051.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml063.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml065.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl189.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl203.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl263.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl331.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl337bis.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael521.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl68.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl52.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal033.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl030.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl042.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl008.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl042.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl044.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl035.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl020.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll089.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl004.jpg,Derm7pt,,Female,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal014.jpg,Derm7pt,,Female,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal018.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal020.jpg,Derm7pt,,Male,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A2l\Abl197.jpg,Derm7pt,,Female,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl209.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl211.jpg,Derm7pt,,Male,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal024.jpg,Derm7pt,,Male,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl231.jpg,Derm7pt,,Female,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl233.jpg,Derm7pt,,Female,buttocks,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal028.jpg,Derm7pt,,Male,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal030.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A1l\Aal038.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl373.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael527.jpg,Derm7pt,,Male,back,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal226.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl048.jpg,Derm7pt,,Female,upper limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl056.jpg,Derm7pt,,Female,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl084.jpg,Derm7pt,,Male,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl044.jpg,Derm7pt,,Female,lower limbs,Dermatofibroma
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl091.jpg,Derm7pt,,Female,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl094.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl038.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl72.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal008.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl059.jpg,Derm7pt,,Female,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl002.jpg,Derm7pt,,Female,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl004.jpg,Derm7pt,,Male,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl006.jpg,Derm7pt,,Female,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl008.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl010.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl012.jpg,Derm7pt,,Female,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl014.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl016.jpg,Derm7pt,,Male,genital areas,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl022.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl028.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\ndl085.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl074.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml004.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml071.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl82.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel092.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl075.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl088.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NBL\Nbl100.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl020.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl032.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl078.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl093.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NCL\Ncl095.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl046.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl050.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl052.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl054.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl056.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl058.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl060.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl061.jpg,Derm7pt,,Male,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\NDL063.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl068.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl069.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl071.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl074.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl079.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl081.jpg,Derm7pt,,Male,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NDL\Ndl083.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl029.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl031.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl033.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl037.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl060.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl078.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil004.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil023.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil029.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil041.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NIL\Nil058.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NLL\Nll100.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml010.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml012.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml016.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml049.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\NML092.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml094.jpg,Derm7pt,,Male,acral,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml096.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael421.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl207.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl225.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl295.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl358.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl395.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl399.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael401.jpg,Derm7pt,,Male,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael405.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael407.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael465.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael484.jpg,Derm7pt,,Male,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl58.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl14.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal191.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal222.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal238.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\FAL070.JPG,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl018.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\Fbl040.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FBL\FBL042.JPG,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel038.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel074.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FEL\Fel080.jpg,Derm7pt,,Male,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl034.jpg,Derm7pt,,Female,head neck,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl084.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll077.jpg,Derm7pt,,Female,back,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl026.jpg,Derm7pt,,Male,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl010.jpg,Derm7pt,,Male,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl023.jpg,Derm7pt,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl037.jpg,Derm7pt,,Female,buttocks,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl074.jpg,Derm7pt,,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fgl\Fgl087.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\New\newl030.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\New\newl034.jpg,Derm7pt,,Female,upper limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\New\newl039.jpg,Derm7pt,,Female,lower limbs,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel021.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel023.jpg,Derm7pt,,Male,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl006.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl008.jpg,Derm7pt,,Female,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl010.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl012.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl014.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl016.jpg,Derm7pt,,Female,upper limbs,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl018.jpg,Derm7pt,,Male,upper limbs,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl020.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl022.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl024.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\Nfl026.jpg,Derm7pt,,Male,chest,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NFL\NFL028.JPG,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml114.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl227.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl229.jpg,Derm7pt,,Male,upper limbs,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl261.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael409.jpg,Derm7pt,,Male,upper limbs,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael427.jpg,Derm7pt,,Female,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael488.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl205.jpg,Derm7pt,,Female,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl18.jpg,Derm7pt,,Male,chest,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl30.jpg,Derm7pt,,Female,chest,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl46.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal130.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal173.jpg,Derm7pt,,Male,chest,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gal\Gal134.jpg,Derm7pt,,Female,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FAL\Fal048.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\FFL052.JPG,Derm7pt,,Male,chest,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FFL\Ffl070.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl032.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl058.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl071.jpg,Derm7pt,,Female,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl074.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl022.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl018.jpg,Derm7pt,,Male,head neck,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl020.jpg,Derm7pt,,Male,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl046.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl066.jpg,Derm7pt,,Male,upper limbs,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl086.jpg,Derm7pt,,Male,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fll\Fll104.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl048.jpg,Derm7pt,,Male,back,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fil\Fil080.jpg,Derm7pt,,Female,chest,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\FDL\Fdl060.jpg,Derm7pt,,Female,abdomen,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel044.jpg,Derm7pt,,Female,lower limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\NEL055.JPG,Derm7pt,,Female,head neck,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel056.jpg,Derm7pt,,Female,head neck,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel059.jpg,Derm7pt,,Male,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel061.jpg,Derm7pt,,Male,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel062.jpg,Derm7pt,,Female,abdomen,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel064.jpg,Derm7pt,,Male,upper limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel066.jpg,Derm7pt,,Female,abdomen,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel068.jpg,Derm7pt,,Male,lower limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel071.jpg,Derm7pt,,Female,upper limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel073.jpg,Derm7pt,,Female,head neck,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel075.jpg,Derm7pt,,Female,lower limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel078.jpg,Derm7pt,,Female,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NEL\Nel081.jpg,Derm7pt,,Female,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NGL\Ngl082.jpg,Derm7pt,,Female,head neck,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml041.jpg,Derm7pt,,Female,upper limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\NML\Nml108.jpg,Derm7pt,,Male,upper limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\A3l\Acl237.jpg,Derm7pt,,Female,lower limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael459.jpg,Derm7pt,,Male,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ael\Ael519bis.jpg,Derm7pt,,Male,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Gzl\gzl74.jpg,Derm7pt,,Male,upper limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl012.jpg,Derm7pt,,Female,lower limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl014.jpg,Derm7pt,,Female,chest,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl016.jpg,Derm7pt,,Male,chest,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Ggl\Ggl032.jpg,Derm7pt,,Female,acral,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl058.jpg,Derm7pt,,Male,head neck,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fhl\Fhl060.jpg,Derm7pt,,Female,abdomen,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Fil\Fil082.jpg,Derm7pt,,Male,head neck,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\New\newl016.jpg,Derm7pt,,Male,upper limbs,Vascular Lesion
+C:\Users\vinod\Derma-AI\datasets\Derma7pt\release_v0\images\Adl\Adl389.jpg,Derm7pt,,Female,lower limbs,Melanoma
