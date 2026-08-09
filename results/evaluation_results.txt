@@ -1,0 +1,43 @@
+DermaAI V2 Multimodal Model Evaluation
+============================================================
+
+Checkpoint: C:\Users\vinod\Derma-AI\checkpoints\best_multimodal_model.pth
+Best Epoch: 18
+Saved Validation Accuracy: 0.8885
+
+Evaluation Accuracy: 0.8885 (88.85%)
+Precision: 0.8952
+Recall: 0.8885
+F1-Score: 0.8904
+
+
+Classification Report
+============================================================
+
+                         precision    recall  f1-score   support
+
+      Actinic Keratosis     0.7567    0.7635    0.7601       334
+   Basal Cell Carcinoma     0.8731    0.9071    0.8898       872
+       Benign Keratosis     0.8422    0.8640    0.8530       809
+         Dermatofibroma     0.8871    0.9483    0.9167        58
+               Melanoma     0.7514    0.8881    0.8140      1072
+      Melanocytic Nevus     0.9678    0.9055    0.9356      4147
+Squamous Cell Carcinoma     0.6231    0.6231    0.6231       130
+        Vascular Lesion     0.8667    0.9579    0.9100        95
+
+               accuracy                         0.8885      7517
+              macro avg     0.8210    0.8572    0.8378      7517
+           weighted avg     0.8952    0.8885    0.8904      7517
+
+
+Confusion Matrix
+============================================================
+
+[[ 255   27   17    0    7    1   27    0]
+ [  21  791   13    4   14   11   14    4]
+ [  23   14  699    0   34   35    4    0]
+ [   0    1    0   55    1    1    0    0]
+ [   4   13   22    0  952   74    3    4]
+ [   8   44   75    2  256 3755    1    6]
+ [  26   15    3    1    2    2   81    0]
+ [   0    1    1    0    1    1    0   91]]
