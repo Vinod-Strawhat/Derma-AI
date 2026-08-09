@@ -43,30 +43,70 @@ label_map = {
 
 master = pd.DataFrame()
 
+# Create image paths
 master["image_path"] = pad["img_id"].apply(
     lambda x: str(PAD_DIR / "images" / x)
 )
 
+# Check whether image actually exists
+master["image_exists"] = master["image_path"].apply(
+    lambda x: Path(x).exists()
+)
+
+print(
+    f"\nImages Found     : "
+    f"{master['image_exists'].sum()}"
+)
+
+print(
+    f"Missing Images   : "
+    f"{(~master['image_exists']).sum()}"
+)
+
+# Keep ONLY images that actually exist
+master = master[
+    master["image_exists"]
+].copy()
+
+# Remove helper column
+master.drop(
+    columns=["image_exists"],
+    inplace=True
+)
+
 master["dataset"] = "PAD-UFES"
 
-master["age"] = pad["age"]
+master["age"] = pad.loc[
+    master.index, "age"
+]
 
 master["gender"] = (
-    pad["gender"]
+    pad.loc[master.index, "gender"]
     .fillna("Unknown")
     .astype(str)
     .str.capitalize()
 )
 
 master["region"] = (
-    pad["region"]
+    pad.loc[master.index, "region"]
     .fillna("Unknown")
     .astype(str)
 )
 
 master["label"] = (
-    pad["diagnostic"]
+    pad.loc[master.index, "diagnostic"]
     .map(label_map)
+)
+
+# Remove rows where diagnosis could not be mapped
+master = master[
+    master["label"].notna()
+].copy()
+
+# Reset index
+master.reset_index(
+    drop=True,
+    inplace=True
 )
 
 # -------------------------------------------------

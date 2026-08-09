@@ -1,16 +1,24 @@
 """
-PyTorch DataLoader utilities for the HAM10000 dataset.
+PyTorch DataLoader utilities for the DermaAI multimodal dataset.
 
-Provides reusable helper functions to create training and validation
-DataLoaders.
+Provides reusable helper functions for creating training
+and validation DataLoaders.
 """
 
 from torch.utils.data import DataLoader, Dataset
 
 
+# --------------------------------------------------
+# Default Settings
+# --------------------------------------------------
+
 DEFAULT_BATCH_SIZE = 32
 DEFAULT_NUM_WORKERS = 0
 
+
+# --------------------------------------------------
+# Training DataLoader
+# --------------------------------------------------
 
 def get_train_dataloader(
     dataset: Dataset,
@@ -21,21 +29,32 @@ def get_train_dataloader(
     Create the training DataLoader.
 
     Args:
-        dataset: Training dataset.
-        batch_size: Number of samples per batch.
-        num_workers: Number of worker processes.
+        dataset:
+            Training dataset.
+
+        batch_size:
+            Number of samples in each batch.
+
+        num_workers:
+            Number of worker processes used to load data.
 
     Returns:
         Configured training DataLoader.
     """
+
     return DataLoader(
         dataset=dataset,
         batch_size=batch_size,
         shuffle=True,
         num_workers=num_workers,
         drop_last=False,
+        pin_memory=True,
     )
 
+
+# --------------------------------------------------
+# Validation DataLoader
+# --------------------------------------------------
 
 def get_validation_dataloader(
     dataset: Dataset,
@@ -46,17 +65,24 @@ def get_validation_dataloader(
     Create the validation DataLoader.
 
     Args:
-        dataset: Validation dataset.
-        batch_size: Number of samples per batch.
-        num_workers: Number of worker processes.
+        dataset:
+            Validation dataset.
+
+        batch_size:
+            Number of samples in each batch.
+
+        num_workers:
+            Number of worker processes used to load data.
 
     Returns:
         Configured validation DataLoader.
     """
+
     return DataLoader(
         dataset=dataset,
         batch_size=batch_size,
         shuffle=False,
         num_workers=num_workers,
         drop_last=False,
+        pin_memory=True,
     )
