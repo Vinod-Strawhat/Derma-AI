@@ -43,3 +43,5 @@ datasets/Derma7pt/
 # ----------------------------
 .DS_Store
 Thumbs.db
+frontend/node_modules/
+frontend/dist/

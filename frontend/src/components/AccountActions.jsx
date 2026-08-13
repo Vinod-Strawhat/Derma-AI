@@ -1,0 +1,64 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AlertTriangle, LogOut, Trash2 } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+
+function AccountActions() {
+  const { t } = useLanguage()
+  const navigate = useNavigate()
+  const [deletePrompt, setDeletePrompt] = useState(false)
+
+  function handleLogout() {
+    navigate('/')
+  }
+
+  function handleDeleteRequest() {
+    setDeletePrompt(true)
+  }
+
+  return (
+    <div className="card p-6">
+      <h3 className="text-sm font-semibold text-gray-900 mb-1">{t('account.heading')}</h3>
+      <p className="text-sm text-gray-500 mb-5">
+        {t('account.desc')}
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <button onClick={handleLogout} className="btn-secondary !py-3 text-sm flex-1">
+          <LogOut className="w-4 h-4 mr-2" />
+          {t('account.logOut')}
+        </button>
+
+        <button
+          onClick={handleDeleteRequest}
+          className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm border-2 border-red-200 text-red-600 bg-white hover:bg-red-50 transition-all duration-200 flex-1"
+        >
+          <Trash2 className="w-4 h-4 mr-2" />
+          {t('account.deleteAccount')}
+        </button>
+      </div>
+
+      {deletePrompt && (
+        <div className="mt-4 rounded-xl bg-red-50 border border-red-200 p-4 animate-fade-in-up">
+          <div className="flex items-start gap-2.5">
+            <AlertTriangle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+            <div className="flex-1">
+              <p className="text-sm font-medium text-red-700">{t('account.deleteHeading')}</p>
+              <p className="text-xs text-red-700/80 leading-relaxed mt-1">
+                {t('account.deleteDesc')}
+              </p>
+              <button
+                onClick={() => setDeletePrompt(false)}
+                className="mt-3 text-xs font-medium text-red-700 hover:text-red-800 underline"
+              >
+                {t('account.dismiss')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default AccountActions
