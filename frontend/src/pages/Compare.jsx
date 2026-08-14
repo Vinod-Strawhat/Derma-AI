@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Camera, GitCompareArrows, Sparkles } from 'lucide-react'
 import ComparisonScanCard from '../components/ComparisonScanCard'
 import ComparisonSummary from '../components/ComparisonSummary'
 import ComparisonTimeline from '../components/ComparisonTimeline'
 import LoadingState from '../components/LoadingState'
+import ErrorState from '../components/ErrorState'
 import { useSimulatedLoading } from '../hooks/useSimulatedLoading'
 import {
   buildComparison,
@@ -14,18 +15,159 @@ import {
 } from '../data/comparison'
 import { mockSkinConcerns } from '../data/mockHistory'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
+import { API_MODE } from '../api/predictApi'
+import {
+  fetchCompareScans,
+  fetchMyScans,
+  ScansError,
+} from '../api/scansApi'
+import {
+  buildCompareSet,
+  groupScansIntoConcerns,
+  toResultView,
+} from '../api/scanGroups'
+import { buildImageUrl } from '../api/imageUrl'
 
 function Compare() {
   const { t } = useLanguage()
   const location = useLocation()
   const navigate = useNavigate()
-  const loading = useSimulatedLoading(400)
+  const { user, isAuthenticated } = useAuth()
+
+  const realMode = API_MODE && isAuthenticated && user?.id > 0
+
   const passedState = location.state
-
   const passedConcernId = passedState?.concernId ?? null
+  const passedScanIds = Array.isArray(passedState?.scanIds)
+    ? passedState.scanIds.filter((id) => id !== null && id !== undefined)
+    : []
 
+  const demoLoading = useSimulatedLoading(400)
+
+  // ---- Real-mode state ----
+  const [realLoading, setRealLoading] = useState(false)
+  const [realError, setRealError] = useState(false)
+  const [realErrorKind, setRealErrorKind] = useState('network')
+  const [realConcerns, setRealConcerns] = useState([])
+  const [activeRealConcern, setActiveRealConcern] = useState(null)
+  const [comparison, setComparison] = useState(null)
+  const [insufficient, setInsufficient] = useState(false)
+  const [realBrowsing, setRealBrowsing] = useState(true)
+  const [reloadKey, setReloadKey] = useState(0)
+
+  // ---- Demo-mode state ----
   const [browsing, setBrowsing] = useState(!passedConcernId)
   const [selectedConcernId, setSelectedConcernId] = useState(null)
+  const [previousScanId, setPreviousScanId] = useState(null)
+  const [currentScanId, setCurrentScanId] = useState(null)
+
+  async function applyPair(firstId, secondId) {
+    setRealLoading(true)
+    setRealError(false)
+    setInsufficient(false)
+
+    try {
+      const data = await fetchCompareScans(firstId, secondId)
+      const raw = data?.scans ?? []
+      if (!raw[0] || !raw[1]) throw new ScansError(0, 'empty compare result')
+
+      const compareSet = buildCompareSet(raw[0], raw[1])
+      setActiveRealConcern(compareSet.concern)
+      setComparison(
+        buildComparison({
+          concern: compareSet.concern,
+          previousScan: compareSet.previous,
+          currentScan: compareSet.current,
+        })
+      )
+      setRealBrowsing(false)
+    } catch (err) {
+      const status = err instanceof ScansError ? err.status : 0
+      setRealErrorKind(
+        status === 400 ? 'invalid' : status === 404 ? 'missing' : 'network'
+      )
+      setRealError(true)
+    } finally {
+      setRealLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (!realMode) return
+
+    let cancelled = false
+
+    async function run() {
+      setRealLoading(true)
+      setRealError(false)
+
+      try {
+        const scans = await fetchMyScans()
+        if (cancelled) return
+
+        const grouped = groupScansIntoConcerns(scans)
+        setRealConcerns(grouped)
+
+        if (passedScanIds.length >= 2) {
+          await applyPair(passedScanIds[0], passedScanIds[1])
+        } else {
+          setRealBrowsing(true)
+          setRealLoading(false)
+        }
+      } catch (err) {
+        if (cancelled) return
+        setRealErrorKind('network')
+        setRealError(true)
+        setRealLoading(false)
+      }
+    }
+
+    run()
+
+    return () => {
+      cancelled = true
+    }
+  }, [realMode, reloadKey])
+
+  // ------------------------------------------------------------
+  // Real-mode handlers
+  // ------------------------------------------------------------
+
+  function handleSelectRealConcern(id) {
+    const concern = realConcerns.find((item) => item.id === id)
+    if (!concern) return
+
+    setActiveRealConcern(concern)
+    setComparison(null)
+    setInsufficient(false)
+
+    if (concern.scans.length < 2) {
+      setInsufficient(true)
+      setRealBrowsing(false)
+      return
+    }
+
+    const selection = defaultScanSelection(concern)
+    applyPair(selection.previousScan.scanId, selection.currentScan.scanId)
+  }
+
+  function handleChangeRealConcern() {
+    setComparison(null)
+    setInsufficient(false)
+    setActiveRealConcern(null)
+    setRealBrowsing(true)
+  }
+
+  function handleViewRealResult() {
+    const current = comparison?.currentScan
+    if (!current?.raw) return
+    navigate('/results', { state: { result: toResultView(current.raw) } })
+  }
+
+  // ------------------------------------------------------------
+  // Demo-mode derived values (unchanged from the demo flow)
+  // ------------------------------------------------------------
 
   const activeConcernId = browsing ? null : (selectedConcernId ?? passedConcernId)
   const activeConcern = useMemo(
@@ -49,20 +191,22 @@ function Compare() {
     return null
   }, [activeConcern, passedState?.scanIds])
 
-  const [previousScanId, setPreviousScanId] = useState(initialSelection?.previousScanId ?? null)
-  const [currentScanId, setCurrentScanId] = useState(initialSelection?.currentScanId ?? null)
+  const demoPreviousScanId = previousScanId ?? initialSelection?.previousScanId ?? null
+  const demoCurrentScanId = currentScanId ?? initialSelection?.currentScanId ?? null
 
-  const previousScan = scans.find((scan) => scan.id === previousScanId) ?? defaultSelection?.previousScan ?? null
-  const currentScan = scans.find((scan) => scan.id === currentScanId) ?? defaultSelection?.currentScan ?? null
+  const demoPreviousScan = scans.find((scan) => scan.id === demoPreviousScanId) ?? defaultSelection?.previousScan ?? null
+  const demoCurrentScan = scans.find((scan) => scan.id === demoCurrentScanId) ?? defaultSelection?.currentScan ?? null
 
-  const comparison = useMemo(
-    () => (activeConcern && previousScan && currentScan ? buildComparison({ concern: activeConcern, previousScan, currentScan }) : null),
-    [activeConcern, previousScan, currentScan]
+  const demoComparison = useMemo(
+    () => (activeConcern && demoPreviousScan && demoCurrentScan
+      ? buildComparison({ concern: activeConcern, previousScan: demoPreviousScan, currentScan: demoCurrentScan })
+      : null),
+    [activeConcern, demoPreviousScan, demoCurrentScan]
   )
 
   const canSelect = scans.length >= 2
-  const scansForPrevious = scans.filter((scan) => scan.id !== currentScanId)
-  const scansForCurrent = scans.filter((scan) => scan.id !== previousScanId)
+  const scansForPrevious = scans.filter((scan) => scan.id !== demoCurrentScanId)
+  const scansForCurrent = scans.filter((scan) => scan.id !== demoPreviousScanId)
 
   function handleBrowseConcerns() {
     setSelectedConcernId(null)
@@ -75,6 +219,248 @@ function Compare() {
     setCurrentScanId(null)
     setBrowsing(false)
   }
+
+  // ------------------------------------------------------------
+  // Real-mode render
+  // ------------------------------------------------------------
+
+  if (realMode) {
+    return (
+      <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 space-y-8">
+          <button
+            onClick={() => navigate('/history')}
+            className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {t('compare.back')}
+          </button>
+
+          <section className="animate-fade-in-down">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-medical-50 border border-medical-100 text-xs font-medium text-medical-700 mb-4">
+              {t('compare.realBadge')}
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+              {t('compare.heading')}
+            </h1>
+            <p className="text-base md:text-lg text-gray-500 max-w-2xl">
+              {t('compare.subtext')}
+            </p>
+          </section>
+
+          {realLoading ? (
+            <section className="animate-fade-in-up animation-delay-200">
+              <div className="card">
+                <LoadingState message={t('loading.compare')} showDemoNote={false} />
+              </div>
+            </section>
+          ) : realError ? (
+            <section className="animate-fade-in-up animation-delay-200">
+              <div className="card">
+                <ErrorState
+                  title={
+                    realErrorKind === 'invalid'
+                      ? t('compare.invalidTitle')
+                      : realErrorKind === 'missing'
+                        ? t('compare.scanMissingTitle')
+                        : t('compare.errorTitle')
+                  }
+                  message={
+                    realErrorKind === 'invalid'
+                      ? t('compare.invalidCombination')
+                      : realErrorKind === 'missing'
+                        ? t('compare.scanMissing')
+                        : t('compare.errorDesc')
+                  }
+                  onRetry={() => setReloadKey((key) => key + 1)}
+                />
+              </div>
+            </section>
+          ) : insufficient ? (
+            <section className="animate-fade-in-up animation-delay-200">
+              <div className="card p-10 text-center max-w-2xl mx-auto">
+                <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
+                  <GitCompareArrows className="w-7 h-7 text-primary-600" />
+                </div>
+                <h2 className="text-lg font-bold text-gray-900 mb-2">
+                  {t('compare.needTwoScans')}
+                </h2>
+                <p className="text-sm text-gray-500 mb-6">
+                  {t('compare.thisConcernHas', { n: activeRealConcern?.scans.length ?? 0 })}
+                </p>
+                <button
+                  onClick={() => navigate('/skin-check')}
+                  className="btn-primary !px-8 !py-3.5 text-base"
+                >
+                  <Camera className="w-4 h-4 mr-2" />
+                  {t('compare.startNew')}
+                </button>
+              </div>
+            </section>
+          ) : !comparison ? (
+            <section className="animate-fade-in-up animation-delay-200">
+              <div className="card p-8">
+                <div className="flex items-start gap-3 mb-6">
+                  <div className="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center flex-shrink-0">
+                    <GitCompareArrows className="w-5 h-5 text-accent-600" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-semibold text-gray-900">{t('compare.selectConcern')}</h2>
+                    <p className="text-sm text-gray-500">{t('compare.selectConcernSubtext')}</p>
+                  </div>
+                </div>
+                <CompareSelection
+                  concerns={realConcerns}
+                  onSelect={handleSelectRealConcern}
+                  scanCountLabel={(item) => t('compare.scanCount', { n: item.scans.length })}
+                />
+              </div>
+            </section>
+          ) : (
+            <>
+              <section className="animate-fade-in-up animation-delay-200">
+                <div className="card p-5 md:p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                        {t('compare.skinConcern')}
+                      </p>
+                      <h2 className="text-lg md:text-xl font-semibold text-gray-900">
+                        {activeRealConcern?.concernName}
+                      </h2>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                        {t('compare.bodyRegion')}
+                      </p>
+                      <p className="text-base font-medium text-gray-700">
+                        {activeRealConcern?.bodyRegion.charAt(0).toUpperCase() + activeRealConcern?.bodyRegion.slice(1)}
+                      </p>
+                    </div>
+                    <button
+                      onClick={handleChangeRealConcern}
+                      className="btn-secondary !px-5 !py-2.5 text-sm"
+                    >
+                      {t('compare.changeConcern')}
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section className="animate-fade-in-up animation-delay-300">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <ComparisonScanCard
+                    label={t('compare.previousScan')}
+                    scan={comparison.previousScan}
+                  />
+                  <ComparisonScanCard
+                    label={t('compare.currentScan')}
+                    scan={comparison.currentScan}
+                  />
+                </div>
+              </section>
+
+              <section className="animate-fade-in-up animation-delay-400">
+                <div className="mb-4">
+                  <h2 className="text-lg font-bold text-gray-900">{t('compare.aiResultHeading')}</h2>
+                  <p className="text-sm text-gray-500">{t('compare.aiResultSubtext')}</p>
+                </div>
+                <ComparisonSummary comparison={comparison} />
+              </section>
+
+              <section className="animate-fade-in-up animation-delay-500">
+                <ComparisonTimeline comparison={comparison} />
+              </section>
+
+              <section className="animate-fade-in-up animation-delay-500">
+                <div className="card p-6">
+                  <div className="flex items-start gap-3 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center flex-shrink-0">
+                      <Sparkles className="w-5 h-5 text-accent-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-900">{t('compare.aiAttentionHeading')}</h3>
+                      <p className="text-sm text-gray-500">{t('compare.aiAttentionSubtext')}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4 mb-5">
+                    {[
+                      { label: t('compare.prevScan'), scan: comparison.previousScan, accent: false },
+                      { label: t('compare.curScan'), scan: comparison.currentScan, accent: true },
+                    ].map((panel) => {
+                      const grad = panel.scan?.raw?.gradcam
+                      const available = Boolean(grad?.available && grad?.imageUrl)
+                      const url = grad?.imageUrl ? buildImageUrl(grad.imageUrl) : ''
+                      return (
+                        <div key={panel.label}>
+                          <div className="mb-2">
+                            <span className={`inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border ${panel.accent ? 'text-accent-700 bg-accent-50 border-accent-100' : 'text-primary-700 bg-primary-50 border-primary-100'}`}>
+                              <Sparkles className={`w-3.5 h-3.5 ${panel.accent ? 'text-accent-500' : 'text-primary-400'}`} />
+                              {panel.label}
+                            </span>
+                          </div>
+                          {available ? (
+                            <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
+                              <img
+                                src={url}
+                                alt={t('gradcam.availableAlt')}
+                                loading="lazy"
+                                className="w-full object-cover"
+                              />
+                            </div>
+                          ) : (
+                            <div className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center">
+                              <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
+                                <Sparkles className="w-3.5 h-3.5 text-gray-400" />
+                                {t('gradcam.unavailable')}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {t('compare.attentionDescReal')}
+                  </p>
+                </div>
+              </section>
+
+              <section className="animate-fade-in-up animation-delay-500">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={handleViewRealResult}
+                    className="btn-primary flex-1 !py-3"
+                  >
+                    {t('compare.viewCurrentResult')}
+                  </button>
+                  <button
+                    onClick={() => navigate('/history')}
+                    className="btn-secondary flex-1 !py-3"
+                  >
+                    {t('compare.backToHistory')}
+                  </button>
+                </div>
+              </section>
+            </>
+          )}
+
+          <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
+            <GitCompareArrows className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+            <p className="text-sm text-amber-700 leading-relaxed">
+              {t('compare.realDisclaimer')}
+            </p>
+          </section>
+        </div>
+      </div>
+    )
+  }
+
+  // ------------------------------------------------------------
+  // Demo-mode render (existing flow)
+  // ------------------------------------------------------------
 
   return (
     <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
@@ -101,7 +487,7 @@ function Compare() {
           </p>
         </section>
 
-        {loading ? (
+        {demoLoading ? (
           <section className="animate-fade-in-up animation-delay-200">
             <div className="card">
               <LoadingState message={t('loading.compare')} />
@@ -110,214 +496,206 @@ function Compare() {
         ) : (
           <>
             {!activeConcern && (
-          /* Selection interface when no valid comparison is provided */
-          <section className="animate-fade-in-up animation-delay-200">
-            <div className="card p-8">
-              <div className="flex items-start gap-3 mb-6">
-                <div className="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center flex-shrink-0">
-                  <GitCompareArrows className="w-5 h-5 text-accent-600" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-semibold text-gray-900">{t('compare.selectConcern')}</h2>
-                  <p className="text-sm text-gray-500">{t('compare.selectConcernSubtext')}</p>
-                </div>
-              </div>
-              <CompareSelection
-                onSelect={handleSelectConcern}
-                scanCountLabel={(item) => t('compare.scanCount', { n: item.scans.length })}
-              />
-            </div>
-          </section>
-        )}
-
-        {activeConcern && (
-          <>
-            {/* Concern header */}
-            <section className="animate-fade-in-up animation-delay-200">
-              <div className="card p-5 md:p-6">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
-                      {t('compare.skinConcern')}
-                    </p>
-                    <h2 className="text-lg md:text-xl font-semibold text-gray-900">
-                      {activeConcern.concernName}
-                    </h2>
+              <section className="animate-fade-in-up animation-delay-200">
+                <div className="card p-8">
+                  <div className="flex items-start gap-3 mb-6">
+                    <div className="w-11 h-11 rounded-xl bg-accent-50 flex items-center justify-center flex-shrink-0">
+                      <GitCompareArrows className="w-5 h-5 text-accent-600" />
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-semibold text-gray-900">{t('compare.selectConcern')}</h2>
+                      <p className="text-sm text-gray-500">{t('compare.selectConcernSubtext')}</p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
-                      {t('compare.bodyRegion')}
-                    </p>
-                    <p className="text-base font-medium text-gray-700">
-                      {activeConcern.bodyRegion.charAt(0).toUpperCase() + activeConcern.bodyRegion.slice(1)}
-                    </p>
-                  </div>
-                  <button
-                    onClick={handleBrowseConcerns}
-                    className="btn-secondary !px-5 !py-2.5 text-sm"
-                  >
-                    {t('compare.changeConcern')}
-                  </button>
-                </div>
-              </div>
-            </section>
-
-            {!canSelect ? (
-              /* Single-scan concern empty state */
-              <section className="animate-fade-in-up animation-delay-300">
-                <div className="card p-10 text-center max-w-2xl mx-auto">
-                  <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-                    <GitCompareArrows className="w-7 h-7 text-primary-600" />
-                  </div>
-                  <h2 className="text-lg font-bold text-gray-900 mb-2">
-                    {t('compare.needTwoScans')}
-                  </h2>
-                  <p className="text-sm text-gray-500 mb-6">
-                    {t('compare.thisConcernHas', { n: scans.length })}
-                  </p>
-                  <button
-                    onClick={() => navigate('/skin-check')}
-                    className="btn-primary !px-8 !py-3.5 text-base"
-                  >
-                    <Camera className="w-4 h-4 mr-2" />
-                    {t('compare.startNew')}
-                  </button>
+                  <CompareSelection
+                    concerns={mockSkinConcerns}
+                    onSelect={handleSelectConcern}
+                    scanCountLabel={(item) => t('compare.scanCount', { n: item.scans.length })}
+                  />
                 </div>
               </section>
-            ) : comparison ? (
+            )}
+
+            {activeConcern && (
               <>
-                {/* Scan selection */}
-                <section className="animate-fade-in-up animation-delay-300">
-                  <div className="card p-5">
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="previous-scan" className="block text-sm font-medium text-gray-700 mb-1.5">
-                          {t('compare.previousScan')}
-                        </label>
-                        <select
-                          id="previous-scan"
-                          value={previousScan?.id ?? ''}
-                          onChange={(e) => setPreviousScanId(e.target.value)}
-                          className="input-field text-sm appearance-none cursor-pointer"
-                        >
-                          {scansForPrevious.map((scan) => (
-                            <option key={scan.id} value={scan.id}>
-                              {scan.createdAt.split('·')[0].trim()} — {scan.prediction}
-                            </option>
-                          ))}
-                        </select>
+                <section className="animate-fade-in-up animation-delay-200">
+                  <div className="card p-5 md:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                          {t('compare.skinConcern')}
+                        </p>
+                        <h2 className="text-lg md:text-xl font-semibold text-gray-900">
+                          {activeConcern.concernName}
+                        </h2>
                       </div>
-                      <div>
-                        <label htmlFor="current-scan" className="block text-sm font-medium text-gray-700 mb-1.5">
-                          {t('compare.currentScan')}
-                        </label>
-                        <select
-                          id="current-scan"
-                          value={currentScan?.id ?? ''}
-                          onChange={(e) => setCurrentScanId(e.target.value)}
-                          className="input-field text-sm appearance-none cursor-pointer"
-                        >
-                          {scansForCurrent.map((scan) => (
-                            <option key={scan.id} value={scan.id}>
-                              {scan.createdAt.split('·')[0].trim()} — {scan.prediction}
-                            </option>
-                          ))}
-                        </select>
+                      <div className="min-w-0">
+                        <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                          {t('compare.bodyRegion')}
+                        </p>
+                        <p className="text-base font-medium text-gray-700">
+                          {activeConcern.bodyRegion.charAt(0).toUpperCase() + activeConcern.bodyRegion.slice(1)}
+                        </p>
                       </div>
+                      <button
+                        onClick={handleBrowseConcerns}
+                        className="btn-secondary !px-5 !py-2.5 text-sm"
+                      >
+                        {t('compare.changeConcern')}
+                      </button>
                     </div>
-                    <p className="text-xs text-gray-400 mt-3">
-                      {t('compare.note')}
-                    </p>
                   </div>
                 </section>
 
-                {/* Side-by-side image comparison */}
-                <section className="animate-fade-in-up animation-delay-400">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <ComparisonScanCard
-                      label={t('compare.previousScan')}
-                      scan={previousScan}
-                    />
-                    <ComparisonScanCard
-                      label={t('compare.currentScan')}
-                      scan={currentScan}
-                    />
-                  </div>
-                </section>
-
-                {/* Summary */}
-                <section className="animate-fade-in-up animation-delay-500">
-                  <div className="mb-4">
-                    <h2 className="text-lg font-bold text-gray-900">{t('compare.aiResultHeading')}</h2>
-                    <p className="text-sm text-gray-500">{t('compare.aiResultSubtext')}</p>
-                  </div>
-                  <ComparisonSummary comparison={comparison} />
-                </section>
-
-                {/* Timeline */}
-                <section className="animate-fade-in-up animation-delay-600">
-                  <ComparisonTimeline comparison={comparison} />
-                </section>
-
-                {/* Grad-CAM comparison */}
-                <section className="animate-fade-in-up animation-delay-600">
-                  <div className="card p-6">
-                    <div className="flex items-start gap-3 mb-5">
-                      <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center flex-shrink-0">
-                        <Sparkles className="w-5 h-5 text-accent-600" />
+                {!canSelect ? (
+                  <section className="animate-fade-in-up animation-delay-300">
+                    <div className="card p-10 text-center max-w-2xl mx-auto">
+                      <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
+                        <GitCompareArrows className="w-7 h-7 text-primary-600" />
                       </div>
-                      <div>
-                        <h3 className="text-base font-semibold text-gray-900">{t('compare.aiAttentionHeading')}</h3>
-                        <p className="text-sm text-gray-500">{t('compare.aiAttentionSubtext')}</p>
-                      </div>
+                      <h2 className="text-lg font-bold text-gray-900 mb-2">
+                        {t('compare.needTwoScans')}
+                      </h2>
+                      <p className="text-sm text-gray-500 mb-6">
+                        {t('compare.thisConcernHas', { n: scans.length })}
+                      </p>
+                      <button
+                        onClick={() => navigate('/skin-check')}
+                        className="btn-primary !px-8 !py-3.5 text-base"
+                      >
+                        <Camera className="w-4 h-4 mr-2" />
+                        {t('compare.startNew')}
+                      </button>
                     </div>
-
-                    <div className="grid md:grid-cols-2 gap-4 mb-5">
-{[
-                        { label: t('compare.prevScan'), accent: false },
-                        { label: t('compare.curScan'), accent: true },
-                      ].map((panel) => (
-                        <div key={panel.label} className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center">
-                          <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
-                            <Sparkles className={`w-3.5 h-3.5 ${panel.accent ? 'text-accent-500' : 'text-primary-400'}`} />
-                            {panel.label}
-                          </span>
+                  </section>
+                ) : demoComparison ? (
+                  <>
+                    <section className="animate-fade-in-up animation-delay-300">
+                      <div className="card p-5">
+                        <div className="grid gap-4 md:grid-cols-2">
+                          <div>
+                            <label htmlFor="previous-scan" className="block text-sm font-medium text-gray-700 mb-1.5">
+                              {t('compare.previousScan')}
+                            </label>
+                            <select
+                              id="previous-scan"
+                              value={demoPreviousScan?.id ?? ''}
+                              onChange={(e) => setPreviousScanId(e.target.value)}
+                              className="input-field text-sm appearance-none cursor-pointer"
+                            >
+                              {scansForPrevious.map((scan) => (
+                                <option key={scan.id} value={scan.id}>
+                                  {scan.createdAt.split('·')[0].trim()} — {scan.prediction}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                          <div>
+                            <label htmlFor="current-scan" className="block text-sm font-medium text-gray-700 mb-1.5">
+                              {t('compare.currentScan')}
+                            </label>
+                            <select
+                              id="current-scan"
+                              value={demoCurrentScan?.id ?? ''}
+                              onChange={(e) => setCurrentScanId(e.target.value)}
+                              className="input-field text-sm appearance-none cursor-pointer"
+                            >
+                              {scansForCurrent.map((scan) => (
+                                <option key={scan.id} value={scan.id}>
+                                  {scan.createdAt.split('·')[0].trim()} — {scan.prediction}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
                         </div>
-                      ))}
-                    </div>
+                        <p className="text-xs text-gray-400 mt-3">
+                          {t('compare.note')}
+                        </p>
+                      </div>
+                    </section>
 
-                    <p className="text-xs text-gray-400 leading-relaxed">
-                      {t('compare.attentionDesc')}
-                    </p>
-                  </div>
-                </section>
+                    <section className="animate-fade-in-up animation-delay-400">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <ComparisonScanCard
+                          label={t('compare.previousScan')}
+                          scan={demoPreviousScan}
+                        />
+                        <ComparisonScanCard
+                          label={t('compare.currentScan')}
+                          scan={demoCurrentScan}
+                        />
+                      </div>
+                    </section>
 
-                {/* Navigation */}
-                <section className="animate-fade-in-up animation-delay-600">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <button
-                      onClick={() => navigate(`/results`, {
-                        state: {
-                          scenario: currentScan.riskLevel === 'high' ? 'high-risk' : currentScan.riskLevel === 'uncertain' ? 'uncertain' : 'confident',
-                          patient: { age: 48, gender: 'Female', region: currentScan.bodyRegion },
-                        },
-                      })}
-                      className="btn-primary flex-1 !py-3"
-                    >
-                      {t('compare.viewCurrentResult')}
-                    </button>
-                    <button
-                      onClick={() => navigate('/history')}
-                      className="btn-secondary flex-1 !py-3"
-                    >
-                      {t('compare.backToHistory')}
-                    </button>
-                  </div>
-                </section>
+                    <section className="animate-fade-in-up animation-delay-500">
+                      <div className="mb-4">
+                        <h2 className="text-lg font-bold text-gray-900">{t('compare.aiResultHeading')}</h2>
+                        <p className="text-sm text-gray-500">{t('compare.aiResultSubtext')}</p>
+                      </div>
+                      <ComparisonSummary comparison={demoComparison} />
+                    </section>
+
+                    <section className="animate-fade-in-up animation-delay-600">
+                      <ComparisonTimeline comparison={demoComparison} />
+                    </section>
+
+                    <section className="animate-fade-in-up animation-delay-600">
+                      <div className="card p-6">
+                        <div className="flex items-start gap-3 mb-5">
+                          <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center flex-shrink-0">
+                            <Sparkles className="w-5 h-5 text-accent-600" />
+                          </div>
+                          <div>
+                            <h3 className="text-base font-semibold text-gray-900">{t('compare.aiAttentionHeading')}</h3>
+                            <p className="text-sm text-gray-500">{t('compare.aiAttentionSubtext')}</p>
+                          </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4 mb-5">
+                          {[
+                            { label: t('compare.prevScan'), accent: false },
+                            { label: t('compare.curScan'), accent: true },
+                          ].map((panel) => (
+                            <div key={panel.label} className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center">
+                              <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
+                                <Sparkles className={`w-3.5 h-3.5 ${panel.accent ? 'text-accent-500' : 'text-primary-400'}`} />
+                                {panel.label}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <p className="text-xs text-gray-400 leading-relaxed">
+                          {t('compare.attentionDesc')}
+                        </p>
+                      </div>
+                    </section>
+
+                    <section className="animate-fade-in-up animation-delay-600">
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <button
+                          onClick={() => navigate(`/results`, {
+                            state: {
+                              scenario: demoCurrentScan.riskLevel === 'high' ? 'high-risk' : demoCurrentScan.riskLevel === 'uncertain' ? 'uncertain' : 'confident',
+                              patient: { age: 48, gender: 'Female', region: demoCurrentScan.bodyRegion },
+                            },
+                          })}
+                          className="btn-primary flex-1 !py-3"
+                        >
+                          {t('compare.viewCurrentResult')}
+                        </button>
+                        <button
+                          onClick={() => navigate('/history')}
+                          className="btn-secondary flex-1 !py-3"
+                        >
+                          {t('compare.backToHistory')}
+                        </button>
+                      </div>
+                    </section>
+                  </>
+                ) : null}
               </>
-            ) : null}
-          </>
-        )}
+            )}
           </>
         )}
 
@@ -333,10 +711,10 @@ function Compare() {
   )
 }
 
-function CompareSelection({ onSelect, scanCountLabel }) {
+function CompareSelection({ concerns, onSelect, scanCountLabel }) {
   return (
     <div className="space-y-3">
-      {mockSkinConcerns.map((item) => (
+      {concerns.map((item) => (
         <button
           key={item.id}
           onClick={() => onSelect(item.id)}

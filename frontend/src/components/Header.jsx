@@ -1,14 +1,23 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, LogOut } from 'lucide-react'
 import LanguageSelector from './LanguageSelector'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
 
 function Header({ variant = 'public' }) {
   const { t } = useLanguage()
+  const { logOut } = useAuth()
+  const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
   const isDashboard = variant === 'dashboard'
+
+  function handleLogout() {
+    setMobileOpen(false)
+    logOut()
+    navigate('/')
+  }
 
   const PUBLIC_LINKS = [
     { to: '/', label: t('nav.home') },
@@ -98,14 +107,14 @@ function Header({ variant = 'public' }) {
           <div className="hidden md:flex items-center gap-2">
             <LanguageSelector />
             {isDashboard ? (
-              <Link
-                to="/"
+              <button
+                onClick={handleLogout}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 border border-gray-200 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
                 aria-label={t('nav.logout')}
               >
                 <LogOut className="w-4 h-4" />
                 {t('nav.logout')}
-              </Link>
+              </button>
             ) : (
               <>
                 <Link
@@ -172,14 +181,13 @@ function Header({ variant = 'public' }) {
               </div>
               {isDashboard ? (
                 <div className="flex gap-2 mt-2">
-                  <Link
-                    to="/"
-                    onClick={() => setMobileOpen(false)}
+                  <button
+                    onClick={handleLogout}
                     className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 border border-gray-200 hover:bg-gray-50 transition-colors"
                   >
                     <LogOut className="w-4 h-4" />
                     {t('nav.logout')}
-                  </Link>
+                  </button>
                 </div>
               ) : (
                 <div className="flex gap-2 mt-2">

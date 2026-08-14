@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Mail, Lock, Eye, EyeOff, User, Globe, UserPlus } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Mail, Lock, Eye, EyeOff, User, Globe, UserPlus, AlertTriangle } from 'lucide-react'
 import { languages } from '../data/languages'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
+import { AuthError } from '../api/authApi'
 
 function SignUp() {
   const { t } = useLanguage()
+  const { signUp } = useAuth()
+  const navigate = useNavigate()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,10 +17,41 @@ function SignUp() {
   const [preferredLanguage, setPreferredLanguage] = useState('en')
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(null)
 
-  function handleSubmit(e) {
+  function authErrorMessage(err) {
+    if (err instanceof AuthError) {
+      const map = {
+        'Email already registered.': t('auth.emailExists'),
+        'Name is required.': t('auth.nameRequired'),
+        'Email must be a valid email address.': t('auth.emailInvalid'),
+        'Password must be at least 8 characters.': t('auth.passwordTooShort'),
+      }
+      return map[err.detail] ?? t('auth.signupFailed')
+    }
+    return t('auth.signupFailed')
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault()
-    // UI only - no backend connection
+    if (submitting) return
+    setError(null)
+
+    if (password !== confirmPassword) {
+      setError(t('auth.passwordMismatch'))
+      return
+    }
+
+    setSubmitting(true)
+    try {
+      await signUp({ name, email, password, preferredLanguage })
+      navigate('/dashboard', { replace: true })
+    } catch (err) {
+      setError(authErrorMessage(err))
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -38,6 +73,12 @@ function SignUp() {
 
         {/* Form Card */}
         <div className="card p-8 animate-fade-in-up">
+          {error && (
+            <div className="mb-5 rounded-xl bg-red-50 border border-red-100 p-4 flex items-start gap-3 animate-fade-in-up">
+              <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+              <p className="text-sm text-red-700 leading-relaxed">{error}</p>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name */}
             <div>
@@ -159,7 +200,7 @@ function SignUp() {
             </div>
 
             {/* Submit */}
-            <button type="submit" className="btn-primary w-full !py-3 group">
+            <button type="submit" disabled={submitting} className="btn-primary w-full !py-3 group">
               <UserPlus className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
               {t('signup.createAccount')}
             </button>

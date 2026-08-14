@@ -1,7 +1,8 @@
 import { Sparkles } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
+import { buildImageUrl } from '../api/imageUrl'
 
-function GradCamCard() {
+function GradCamCard({ imageUrl, available }) {
   const { t } = useLanguage()
 
   return (
@@ -16,12 +17,22 @@ function GradCamCard() {
         </div>
       </div>
 
-      <div className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center mb-4">
-        <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
-          <Sparkles className="w-3.5 h-3.5 text-accent-500" />
-          {t('gradcam.comingSoon')}
-        </span>
-      </div>
+      {available && imageUrl ? (
+        <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-50 mb-4">
+          <img
+            src={buildImageUrl(imageUrl)}
+            alt={t('gradcam.availableAlt')}
+            className="w-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center mb-4">
+          <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
+            <Sparkles className="w-3.5 h-3.5 text-accent-500" />
+            {t('gradcam.unavailable')}
+          </span>
+        </div>
+      )}
 
       <p className="text-xs text-gray-400 leading-relaxed">
         {t('gradcam.desc')}

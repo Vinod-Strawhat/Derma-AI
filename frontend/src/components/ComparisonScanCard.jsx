@@ -1,10 +1,19 @@
+import { useEffect, useState } from 'react'
 import { Image as ImageIcon } from 'lucide-react'
 import RiskBadge from './RiskBadge'
 import { useLanguage } from '../context/LanguageContext'
+import { toThumbnailUrl } from '../api/scanGroups'
 
 function ComparisonScanCard({ label, scan }) {
   const { t } = useLanguage()
+  const [imageFailed, setImageFailed] = useState(false)
   const date = scan?.createdAt.split('·')[0].trim()
+
+  const imageUrl = scan?.raw ? toThumbnailUrl(scan.raw) : ''
+
+  useEffect(() => {
+    setImageFailed(false)
+  }, [imageUrl])
 
   return (
     <div className="card overflow-hidden flex flex-col">
@@ -12,12 +21,24 @@ function ComparisonScanCard({ label, scan }) {
         <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">{label}</p>
       </div>
 
-      {/* Image placeholder */}
+      {/* Scan image: real for authenticated scans, placeholder for demo */}
       <div className="relative aspect-[4/3] bg-gradient-to-br from-primary-200 via-medical-200 to-accent-200">
-        <ImageIcon className="w-8 h-8 text-primary-700/50 absolute inset-0 m-auto" />
-        <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-white/80 text-[10px] font-medium text-gray-600">
-          {t('comparisonscan.demoImage')}
-        </span>
+        {imageUrl && !imageFailed ? (
+          <img
+            src={imageUrl}
+            alt={scan?.prediction}
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <ImageIcon className="w-8 h-8 text-primary-700/50 absolute inset-0 m-auto" />
+        )}
+        {!scan?.raw && (
+          <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-white/80 text-[10px] font-medium text-gray-600">
+            {t('comparisonscan.demoImage')}
+          </span>
+        )}
       </div>
 
       <div className="p-5 space-y-2.5 flex-1">

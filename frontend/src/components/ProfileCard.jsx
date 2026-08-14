@@ -23,7 +23,7 @@ function ProfileCard({ profile }) {
             <h2 className="text-xl md:text-2xl font-bold text-gray-900">{profile.name}</h2>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 w-fit mx-auto sm:mx-0">
               <BadgeCheck className="w-3.5 h-3.5" />
-              {t('profile.statusLabel')}
+              {profile.isReal ? t('profile.realBadge') : t('profile.statusLabel')}
             </span>
           </div>
 

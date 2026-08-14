@@ -2,13 +2,16 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AlertTriangle, LogOut, Trash2 } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
 
 function AccountActions() {
   const { t } = useLanguage()
   const navigate = useNavigate()
+  const { logOut } = useAuth()
   const [deletePrompt, setDeletePrompt] = useState(false)
 
   function handleLogout() {
+    logOut()
     navigate('/')
   }
 

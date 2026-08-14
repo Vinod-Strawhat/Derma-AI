@@ -1,18 +1,45 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Mail, Lock, Eye, EyeOff, LogIn, AlertTriangle } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
+import { AuthError } from '../api/authApi'
 
 function SignIn() {
   const { t } = useLanguage()
+  const { signIn } = useAuth()
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(null)
 
-  function handleSubmit(e) {
+  function authErrorMessage(err) {
+    if (err instanceof AuthError) {
+      const map = {
+        'Invalid email or password.': t('auth.invalidCredentials'),
+        'Email must be a valid email address.': t('auth.emailInvalid'),
+      }
+      return map[err.detail] ?? t('auth.loginFailed')
+    }
+    return t('auth.loginFailed')
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault()
-    // UI only - no backend connection
+    if (submitting) return
+    setError(null)
+    setSubmitting(true)
+    try {
+      await signIn({ email, password })
+      navigate('/dashboard', { replace: true })
+    } catch (err) {
+      setError(authErrorMessage(err))
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -34,6 +61,12 @@ function SignIn() {
 
         {/* Form Card */}
         <div className="card p-8 animate-fade-in-up">
+          {error && (
+            <div className="mb-5 rounded-xl bg-red-50 border border-red-100 p-4 flex items-start gap-3 animate-fade-in-up">
+              <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+              <p className="text-sm text-red-700 leading-relaxed">{error}</p>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
             <div>
@@ -98,7 +131,7 @@ function SignIn() {
             </div>
 
             {/* Submit */}
-            <button type="submit" className="btn-primary w-full !py-3 group">
+            <button type="submit" disabled={submitting} className="btn-primary w-full !py-3 group">
               <LogIn className="w-4 h-4 mr-2 group-hover:-translate-x-0.5 transition-transform" />
               {t('signin.signIn')}
             </button>

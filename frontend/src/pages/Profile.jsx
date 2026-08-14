@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Camera, ShieldCheck } from 'lucide-react'
 import ProfileCard from '../components/ProfileCard'
@@ -5,13 +6,54 @@ import ProfileStats from '../components/ProfileStats'
 import PersonalInformation from '../components/PersonalInformation'
 import PrivacySettings from '../components/PrivacySettings'
 import AccountActions from '../components/AccountActions'
-import { mockProfile, newUserProfile } from '../data/mockProfile'
+import { mockProfile } from '../data/mockProfile'
+import { languages } from '../data/languages'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
+import { API_MODE } from '../api/predictApi'
+import { fetchMyScans } from '../api/scansApi'
+
+function languageName(code) {
+  return languages.find((lang) => lang.code === code)?.name ?? code
+}
 
 function Profile() {
   const { t } = useLanguage()
   const navigate = useNavigate()
-  const profile = mockProfile
+  const { user, isAuthenticated } = useAuth()
+  const [scans, setScans] = useState([])
+  const [statsReady, setStatsReady] = useState(false)
+
+  useEffect(() => {
+    if (isAuthenticated && API_MODE) {
+      fetchMyScans()
+        .then(setScans)
+        .catch(() => setScans([]))
+        .finally(() => setStatsReady(true))
+    } else {
+      setStatsReady(true)
+    }
+  }, [isAuthenticated])
+
+  const profile = isAuthenticated
+    ? {
+        isDemo: false,
+        isReal: true,
+        isNewUser: scans.length === 0,
+        name: user.name,
+        email: user.email,
+        preferredLanguage: languageName(user.preferredLanguage),
+        stats: {
+          totalScans: scans.length,
+          concernsTracked: 0,
+          lastScan: scans.length
+            ? new Date(scans[0].createdAt).toLocaleDateString()
+            : null,
+          comparisons: 0,
+        },
+      }
+    : mockProfile
+
   const isNewUser = profile.isNewUser
   const hasAnyActivity = profile.stats.totalScans > 0
 
@@ -21,7 +63,7 @@ function Profile() {
         {/* Page header */}
         <section className="animate-fade-in-down">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 mb-4">
-            {t('profile.demoBadge')}
+            {t(isAuthenticated ? 'profile.realBadge' : 'profile.demoBadge')}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
             {t('profile.heading')}
@@ -69,12 +111,14 @@ function Profile() {
               <h2 className="text-xl font-bold text-gray-900 tracking-tight">{t('profile.activity')}</h2>
               <p className="text-sm text-gray-500 mt-1">{t('profile.activitySubtext')}</p>
             </div>
-            <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 flex-shrink-0">
-              {t('profile.demoData')}
-            </span>
+            {!isAuthenticated && (
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 flex-shrink-0">
+                {t('profile.demoData')}
+              </span>
+            )}
           </div>
 
-          <ProfileStats stats={profile.stats} isNewUser={isNewUser} />
+          {statsReady && <ProfileStats stats={profile.stats} isNewUser={isNewUser} />}
 
           {!hasAnyActivity && (
             <p className="text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2.5 mt-4">

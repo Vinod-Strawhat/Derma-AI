@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Camera, ClipboardList, ImageIcon, User } from 'lucide-react'
+import { AlertTriangle, ArrowLeft, Camera, ClipboardList, ImageIcon, User } from 'lucide-react'
 import SkinImageInput from '../components/SkinImageInput'
 import PatientInfoForm from '../components/PatientInfoForm'
 import ReviewCard from '../components/ReviewCard'
 import { REGION_GROUPS } from '../data/skinCheckOptions'
 import { useLanguage } from '../context/LanguageContext'
+import { analyzeSkin, API_MODE, ApiError } from '../api/predictApi'
 
 function SkinCheck() {
   const { t } = useLanguage()
@@ -23,6 +24,7 @@ function SkinCheck() {
   const [gender, setGender] = useState('')
   const [region, setRegion] = useState('')
   const [analysisPending, setAnalysisPending] = useState(false)
+  const [error, setError] = useState(null)
 
   function handleImageChange({ file, source: fileSource }) {
     if (previewUrl) URL.revokeObjectURL(previewUrl)
@@ -50,20 +52,55 @@ function SkinCheck() {
     setGender('')
     setRegion('')
     setAnalysisPending(false)
+    setError(null)
+  }
+
+  function errorMessage(err) {
+    if (err instanceof ApiError) {
+      const map = {
+        network: t('errors.backendUnavailable'),
+        timeout: t('errors.timeout'),
+        invalidInput: t('errors.invalidInput'),
+        unauthorized: t('errors.unauthorized'),
+        serverError: t('errors.serverError'),
+        malformedResponse: t('errors.malformedResponse'),
+      }
+      return map[err.code] ?? t('errors.apiScan')
+    }
+    return t('errors.apiScan')
   }
 
   function handleAnalyze() {
     if (analysisPending || !allComplete) return
+    setError(null)
     setAnalysisPending(true)
-    setTimeout(() => {
-      navigate('/results', {
-        state: {
-          scenario: 'confident',
-          patient: { age: Number(age), gender, region },
-        },
-        replace: true,
+
+    // Demo mode: keep the existing simulated flow.
+    if (!API_MODE) {
+      setTimeout(() => {
+        navigate('/results', {
+          state: {
+            scenario: 'confident',
+            patient: { age: Number(age), gender, region },
+          },
+          replace: true,
+        })
+      }, 1200)
+      return
+    }
+
+    // Real API mode.
+    analyzeSkin({ file: image, age: Number(age), gender, region })
+      .then((data) => {
+        navigate('/results', {
+          state: { result: data },
+          replace: true,
+        })
       })
-    }, 1200)
+      .catch((err) => {
+        setAnalysisPending(false)
+        setError(errorMessage(err))
+      })
   }
 
   const genderLabel = useMemo(() => {
@@ -179,6 +216,15 @@ function SkinCheck() {
           {/* Right column: review & analyze */}
           <aside className="lg:col-span-2 animate-fade-in-up animation-delay-400">
             <div className="lg:sticky lg:top-24">
+              {error && (
+                <div className="mb-4 rounded-xl bg-red-50 border border-red-100 p-4 flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-red-700">{t('errors.analyzeTitle')}</p>
+                    <p className="text-sm text-red-700/80 mt-0.5 leading-relaxed">{error}</p>
+                  </div>
+                </div>
+              )}
               <ReviewCard
                 hasImage={Boolean(image)}
                 age={age}

@@ -1,37 +1,83 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Camera, SearchX } from 'lucide-react'
 import SkinConcernCard from '../components/SkinConcernCard'
 import HistoryScanCard from '../components/HistoryScanCard'
 import HistoryFilters from '../components/HistoryFilters'
 import LoadingState from '../components/LoadingState'
+import ErrorState from '../components/ErrorState'
 import { useSimulatedLoading } from '../hooks/useSimulatedLoading'
 import { mockSkinConcerns } from '../data/mockHistory'
 import { useLanguage } from '../context/LanguageContext'
+import { useAuth } from '../context/AuthContext'
+import { API_MODE } from '../api/predictApi'
+import { fetchMyScans } from '../api/scansApi'
+import { groupScansIntoConcerns } from '../api/scanGroups'
 
 const riskOrder = { high: 3, medium: 2, low: 1, uncertain: 0 }
 
 function History() {
   const { t } = useLanguage()
   const navigate = useNavigate()
-  const loading = useSimulatedLoading(450)
+  const { user, isAuthenticated } = useAuth()
+
+  // Real mode: a real authenticated account on the live backend.
+  // Demo user records have id 0; real users always have a positive id.
+  const realMode = API_MODE && isAuthenticated && user?.id > 0
+
+  const demoLoading = useSimulatedLoading(450)
+  const [realScans, setRealScans] = useState([])
+  const [realLoading, setRealLoading] = useState(false)
+  const [realError, setRealError] = useState(false)
+  const [reloadKey, setReloadKey] = useState(0)
+
+  useEffect(() => {
+    if (!realMode) return
+
+    let cancelled = false
+    setRealLoading(true)
+    setRealError(false)
+
+    fetchMyScans()
+      .then((scans) => {
+        if (!cancelled) setRealScans(scans)
+      })
+      .catch(() => {
+        if (!cancelled) setRealError(true)
+      })
+      .finally(() => {
+        if (!cancelled) setRealLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [realMode, reloadKey])
+
+  const loading = realMode ? realLoading : demoLoading
+
+  const concerns = useMemo(() => {
+    if (realMode) return groupScansIntoConcerns(realScans)
+    return mockSkinConcerns
+  }, [realMode, realScans])
+
   const [search, setSearch] = useState('')
   const [riskFilter, setRiskFilter] = useState('all')
   const [sort, setSort] = useState('recent')
   const [expandedConcernId, setExpandedConcernId] = useState(null)
 
   const filteredConcerns = useMemo(() => {
-    let concerns = [...mockSkinConcerns]
+    let result = [...concerns]
 
     if (riskFilter !== 'all') {
-      concerns = concerns.filter((concern) =>
+      result = result.filter((concern) =>
         concern.scans.some((scan) => scan.riskLevel === riskFilter)
       )
     }
 
     if (search.trim()) {
       const query = search.trim().toLowerCase()
-      concerns = concerns.filter((concern) => {
+      result = result.filter((concern) => {
         const matchesName = concern.concernName.toLowerCase().includes(query)
         const matchesRegion = concern.bodyRegion.toLowerCase().includes(query)
         const matchesPrediction = concern.scans.some((scan) =>
@@ -42,7 +88,7 @@ function History() {
     }
 
     if (sort === 'oldest') {
-      concerns = concerns.map((concern) => ({
+      result = result.map((concern) => ({
         ...concern,
         scans: [...concern.scans].sort(
           (a, b) => a.timestamp.localeCompare(b.timestamp)
@@ -51,7 +97,7 @@ function History() {
     }
 
     if (sort === 'recent') {
-      concerns = concerns.map((concern) => ({
+      result = result.map((concern) => ({
         ...concern,
         scans: [...concern.scans].sort(
           (a, b) => b.timestamp.localeCompare(a.timestamp)
@@ -60,25 +106,25 @@ function History() {
     }
 
     if (sort === 'risk') {
-      concerns = concerns.map((concern) => ({
+      result = result.map((concern) => ({
         ...concern,
         scans: [...concern.scans].sort(
           (a, b) => riskOrder[b.riskLevel] - riskOrder[a.riskLevel]
         ),
       }))
-      concerns.sort((a, b) => {
+      result.sort((a, b) => {
         const aRisk = riskOrder[a.scans[0]?.riskLevel] ?? 0
         const bRisk = riskOrder[b.scans[0]?.riskLevel] ?? 0
         return bRisk - aRisk
       })
     }
 
-    return concerns
-  }, [search, riskFilter, sort])
+    return result
+  }, [concerns, search, riskFilter, sort])
 
   const totalScans = useMemo(
-    () => mockSkinConcerns.reduce((sum, concern) => sum + concern.scans.length, 0),
-    []
+    () => concerns.reduce((sum, concern) => sum + concern.scans.length, 0),
+    [concerns]
   )
 
   function handleToggleConcern(id) {
@@ -86,22 +132,32 @@ function History() {
   }
 
   function handleCompare(scan) {
+    // Real scans use the backend numeric id; demo scans use the
+    // display string id. The Compare page validates the real pair
+    // through the authenticated backend.
+    const idOf = (item) => (realMode ? item.scanId : item.id)
+
     navigate('/compare', {
       state: {
         concernId: scan.concernId,
         concernName: scan.concernName,
         scanIds: [
-          scan.id,
+          idOf(scan),
           ...filteredConcerns
             .find((c) => c.id === scan.concernId)
-            ?.scans.filter((s) => s.id !== scan.id)
-            .map((s) => s.id) ?? [],
+            ?.scans.filter((s) => idOf(s) !== idOf(scan))
+            .map(idOf) ?? [],
         ],
       },
     })
   }
 
-  const hasScanForUser = mockSkinConcerns.length > 0
+  const hasScanForUser = concerns.length > 0
+
+  const badge = realMode ? t('history.realBadge') : t('history.demoBadge')
+  const disclaimer = realMode
+    ? t('history.realDisclaimer')
+    : t('history.disclaimer')
 
   return (
     <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
@@ -109,7 +165,7 @@ function History() {
         {/* Page header */}
         <section className="animate-fade-in-down">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 mb-4">
-            {t('history.demoBadge')}
+            {badge}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
             {t('history.heading')}
@@ -122,7 +178,20 @@ function History() {
         {loading ? (
           <section className="animate-fade-in-up animation-delay-200">
             <div className="card">
-              <LoadingState message={t('loading.history')} />
+              <LoadingState
+                message={t('loading.history')}
+                showDemoNote={!realMode}
+              />
+            </div>
+          </section>
+        ) : realError ? (
+          <section className="animate-fade-in-up animation-delay-200">
+            <div className="card">
+              <ErrorState
+                title={t('history.errorTitle')}
+                message={t('history.errorDesc')}
+                onRetry={() => setReloadKey((key) => key + 1)}
+              />
             </div>
           </section>
         ) : hasScanForUser ? (
@@ -177,7 +246,9 @@ function History() {
             </section>
 
             <p className="text-xs text-gray-400">
-              {t('history.demoCount', { n: totalScans })}
+              {realMode
+                ? t('history.realCount', { n: totalScans })
+                : t('history.demoCount', { n: totalScans })}
             </p>
           </>
         ) : (
@@ -205,7 +276,7 @@ function History() {
         <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
           <Camera className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
           <p className="text-sm text-amber-700 leading-relaxed">
-            {t('history.disclaimer')}
+            {disclaimer}
           </p>
         </section>
       </div>

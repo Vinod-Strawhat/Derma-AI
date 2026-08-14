@@ -1,14 +1,32 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ChevronRight, GitCompareArrows, Image as ImageIcon } from 'lucide-react'
 import RiskBadge from './RiskBadge'
 import { useLanguage } from '../context/LanguageContext'
+import { toResultView, toThumbnailUrl } from '../api/scanGroups'
 
 function HistoryScanCard({ scan, onCompare, disabled }) {
   const { t } = useLanguage()
   const navigate = useNavigate()
+  const [imageFailed, setImageFailed] = useState(false)
   const percentage = ((scan.confidence ?? 0) * 100).toFixed(1)
 
+  const thumbnailUrl = scan.raw ? toThumbnailUrl(scan.raw) : ''
+
+  useEffect(() => {
+    setImageFailed(false)
+  }, [thumbnailUrl])
+
   function handleViewResult() {
+    // Real scan: hand the actual scan record to the Results page.
+    if (scan.raw) {
+      navigate('/results', {
+        state: { result: toResultView(scan.raw) },
+      })
+      return
+    }
+
+    // Demo scan: keep the existing demonstration flow.
     navigate('/results', {
       state: {
         scenario: scan.riskLevel === 'high' ? 'high-risk' : scan.riskLevel === 'uncertain' ? 'uncertain' : 'confident',
@@ -22,7 +40,17 @@ function HistoryScanCard({ scan, onCompare, disabled }) {
       <div className="flex items-start gap-4">
         {/* Thumbnail */}
         <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden bg-gradient-to-br from-primary-200 via-medical-200 to-accent-200 flex-shrink-0">
-          <ImageIcon className="w-6 h-6 text-primary-700/50 absolute inset-0 m-auto" />
+          {thumbnailUrl && !imageFailed ? (
+            <img
+              src={thumbnailUrl}
+              alt={scan.prediction}
+              loading="lazy"
+              onError={() => setImageFailed(true)}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <ImageIcon className="w-6 h-6 text-primary-700/50 absolute inset-0 m-auto" />
+          )}
         </div>
 
         <div className="min-w-0 flex-1">

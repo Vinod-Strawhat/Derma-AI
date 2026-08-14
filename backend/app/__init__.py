@@ -1,0 +1,1 @@
+"""DermaAI backend application package."""
