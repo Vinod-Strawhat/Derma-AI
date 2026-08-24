@@ -2,18 +2,43 @@ from pathlib import Path
 
 from src.data.dataset import SkinDiseaseDataset
 
+
+# --------------------------------------------------
+# Dataset
+# --------------------------------------------------
+
 dataset = SkinDiseaseDataset(
-    metadata_path=Path("datasets/merged/master_metadata.csv"),
-    ham_image_dir=Path("datasets/HAM-10000/images"),
-    pad_image_dir=Path("datasets/PAD-UFES-20/images"),
+    metadata_path=Path(
+        "datasets/merged/master_metadata.csv"
+    )
 )
 
-print("Total Samples:", len(dataset))
+
+# --------------------------------------------------
+# Dataset Size
+# --------------------------------------------------
+
+print("\nTotal Samples:", len(dataset))
+
+
+# --------------------------------------------------
+# Test First Sample
+# --------------------------------------------------
 
 image, age, gender, region, label = dataset[0]
+
+
+print("\nFirst Sample")
+print("-" * 40)
 
 print("Age:", age)
 print("Gender:", gender)
 print("Region:", region)
 print("Label:", label)
-print("Image Shape:", image.size)
+
+print("Image Type:", type(image))
+
+if hasattr(image, "shape"):
+    print("Image Shape:", image.shape)
+else:
+    print("Image Size:", image.size)

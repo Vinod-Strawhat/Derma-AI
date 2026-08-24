@@ -967,17 +967,17 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033945.jpg,HAM10000,60.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033491.jpg,HAM10000,60.0,Female,back,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034280.jpg,HAM10000,60.0,Female,back,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034151.jpg,HAM10000,60.0,Male,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033391.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033750.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033685.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033631.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033490.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034283.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032740.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034186.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033391.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033750.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033685.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033631.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033490.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034283.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032740.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034186.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0031601.jpg,HAM10000,60.0,Male,neck,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034252.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033829.jpg,HAM10000,,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034252.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033829.jpg,HAM10000,50.0,Unknown,unknown,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0026790.jpg,HAM10000,55.0,Male,back,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0029113.jpg,HAM10000,55.0,Male,abdomen,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0030323.jpg,HAM10000,55.0,Male,abdomen,Benign Keratosis
@@ -1885,8 +1885,8 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034173.jpg,HAM10000,75.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033454.jpg,HAM10000,75.0,Male,face,Melanoma
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033893.jpg,HAM10000,60.0,Male,back,Melanoma
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0028225.jpg,HAM10000,70.0,Female,lower extremity,Melanoma
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032960.jpg,HAM10000,,Male,face,Melanoma
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033708.jpg,HAM10000,,Male,face,Melanoma
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032960.jpg,HAM10000,50.0,Male,face,Melanoma
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033708.jpg,HAM10000,50.0,Male,face,Melanoma
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034317.jpg,HAM10000,70.0,Female,lower extremity,Melanoma
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0031741.jpg,HAM10000,45.0,Female,back,Melanoma
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033662.jpg,HAM10000,70.0,Female,lower extremity,Melanoma
@@ -7557,7 +7557,7 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025372.jpg,HAM10000,30.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033018.jpg,HAM10000,35.0,Female,lower extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032541.jpg,HAM10000,35.0,Female,lower extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032515.jpg,HAM10000,35.0,Female,lower extremity,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025009.jpg,HAM10000,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025009.jpg,HAM10000,50.0,Female,chest,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033492.jpg,HAM10000,35.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032548.jpg,HAM10000,35.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033106.jpg,HAM10000,35.0,Male,back,Melanocytic Nevus
@@ -7960,8 +7960,8 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033026.jpg,HAM10000,45.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033774.jpg,HAM10000,45.0,Female,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034191.jpg,HAM10000,55.0,Male,lower extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033719.jpg,HAM10000,55.0,Male,lower extremity,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033442.jpg,HAM10000,,Male,upper extremity,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032943.jpg,HAM10000,,Male,upper extremity,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033442.jpg,HAM10000,50.0,Male,upper extremity,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032943.jpg,HAM10000,50.0,Male,upper extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033723.jpg,HAM10000,80.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033396.jpg,HAM10000,80.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034231.jpg,HAM10000,20.0,Female,back,Melanocytic Nevus
@@ -8409,8 +8409,8 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025942.jpg,HAM10000,50.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025039.jpg,HAM10000,75.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0030127.jpg,HAM10000,60.0,Male,upper extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025969.jpg,HAM10000,40.0,Male,trunk,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0031725.jpg,HAM10000,,Female,abdomen,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0027040.jpg,HAM10000,,Female,trunk,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0031725.jpg,HAM10000,50.0,Female,abdomen,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0027040.jpg,HAM10000,50.0,Female,trunk,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0026888.jpg,HAM10000,50.0,Female,lower extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0026030.jpg,HAM10000,50.0,Female,lower extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0030397.jpg,HAM10000,35.0,Female,trunk,Melanocytic Nevus
@@ -8554,7 +8554,7 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0028408.jpg,HAM10000,55.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0028998.jpg,HAM10000,35.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025118.jpg,HAM10000,30.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0026512.jpg,HAM10000,30.0,Male,back,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032300.jpg,HAM10000,,Female,chest,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032300.jpg,HAM10000,50.0,Female,chest,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0026034.jpg,HAM10000,60.0,Male,lower extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0026404.jpg,HAM10000,60.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0029183.jpg,HAM10000,80.0,Male,abdomen,Melanocytic Nevus
@@ -9385,8 +9385,8 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0025101.jpg,HAM10000,5.0,
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0030358.jpg,HAM10000,60.0,Male,neck,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0028632.jpg,HAM10000,60.0,Male,neck,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0029537.jpg,HAM10000,5.0,Female,hand,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0031668.jpg,HAM10000,,Male,foot,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0027431.jpg,HAM10000,,Male,foot,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0031668.jpg,HAM10000,50.0,Male,foot,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0027431.jpg,HAM10000,50.0,Male,foot,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0030479.jpg,HAM10000,50.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0028834.jpg,HAM10000,50.0,Male,back,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0030300.jpg,HAM10000,15.0,Male,back,Melanocytic Nevus
@@ -9592,43 +9592,43 @@ C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033567.jpg,HAM10000,40.0
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034312.jpg,HAM10000,40.0,Female,unknown,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033025.jpg,HAM10000,30.0,Female,upper extremity,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033053.jpg,HAM10000,30.0,Female,upper extremity,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033374.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033877.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032578.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033841.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033882.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034266.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033751.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033065.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033375.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033628.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033733.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032738.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033353.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034019.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032852.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034080.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034154.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032789.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033417.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033782.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033332.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034130.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032945.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033597.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034045.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033028.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033809.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033187.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032814.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033190.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033535.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033330.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033064.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033515.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033735.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033982.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
-C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034195.jpg,HAM10000,,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033374.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033877.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032578.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033841.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033882.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034266.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033751.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033065.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033375.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033628.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033733.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032738.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033353.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034019.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032852.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034080.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034154.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032789.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033417.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033782.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033332.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034130.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032945.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033597.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034045.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033028.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033809.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033187.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0032814.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033190.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033535.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033330.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033064.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033515.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033735.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033982.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
+C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034195.jpg,HAM10000,50.0,Unknown,unknown,Melanocytic Nevus
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0033620.jpg,HAM10000,40.0,Male,unknown,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0034040.jpg,HAM10000,40.0,Male,unknown,Benign Keratosis
 C:\Users\vinod\Derma-AI\datasets\HAM-10000\images\ISIC_0029355.jpg,HAM10000,50.0,Female,lower extremity,Melanocytic Nevus

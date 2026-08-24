@@ -183,6 +183,7 @@ model = MultimodalEfficientNet(
 model = model.to(device)
 
 
+
 checkpoint = torch.load(
     MODEL_PATH,
     map_location=device,

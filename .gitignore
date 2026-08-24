@@ -61,3 +61,22 @@ frontend/.env.production
 # ----------------------------
 backend/data/
 backend/storage/
+
+# Local environment
+.venv/
+frontend/.env
+frontend/.env.local
+
+# Vite temporary logs
+frontend/vite-out.txt
+frontend/vite-err.txt
+
+# Local test/generated outputs
+results/gradcam/
+
+# Temporary backup
+phase-21-backup.patch
+
+# Accidental temporary files
+tatus --short
+ersvinodDerma-AI
