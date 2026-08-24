@@ -16,8 +16,8 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #1f2937;
+  background-color: #f8fafc;
+  color: #1e293b;
 }
 
 :focus-visible {
@@ -53,9 +53,20 @@ body {
   transform: translateY(0);
 }
 
+/* Staggered entrance classes */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.stagger-child.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 ease-in-out bg-gradient-to-r from-primary-600 to-medical-600 hover:from-primary-700 hover:to-medical-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 ease-in-out bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 hover:shadow-medical hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-secondary {
@@ -63,7 +74,11 @@ body {
   }
 
   .card {
-    @apply bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300;
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-300;
+  }
+
+  .card-interactive {
+    @apply card hover:shadow-card-hover hover:-translate-y-0.5;
   }
 
   .input-field {
@@ -77,11 +92,34 @@ body {
   .section-subtext {
     @apply text-lg text-gray-500 max-w-2xl mx-auto;
   }
+
+  /* Premium glass morphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg;
+  }
+
+  .glass-strong {
+    @apply bg-white/80 backdrop-blur-2xl border border-white/30 shadow-xl;
+  }
+
+  /* Medical surface */
+  .surface {
+    @apply bg-white rounded-2xl border border-gray-100/80;
+  }
+
+  /* Hero gradient background */
+  .hero-gradient {
+    background: linear-gradient(135deg, #eef4ff 0%, #f0f7ff 25%, #faf5ff 50%, #f0f7ff 75%, #eef4ff 100%);
+  }
 }
 
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-600;
+  }
+
+  .text-gradient-medical {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-medical-500 to-accent-500;
   }
 
   .bg-gradient-medical {
@@ -102,6 +140,19 @@ body {
 
   .animation-delay-800 {
     animation-delay: 800ms;
+  }
+
+  /* Subtle medical grid pattern */
+  .pattern-dots {
+    background-image: radial-gradient(circle, rgba(52, 97, 247, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Scanning shimmer effect */
+  .shimmer-overlay {
+    background: linear-gradient(90deg, transparent, rgba(52, 97, 247, 0.05), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
   }
 }
 

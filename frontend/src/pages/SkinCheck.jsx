@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AlertTriangle, ArrowLeft, Camera, ClipboardList, ImageIcon, User } from 'lucide-react'
+import { AlertTriangle, ArrowLeft, Camera, ClipboardList, ImageIcon, User, CheckCircle2, Circle } from 'lucide-react'
 import SkinImageInput from '../components/SkinImageInput'
 import PatientInfoForm from '../components/PatientInfoForm'
 import ReviewCard from '../components/ReviewCard'
@@ -75,7 +75,6 @@ function SkinCheck() {
     setError(null)
     setAnalysisPending(true)
 
-    // Demo mode: keep the existing simulated flow.
     if (!API_MODE) {
       setTimeout(() => {
         navigate('/results', {
@@ -89,7 +88,6 @@ function SkinCheck() {
       return
     }
 
-    // Real API mode.
     analyzeSkin({ file: image, age: Number(age), gender, region })
       .then((data) => {
         navigate('/results', {
@@ -122,9 +120,16 @@ function SkinCheck() {
   const ageValid = age !== '' && age !== null && age !== undefined
   const allComplete = Boolean(image && ageValid && gender && region)
 
+  // Step completion status
+  const stepStatus = [
+    Boolean(image),
+    ageValid && Boolean(gender) && Boolean(region),
+    allComplete,
+  ]
+
   return (
-    <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12 space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         <Link
           to="/dashboard"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
@@ -144,21 +149,39 @@ function SkinCheck() {
         {/* Step indicator */}
         <nav aria-label={t('skincheck.stepsAria')} className="animate-fade-in-down animation-delay-200">
           <ol className="grid grid-cols-3 gap-3">
-            {steps.map((step) => {
+            {steps.map((step, index) => {
               const StepIcon = step.icon
+              const completed = stepStatus[index]
+              const isCurrent = !completed && (index === 0 || stepStatus[index - 1])
               return (
                 <li
                   key={step.number}
-                  className="flex items-center gap-2.5 rounded-xl border border-gray-100 bg-white px-3 py-2.5 sm:px-4 sm:py-3"
+                  className={`flex items-center gap-2.5 rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3 transition-all duration-300 ${
+                    isCurrent
+                      ? 'border-primary-200 bg-primary-50/50 shadow-sm'
+                      : completed
+                        ? 'border-emerald-200 bg-emerald-50/30'
+                        : 'border-gray-100 bg-white'
+                  }`}
                 >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                    <StepIcon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-600" />
+                  <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
+                    completed
+                      ? 'bg-emerald-100'
+                      : isCurrent
+                        ? 'bg-primary-100'
+                        : 'bg-gray-50'
+                  }`}>
+                    {completed ? (
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
+                    ) : (
+                      <StepIcon className={`w-4 h-4 sm:w-5 sm:h-5 ${isCurrent ? 'text-primary-600' : 'text-gray-400'}`} />
+                    )}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[10px] font-bold uppercase tracking-wide text-primary-400">
+                    <p className={`text-[10px] font-bold uppercase tracking-wide ${completed ? 'text-emerald-500' : isCurrent ? 'text-primary-400' : 'text-gray-300'}`}>
                       {t('skincheck.step')} {step.number}
                     </p>
-                    <p className="text-xs sm:text-sm font-semibold text-gray-900 truncate">{step.label}</p>
+                    <p className={`text-xs sm:text-sm font-semibold truncate ${completed ? 'text-emerald-800' : isCurrent ? 'text-gray-900' : 'text-gray-400'}`}>{step.label}</p>
                   </div>
                 </li>
               )

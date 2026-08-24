@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Camera, GitCompareArrows, Sparkles } from 'lucide-react'
+import { ArrowLeft, Camera, GitCompareArrows, Sparkles, ArrowRightLeft } from 'lucide-react'
 import ComparisonScanCard from '../components/ComparisonScanCard'
 import ComparisonSummary from '../components/ComparisonSummary'
 import ComparisonTimeline from '../components/ComparisonTimeline'
@@ -45,7 +45,6 @@ function Compare() {
 
   const demoLoading = useSimulatedLoading(400)
 
-  // ---- Real-mode state ----
   const [realLoading, setRealLoading] = useState(false)
   const [realError, setRealError] = useState(false)
   const [realErrorKind, setRealErrorKind] = useState('network')
@@ -56,7 +55,6 @@ function Compare() {
   const [realBrowsing, setRealBrowsing] = useState(true)
   const [reloadKey, setReloadKey] = useState(0)
 
-  // ---- Demo-mode state ----
   const [browsing, setBrowsing] = useState(!passedConcernId)
   const [selectedConcernId, setSelectedConcernId] = useState(null)
   const [previousScanId, setPreviousScanId] = useState(null)
@@ -130,10 +128,6 @@ function Compare() {
     }
   }, [realMode, reloadKey])
 
-  // ------------------------------------------------------------
-  // Real-mode handlers
-  // ------------------------------------------------------------
-
   function handleSelectRealConcern(id) {
     const concern = realConcerns.find((item) => item.id === id)
     if (!concern) return
@@ -164,10 +158,6 @@ function Compare() {
     if (!current?.raw) return
     navigate('/results', { state: { result: toResultView(current.raw) } })
   }
-
-  // ------------------------------------------------------------
-  // Demo-mode derived values (unchanged from the demo flow)
-  // ------------------------------------------------------------
 
   const activeConcernId = browsing ? null : (selectedConcernId ?? passedConcernId)
   const activeConcern = useMemo(
@@ -220,14 +210,11 @@ function Compare() {
     setBrowsing(false)
   }
 
-  // ------------------------------------------------------------
-  // Real-mode render
-  // ------------------------------------------------------------
-
+  // ─── Real-mode render ──────────────────────────────────────
   if (realMode) {
     return (
-      <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 space-y-8">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
           <button
             onClick={() => navigate('/history')}
             className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
@@ -237,8 +224,13 @@ function Compare() {
           </button>
 
           <section className="animate-fade-in-down">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-medical-50 border border-medical-100 text-xs font-medium text-medical-700 mb-4">
-              {t('compare.realBadge')}
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+                <ArrowRightLeft className="w-5 h-5 text-accent-600" />
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-50 border border-accent-100 text-xs font-medium text-accent-700">
+                {t('compare.realBadge')}
+              </div>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
               {t('compare.heading')}
@@ -278,23 +270,26 @@ function Compare() {
             </section>
           ) : insufficient ? (
             <section className="animate-fade-in-up animation-delay-200">
-              <div className="card p-10 text-center max-w-2xl mx-auto">
-                <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-                  <GitCompareArrows className="w-7 h-7 text-primary-600" />
+              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-10 text-center max-w-2xl mx-auto">
+                <div className="absolute inset-0 pattern-dots opacity-30" />
+                <div className="relative">
+                  <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                    <GitCompareArrows className="w-7 h-7 text-primary-600" />
+                  </div>
+                  <h2 className="text-lg font-bold text-gray-900 mb-2">
+                    {t('compare.needTwoScans')}
+                  </h2>
+                  <p className="text-sm text-gray-500 mb-6">
+                    {t('compare.thisConcernHas', { n: activeRealConcern?.scans.length ?? 0 })}
+                  </p>
+                  <button
+                    onClick={() => navigate('/skin-check')}
+                    className="btn-primary !px-8 !py-3.5 text-base shadow-medical"
+                  >
+                    <Camera className="w-4 h-4 mr-2" />
+                    {t('compare.startNew')}
+                  </button>
                 </div>
-                <h2 className="text-lg font-bold text-gray-900 mb-2">
-                  {t('compare.needTwoScans')}
-                </h2>
-                <p className="text-sm text-gray-500 mb-6">
-                  {t('compare.thisConcernHas', { n: activeRealConcern?.scans.length ?? 0 })}
-                </p>
-                <button
-                  onClick={() => navigate('/skin-check')}
-                  className="btn-primary !px-8 !py-3.5 text-base"
-                >
-                  <Camera className="w-4 h-4 mr-2" />
-                  {t('compare.startNew')}
-                </button>
               </div>
             </section>
           ) : !comparison ? (
@@ -432,7 +427,7 @@ function Compare() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={handleViewRealResult}
-                    className="btn-primary flex-1 !py-3"
+                    className="btn-primary flex-1 !py-3 shadow-medical"
                   >
                     {t('compare.viewCurrentResult')}
                   </button>
@@ -458,14 +453,10 @@ function Compare() {
     )
   }
 
-  // ------------------------------------------------------------
-  // Demo-mode render (existing flow)
-  // ------------------------------------------------------------
-
+  // ─── Demo-mode render ──────────────────────────────────────
   return (
-    <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 space-y-8">
-        {/* Back */}
+    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         <button
           onClick={() => navigate('/history')}
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
@@ -474,10 +465,14 @@ function Compare() {
           {t('compare.back')}
         </button>
 
-        {/* Header */}
         <section className="animate-fade-in-down">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 mb-4">
-            {t('compare.demoBadge')}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+              <ArrowRightLeft className="w-5 h-5 text-accent-600" />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700">
+              {t('compare.demoBadge')}
+            </div>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
             {t('compare.heading')}
@@ -549,23 +544,26 @@ function Compare() {
 
                 {!canSelect ? (
                   <section className="animate-fade-in-up animation-delay-300">
-                    <div className="card p-10 text-center max-w-2xl mx-auto">
-                      <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-                        <GitCompareArrows className="w-7 h-7 text-primary-600" />
+                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-10 text-center max-w-2xl mx-auto">
+                      <div className="absolute inset-0 pattern-dots opacity-30" />
+                      <div className="relative">
+                        <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                          <GitCompareArrows className="w-7 h-7 text-primary-600" />
+                        </div>
+                        <h2 className="text-lg font-bold text-gray-900 mb-2">
+                          {t('compare.needTwoScans')}
+                        </h2>
+                        <p className="text-sm text-gray-500 mb-6">
+                          {t('compare.thisConcernHas', { n: scans.length })}
+                        </p>
+                        <button
+                          onClick={() => navigate('/skin-check')}
+                          className="btn-primary !px-8 !py-3.5 text-base shadow-medical"
+                        >
+                          <Camera className="w-4 h-4 mr-2" />
+                          {t('compare.startNew')}
+                        </button>
                       </div>
-                      <h2 className="text-lg font-bold text-gray-900 mb-2">
-                        {t('compare.needTwoScans')}
-                      </h2>
-                      <p className="text-sm text-gray-500 mb-6">
-                        {t('compare.thisConcernHas', { n: scans.length })}
-                      </p>
-                      <button
-                        onClick={() => navigate('/skin-check')}
-                        className="btn-primary !px-8 !py-3.5 text-base"
-                      >
-                        <Camera className="w-4 h-4 mr-2" />
-                        {t('compare.startNew')}
-                      </button>
                     </div>
                   </section>
                 ) : demoComparison ? (
@@ -680,7 +678,7 @@ function Compare() {
                               patient: { age: 48, gender: 'Female', region: demoCurrentScan.bodyRegion },
                             },
                           })}
-                          className="btn-primary flex-1 !py-3"
+                          className="btn-primary flex-1 !py-3 shadow-medical"
                         >
                           {t('compare.viewCurrentResult')}
                         </button>
@@ -699,7 +697,6 @@ function Compare() {
           </>
         )}
 
-        {/* Disclaimer */}
         <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
           <GitCompareArrows className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
           <p className="text-sm text-amber-700 leading-relaxed">
@@ -718,7 +715,7 @@ function CompareSelection({ concerns, onSelect, scanCountLabel }) {
         <button
           key={item.id}
           onClick={() => onSelect(item.id)}
-          className="card p-4 w-full text-left flex items-center justify-between gap-3 hover:border-primary-200 transition-colors"
+          className="card-interactive p-4 w-full text-left flex items-center justify-between gap-3"
         >
           <div className="min-w-0">
             <p className="text-sm font-semibold text-gray-900">{item.concernName}</p>

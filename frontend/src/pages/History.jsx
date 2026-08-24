@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Camera, SearchX } from 'lucide-react'
+import { Camera, SearchX, Clock, Filter } from 'lucide-react'
 import SkinConcernCard from '../components/SkinConcernCard'
 import HistoryScanCard from '../components/HistoryScanCard'
 import HistoryFilters from '../components/HistoryFilters'
@@ -159,12 +159,17 @@ function History() {
     : t('history.disclaimer')
 
   return (
-    <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         {/* Page header */}
         <section className="animate-fade-in-down">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 mb-4">
-            {badge}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
+              <Clock className="w-5 h-5 text-primary-600" />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-xs font-medium text-primary-700">
+              {badge}
+            </div>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
             {t('history.heading')}
@@ -219,8 +224,12 @@ function History() {
                   </p>
                 </div>
               ) : (
-                filteredConcerns.map((concern) => (
-                  <article key={concern.id} className="space-y-3">
+                filteredConcerns.map((concern, index) => (
+                  <article
+                    key={concern.id}
+                    className="space-y-3 animate-fade-in-up"
+                    style={{ animationDelay: `${Math.min(index * 50, 300)}ms` }}
+                  >
                     <SkinConcernCard
                       concern={concern}
                       isExpanded={expandedConcernId === concern.id}
@@ -251,22 +260,25 @@ function History() {
             </p>
           </>
         ) : (
-          /* Empty state for a new user with no scans */
+          /* Empty state */
           <section className="animate-fade-in-up animation-delay-200">
-            <div className="card p-10 md:p-14 text-center max-w-2xl mx-auto">
-              <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-5">
-                <Camera className="w-8 h-8 text-primary-600" />
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-10 md:p-14 text-center max-w-2xl mx-auto">
+              <div className="absolute inset-0 pattern-dots opacity-30" />
+              <div className="relative">
+                <div className="w-16 h-16 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-5">
+                  <Camera className="w-8 h-8 text-primary-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-2">{t('history.emptyTitle')}</h2>
+                <p className="text-sm text-gray-500 leading-relaxed max-w-md mx-auto mb-7">
+                  {t('history.emptyDesc')}
+                </p>
+                <button
+                  onClick={() => navigate('/skin-check')}
+                  className="btn-primary !px-8 !py-3.5 text-base shadow-medical"
+                >
+                  {t('history.startSkinCheck')}
+                </button>
               </div>
-              <h2 className="text-xl font-bold text-gray-900 mb-2">{t('history.emptyTitle')}</h2>
-              <p className="text-sm text-gray-500 leading-relaxed max-w-md mx-auto mb-7">
-                {t('history.emptyDesc')}
-              </p>
-              <button
-                onClick={() => navigate('/skin-check')}
-                className="btn-primary !px-8 !py-3.5 text-base"
-              >
-                {t('history.startSkinCheck')}
-              </button>
             </div>
           </section>
         )}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Camera, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Camera, ShieldCheck, User } from 'lucide-react'
 import ProfileCard from '../components/ProfileCard'
 import ProfileStats from '../components/ProfileStats'
 import PersonalInformation from '../components/PersonalInformation'
@@ -58,12 +58,17 @@ function Profile() {
   const hasAnyActivity = profile.stats.totalScans > 0
 
   return (
-    <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         {/* Page header */}
         <section className="animate-fade-in-down">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 mb-4">
-            {t(isAuthenticated ? 'profile.realBadge' : 'profile.demoBadge')}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
+              <User className="w-5 h-5 text-primary-600" />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-xs font-medium text-primary-700">
+              {t(isAuthenticated ? 'profile.realBadge' : 'profile.demoBadge')}
+            </div>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
             {t('profile.heading')}
@@ -81,20 +86,23 @@ function Profile() {
         {/* New user CTA */}
         {isNewUser && (
           <section className="animate-fade-in-up animation-delay-300">
-            <div className="card p-8 text-center">
-              <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-                <Camera className="w-7 h-7 text-primary-600" />
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-8 text-center">
+              <div className="absolute inset-0 pattern-dots opacity-30" />
+              <div className="relative">
+                <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                  <Camera className="w-7 h-7 text-primary-600" />
+                </div>
+                <h2 className="text-lg font-bold text-gray-900 mb-2">
+                  {t('profile.newUserCta')}
+                </h2>
+                <button
+                  onClick={() => navigate('/skin-check')}
+                  className="btn-primary !px-8 !py-3.5 text-base mt-4 shadow-medical"
+                >
+                  {t('profile.startSkinCheck')}
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
               </div>
-              <h2 className="text-lg font-bold text-gray-900 mb-2">
-                {t('profile.newUserCta')}
-              </h2>
-              <button
-                onClick={() => navigate('/skin-check')}
-                className="btn-primary !px-8 !py-3.5 text-base mt-4"
-              >
-                {t('profile.startSkinCheck')}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
             </div>
           </section>
         )}
@@ -106,7 +114,7 @@ function Profile() {
 
         {/* Scan statistics */}
         <section className="animate-fade-in-up animation-delay-400">
-          <div className="flex items-center justify-between gap-2 mb-6">
+          <div className="flex items-center justify-between gap-2 mb-5">
             <div>
               <h2 className="text-xl font-bold text-gray-900 tracking-tight">{t('profile.activity')}</h2>
               <p className="text-sm text-gray-500 mt-1">{t('profile.activitySubtext')}</p>
@@ -129,7 +137,7 @@ function Profile() {
 
         {/* Privacy & Safety */}
         <section className="animate-fade-in-up animation-delay-500">
-          <div className="mb-6">
+          <div className="mb-5">
             <h2 className="text-xl font-bold text-gray-900 tracking-tight">{t('profile.privacyHeading')}</h2>
             <p className="text-sm text-gray-500 mt-1">
               {t('profile.privacySubtext')}

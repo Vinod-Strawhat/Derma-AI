@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Mail, Lock, Eye, EyeOff, User, Globe, UserPlus, AlertTriangle } from 'lucide-react'
+import DermaAILogo from '../components/DermaAILogo'
 import { languages } from '../data/languages'
 import { useLanguage } from '../context/LanguageContext'
 import { useAuth } from '../context/AuthContext'
@@ -59,13 +60,8 @@ function SignUp() {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8 animate-fade-in-down">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <svg viewBox="0 0 24 24" className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-              <circle cx="9" cy="9" r="1" fill="currentColor" />
-              <circle cx="15" cy="9" r="1" fill="currentColor" />
-            </svg>
+          <div className="flex justify-center mb-4">
+            <DermaAILogo size="lg" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-1">{t('signup.heading')}</h1>
           <p className="text-sm text-gray-500">{t('signup.subtitle')}</p>

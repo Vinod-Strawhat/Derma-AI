@@ -39,7 +39,7 @@ function App() {
   ].includes(location.pathname)
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-gray-50/50">
       <Header variant={isDashboardArea ? 'dashboard' : 'public'} />
       <main className="flex-1">
         <Routes>

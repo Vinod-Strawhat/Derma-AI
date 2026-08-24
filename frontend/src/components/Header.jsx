@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, LogOut } from 'lucide-react'
 import LanguageSelector from './LanguageSelector'
+import DermaAILogo from './DermaAILogo'
 import { useLanguage } from '../context/LanguageContext'
 import { useAuth } from '../context/AuthContext'
 
@@ -10,8 +11,21 @@ function Header({ variant = 'public' }) {
   const { logOut } = useAuth()
   const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const isDashboard = variant === 'dashboard'
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [location.pathname])
 
   function handleLogout() {
     setMobileOpen(false)
@@ -42,8 +56,8 @@ function Header({ variant = 'public' }) {
   }
 
   function linkClasses(link, mobile) {
-    const base = `rounded-lg text-sm font-medium transition-colors duration-200 ${
-      mobile ? 'px-4 py-2.5 w-full text-left' : 'px-3.5 py-2'
+    const base = `rounded-lg text-sm font-medium transition-all duration-200 ${
+      mobile ? 'px-4 py-3 w-full text-left' : 'px-3.5 py-2'
     }`
     if (link.disabled) {
       return `${base} text-gray-300 cursor-not-allowed`
@@ -51,29 +65,24 @@ function Header({ variant = 'public' }) {
     const active = isActive(link)
     return `${base} ${
       active
-        ? 'text-primary-600 bg-primary-50'
-        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+        ? 'text-primary-600 bg-primary-50/80'
+        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/80'
     }`
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100/80">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-100/60'
+          : 'bg-white/60 backdrop-blur-lg border-b border-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-[4.5rem]">
           {/* Logo */}
-          <Link to={isDashboard ? '/dashboard' : '/'} className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                <circle cx="9" cy="9" r="1" fill="currentColor" />
-                <circle cx="15" cy="9" r="1" fill="currentColor" />
-              </svg>
-            </div>
-            <span className="text-lg font-bold tracking-tight">
-              <span className="text-primary-600">Derma</span>
-              <span className="text-gray-900">AI</span>
-            </span>
+          <Link to={isDashboard ? '/dashboard' : '/'} className="flex-shrink-0 group">
+            <DermaAILogo size="md" />
           </Link>
 
           {/* Desktop Nav */}
@@ -109,7 +118,7 @@ function Header({ variant = 'public' }) {
             {isDashboard ? (
               <button
                 onClick={handleLogout}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-gray-700 border border-gray-200 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:text-gray-900 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
                 aria-label={t('nav.logout')}
               >
                 <LogOut className="w-4 h-4" />
@@ -119,7 +128,7 @@ function Header({ variant = 'public' }) {
               <>
                 <Link
                   to="/signin"
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-200"
                 >
                   {t('nav.signIn')}
                 </Link>
@@ -136,7 +145,7 @@ function Header({ variant = 'public' }) {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100/80 transition-colors"
             aria-label={t('nav.toggleMenu')}
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -183,7 +192,7 @@ function Header({ variant = 'public' }) {
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleLogout}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 border border-gray-200 hover:bg-gray-50 transition-colors"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:bg-gray-50 transition-colors"
                   >
                     <LogOut className="w-4 h-4" />
                     {t('nav.logout')}
@@ -194,7 +203,7 @@ function Header({ variant = 'public' }) {
                   <Link
                     to="/signin"
                     onClick={() => setMobileOpen(false)}
-                    className="flex-1 text-center px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700 border border-gray-200 hover:bg-gray-50 transition-colors"
+                    className="flex-1 text-center px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:bg-gray-50 transition-colors"
                   >
                     {t('nav.signIn')}
                   </Link>

@@ -1,29 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
+import DermaAILogo from './DermaAILogo'
 import { useLanguage } from '../context/LanguageContext'
 
 function Footer() {
   const { t } = useLanguage()
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-100">
+    <footer className="bg-gray-50/80 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                  <circle cx="9" cy="9" r="1" fill="currentColor" />
-                  <circle cx="15" cy="9" r="1" fill="currentColor" />
-                </svg>
-              </div>
-              <span className="text-base font-bold">
-                <span className="text-primary-600">Derma</span>
-                <span className="text-gray-900">AI</span>
-              </span>
+              <DermaAILogo size="sm" />
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed">
               {t('footer.tagline')}
