@@ -21,8 +21,6 @@ function History() {
   const navigate = useNavigate()
   const { user, isAuthenticated } = useAuth()
 
-  // Real mode: a real authenticated account on the live backend.
-  // Demo user records have id 0; real users always have a positive id.
   const realMode = API_MODE && isAuthenticated && user?.id > 0
 
   const demoLoading = useSimulatedLoading(450)
@@ -67,52 +65,56 @@ function History() {
   const [expandedConcernId, setExpandedConcernId] = useState(null)
 
   const filteredConcerns = useMemo(() => {
-    let result = [...concerns]
+    const query = search.trim().toLowerCase()
 
-    if (riskFilter !== 'all') {
-      result = result.filter((concern) =>
-        concern.scans.some((scan) => scan.riskLevel === riskFilter)
-      )
-    }
+    let result = concerns
+      .map((concern) => {
+        let scans = concern.scans
 
-    if (search.trim()) {
-      const query = search.trim().toLowerCase()
-      result = result.filter((concern) => {
-        const matchesName = concern.concernName.toLowerCase().includes(query)
-        const matchesRegion = concern.bodyRegion.toLowerCase().includes(query)
-        const matchesPrediction = concern.scans.some((scan) =>
-          scan.prediction.toLowerCase().includes(query)
-        )
-        return matchesName || matchesRegion || matchesPrediction
+        if (riskFilter !== 'all') {
+          scans = scans.filter((scan) => scan.riskLevel === riskFilter)
+        }
+
+        if (query) {
+          const matchesConcern =
+            concern.concernName.toLowerCase().includes(query) ||
+            concern.bodyRegion.toLowerCase().includes(query) ||
+            scans.some((scan) =>
+              scan.prediction.toLowerCase().includes(query)
+            )
+          if (!matchesConcern) return null
+        }
+
+        if (scans.length === 0) return null
+
+        if (sort === 'oldest') {
+          scans = [...scans].sort(
+            (a, b) => a.timestamp.localeCompare(b.timestamp)
+          )
+        } else if (sort === 'recent') {
+          scans = [...scans].sort(
+            (a, b) => b.timestamp.localeCompare(a.timestamp)
+          )
+        } else if (sort === 'risk') {
+          scans = [...scans].sort(
+            (a, b) => riskOrder[b.riskLevel] - riskOrder[a.riskLevel]
+          )
+        }
+
+        return { ...concern, scans }
       })
-    }
+      .filter(Boolean)
 
     if (sort === 'oldest') {
-      result = result.map((concern) => ({
-        ...concern,
-        scans: [...concern.scans].sort(
-          (a, b) => a.timestamp.localeCompare(b.timestamp)
-        ),
-      }))
-    }
-
-    if (sort === 'recent') {
-      result = result.map((concern) => ({
-        ...concern,
-        scans: [...concern.scans].sort(
-          (a, b) => b.timestamp.localeCompare(a.timestamp)
-        ),
-      }))
-    }
-
-    if (sort === 'risk') {
-      result = result.map((concern) => ({
-        ...concern,
-        scans: [...concern.scans].sort(
-          (a, b) => riskOrder[b.riskLevel] - riskOrder[a.riskLevel]
-        ),
-      }))
-      result.sort((a, b) => {
+      result = result.sort((a, b) =>
+        a.scans[0].timestamp.localeCompare(b.scans[0].timestamp)
+      )
+    } else if (sort === 'recent') {
+      result = result.sort((a, b) =>
+        b.scans[0].timestamp.localeCompare(a.scans[0].timestamp)
+      )
+    } else if (sort === 'risk') {
+      result = result.sort((a, b) => {
         const aRisk = riskOrder[a.scans[0]?.riskLevel] ?? 0
         const bRisk = riskOrder[b.scans[0]?.riskLevel] ?? 0
         return bRisk - aRisk
@@ -132,9 +134,6 @@ function History() {
   }
 
   function handleCompare(scan) {
-    // Real scans use the backend numeric id; demo scans use the
-    // display string id. The Compare page validates the real pair
-    // through the authenticated backend.
     const idOf = (item) => (realMode ? item.scanId : item.id)
 
     navigate('/compare', {

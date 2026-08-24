@@ -30,6 +30,7 @@ class PatientInfo(BaseModel):
 class ImageInfo(BaseModel):
     fileName: str
     analyzedAt: str
+    imageUrl: str | None = None
 
 
 class GradCAMInfo(BaseModel):

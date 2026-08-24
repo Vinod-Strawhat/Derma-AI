@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 
-function Modal({ isOpen, onClose, title, children }) {
+function Modal({ isOpen, onClose, title, children, maxWidth = 'max-w-lg' }) {
   const overlayRef = useRef(null)
   const panelRef = useRef(null)
 
@@ -38,7 +38,7 @@ function Modal({ isOpen, onClose, title, children }) {
     >
       <div
         ref={panelRef}
-        className="w-full max-w-lg max-h-[85vh] bg-white rounded-2xl shadow-xl flex flex-col animate-fade-in-up"
+        className={`w-full ${maxWidth} max-h-[85vh] bg-white rounded-2xl shadow-xl flex flex-col animate-fade-in-up`}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <h2 className="text-lg font-bold text-gray-900">{title}</h2>

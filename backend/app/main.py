@@ -59,7 +59,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from sqlalchemy.orm import Session
 
 from app import config
-from app.core.deps import get_current_user
+from app.core.deps import get_current_user, get_static_user
 from app.core.mappings import (
     GENDER_VALUES,
     get_canonical_regions,
@@ -198,7 +198,7 @@ app.add_middleware(
 def static_asset(
     path: str,
     request: Request,
-    user: "User" = Depends(get_current_user),
+    user: "User" = Depends(get_static_user),
     db: Session = Depends(get_db),
 ):
     check_rate_limit("static", client_ip(request))
@@ -420,6 +420,9 @@ async def prediction(
                 analyzedAt=datetime.now(
                     timezone.utc
                 ).isoformat(),
+                imageUrl=saved_image["imageUrl"]
+                if saved_image is not None
+                else None,
             ),
             prediction=PredictionInfo(
                 className=prediction["className"],

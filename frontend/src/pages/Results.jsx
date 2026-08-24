@@ -14,9 +14,12 @@ import PredictionList from '../components/PredictionList'
 import GradCamCard from '../components/GradCamCard'
 import GuidanceCard from '../components/GuidanceCard'
 import LoadingState from '../components/LoadingState'
+import NearbyDermatologistsModal from '../components/NearbyDermatologistsModal'
 import { useSimulatedLoading } from '../hooks/useSimulatedLoading'
 import { mockConfidentResult, mockUncertainResult, mockHighRiskResult } from '../data/mockResults'
 import { useLanguage } from '../context/LanguageContext'
+import { buildImageUrl } from '../api/imageUrl'
+import { diseaseGuidance } from '../data/diseaseGuidance'
 
 const availableScenarios = ['confident', 'uncertain', 'high-risk']
 
@@ -24,6 +27,27 @@ const scenarioMap = {
   confident: mockConfidentResult,
   uncertain: mockUncertainResult,
   'high-risk': mockHighRiskResult,
+}
+
+// Resolve disease-specific guidance for a result. The class name is
+// matched against the canonical diseaseGuidance data; anything unknown
+// falls back to the general preliminary guidance.
+function getDiseaseGuidance(t, result) {
+  const className = result?.prediction?.className
+  const guideKey = className && diseaseGuidance[className] ? className : 'general'
+  const guide = diseaseGuidance[guideKey]
+  const pick = (field) => {
+    const value = t(`diseaseGuidance.${guideKey}.${field}`)
+    return Array.isArray(value) ? value : guide[field]
+  }
+  return {
+    className,
+    guideKey,
+    dos: pick('dos'),
+    donts: pick('donts'),
+    whenToSeekCare: pick('whenToSeekCare'),
+    source: guide.source,
+  }
 }
 
 function formatTimestamp(iso) {
@@ -51,21 +75,17 @@ function Results() {
     ? { ...selectedResult, patient: passedPatient }
     : selectedResult
 
-  const [dermNotice, setDermNotice] = useState(false)
+  const [dermModalOpen, setDermModalOpen] = useState(false)
 
   const scenarioGuidanceKey =
     scenario === 'high-risk' ? 'highRisk' : scenario === 'uncertain' ? 'uncertain' : 'confident'
-  const dos = t(`guidance.${scenarioGuidanceKey}.dos`)
-  const avoid = t(`guidance.${scenarioGuidanceKey}.avoid`)
-
-  function handleDermatologist() {
-    setDermNotice(true)
-  }
 
   if (realResult) {
     const result = realResult
     const topPredictions = result.prediction?.topPredictions ?? []
     const imageAvailable = Boolean(result.gradcam?.available && result.gradcam?.imageUrl)
+    const guidance = getDiseaseGuidance(t, result)
+    const guidanceClassName = guidance.className
 
     return (
       <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
@@ -85,7 +105,7 @@ function Results() {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
               {t('results.heading')}
             </h1>
-            <p className="text-sm text-gray-500">
+            <p className="text-base text-gray-500">
               {t('results.subtitle')}
             </p>
           </section>
@@ -107,12 +127,22 @@ function Results() {
                       <p className="text-xs text-gray-400">{result.image?.fileName}</p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center rounded-xl border border-gray-100 bg-gray-50/60 p-8 text-center">
-                    <div>
-                      <ImageIcon className="w-10 h-10 text-primary-500/60 mb-2 mx-auto" />
-                      <p className="text-sm font-medium text-gray-600">{result.image?.fileName}</p>
-                      <p className="text-xs text-gray-400 mt-1">{formatTimestamp(result.image?.analyzedAt)}</p>
-                    </div>
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-100 bg-gray-50/60">
+                    {result.image?.imageUrl ? (
+                      <img
+                        src={buildImageUrl(result.image.imageUrl)}
+                        alt={result.image?.fileName || t('results.analyzedImage')}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center px-4">
+                          <ImageIcon className="w-10 h-10 text-primary-500/60 mb-2 mx-auto" />
+                          <p className="text-sm font-medium text-gray-600">{result.image?.fileName}</p>
+                          <p className="text-xs text-gray-400 mt-1">{formatTimestamp(result.image?.analyzedAt)}</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </section>
@@ -168,6 +198,20 @@ function Results() {
               <section className="animate-fade-in-up animation-delay-500">
                 <div className="card p-6">
                   <div className="space-y-3">
+                    <div>
+                      <h3 className="text-base font-semibold text-gray-900">{t('results.professionalEvaluation')}</h3>
+                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                        {t('results.considerDermatologist')}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setDermModalOpen(true)}
+                      className="btn-primary w-full !py-3 text-sm"
+                    >
+                      <MapPin className="w-4 h-4 mr-2" />
+                      {t('results.consultDermatologist')}
+                    </button>
+                    <div className="pt-1 border-t border-gray-100" />
                     <button
                       onClick={() => navigate('/history')}
                       className="btn-secondary w-full !py-3 text-sm"
@@ -182,36 +226,48 @@ function Results() {
                       <GitCompareArrows className="w-4 h-4 mr-2" />
                       {t('results.compareScans')}
                     </button>
-                    <button
-                      onClick={handleDermatologist}
-                      className="btn-primary w-full !py-3 text-sm"
-                    >
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {t('results.consultDermatologist')}
-                    </button>
-
-                    {dermNotice && (
-                      <p className="flex items-center gap-2 text-xs text-medical-700 bg-medical-50 border border-medical-100 rounded-lg px-3 py-2.5">
-                        <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                        {t('results.dermNotice')}
-                      </p>
-                    )}
                   </div>
                 </div>
               </section>
             </div>
           </div>
 
-          <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
-            <ShieldCheck className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <p className="text-sm text-amber-700 leading-relaxed">
-              {result.disclaimer || t('results.disclaimer')}
-            </p>
+          {/* Guidance */}
+          <section className="animate-fade-in-up animation-delay-600">
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-gray-900 tracking-tight mb-1">{t('results.guidanceForClass')}</h2>
+              {guidanceClassName ? (
+                <p className="text-sm text-gray-500">
+                  {t('results.aiPrediction')}{' '}
+                  <span className="font-semibold text-gray-700">{guidanceClassName}</span>
+                </p>
+              ) : (
+                <p className="text-sm text-gray-500">{t('results.generalGuidance')}</p>
+              )}
+              <p className="text-xs text-gray-400 mt-1">{t('results.guidanceSubtext')}</p>
+            </div>
+            <GuidanceCard
+              dos={guidance.dos}
+              donts={guidance.donts}
+              whenToSeekCare={guidance.whenToSeekCare}
+              source={guidance.source}
+            />
           </section>
-        </div>
+
+        <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
+          <ShieldCheck className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+          <p className="text-sm text-amber-700 leading-relaxed">
+            {result.disclaimer || t('results.disclaimer')}
+          </p>
+        </section>
+          <NearbyDermatologistsModal isOpen={dermModalOpen} onClose={() => setDermModalOpen(false)} />
       </div>
+    </div>
     )
   }
+
+  const demoGuidance = getDiseaseGuidance(t, demoResult)
+  const demoGuidanceClassName = demoGuidance.className
 
   return (
     <div className="bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40">
@@ -233,7 +289,7 @@ function Results() {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
             {t('results.heading')}
           </h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-base text-gray-500">
             {t('results.subtitle')}
           </p>
         </section>
@@ -365,6 +421,20 @@ function Results() {
                 </ul>
 
                 <div className="space-y-3">
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900">{t('results.professionalEvaluation')}</h3>
+                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                      {t('results.considerDermatologist')}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setDermModalOpen(true)}
+                    className="btn-primary w-full !py-3 text-sm"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    {t('results.consultDermatologist')}
+                  </button>
+                  <div className="pt-1 border-t border-gray-100" />
                   <button
                     onClick={() => navigate('/history')}
                     className="btn-secondary w-full !py-3 text-sm"
@@ -379,20 +449,6 @@ function Results() {
                     <GitCompareArrows className="w-4 h-4 mr-2" />
                     {t('results.compareScans')}
                   </button>
-                  <button
-                    onClick={handleDermatologist}
-                    className="btn-primary w-full !py-3 text-sm"
-                  >
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {t('results.consultDermatologist')}
-                  </button>
-
-                  {dermNotice && (
-                    <p className="flex items-center gap-2 text-xs text-medical-700 bg-medical-50 border border-medical-100 rounded-lg px-3 py-2.5">
-                      <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                      {t('results.dermNotice')}
-                    </p>
-                  )}
                 </div>
               </div>
             </section>
@@ -402,12 +458,23 @@ function Results() {
         {/* Guidance */}
         <section className="animate-fade-in-up animation-delay-600">
           <div className="mb-6">
-            <h2 className="text-xl font-bold text-gray-900 tracking-tight mb-1">{t('results.guidance')}</h2>
-            <p className="text-sm text-gray-500">
-              {t('results.guidanceSubtext')}
-            </p>
+            <h2 className="text-xl font-bold text-gray-900 tracking-tight mb-1">{t('results.guidanceForClass')}</h2>
+            {demoGuidanceClassName ? (
+              <p className="text-sm text-gray-500">
+                {t('results.aiPrediction')}{' '}
+                <span className="font-semibold text-gray-700">{demoGuidanceClassName}</span>
+              </p>
+            ) : (
+              <p className="text-sm text-gray-500">{t('results.generalGuidance')}</p>
+            )}
+            <p className="text-xs text-gray-400 mt-1">{t('results.guidanceSubtext')}</p>
           </div>
-          <GuidanceCard dos={dos} avoid={avoid} />
+          <GuidanceCard
+            dos={demoGuidance.dos}
+            donts={demoGuidance.donts}
+            whenToSeekCare={demoGuidance.whenToSeekCare}
+            source={demoGuidance.source}
+          />
         </section>
           </>
         )}
@@ -419,6 +486,7 @@ function Results() {
             {t('results.disclaimer')}
           </p>
         </section>
+        <NearbyDermatologistsModal isOpen={dermModalOpen} onClose={() => setDermModalOpen(false)} />
       </div>
     </div>
   )

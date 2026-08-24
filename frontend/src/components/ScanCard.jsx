@@ -9,21 +9,25 @@ function ScanCard({ scan }) {
     low: {
       label: t('risk.lowRisk'),
       badge: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+      bar: 'from-emerald-400 to-emerald-500',
       Icon: ShieldCheck,
     },
     medium: {
       label: t('risk.mediumRisk'),
       badge: 'bg-amber-50 text-amber-700 border-amber-100',
+      bar: 'from-amber-400 to-amber-500',
       Icon: AlertTriangle,
     },
     high: {
       label: t('risk.highRisk'),
       badge: 'bg-red-50 text-red-700 border-red-100',
+      bar: 'from-red-400 to-red-500',
       Icon: AlertTriangle,
     },
     uncertain: {
       label: t('risk.uncertainRisk'),
       badge: 'bg-gray-100 text-gray-700 border-gray-200',
+      bar: 'from-gray-400 to-gray-500',
       Icon: ShieldCheck,
     },
   }
@@ -61,10 +65,14 @@ function ScanCard({ scan }) {
 
         <Link
           to="/results"
-          state={{
-            scenario,
-            patient: { age: 48, gender: 'Female', region: scan.region },
-          }}
+          state={
+            scan.result
+              ? { result: scan.result }
+              : {
+                  scenario,
+                  patient: { age: 48, gender: 'Female', region: scan.region },
+                }
+          }
           className="inline-flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-primary-200 text-sm font-medium text-primary-700 hover:bg-primary-50 transition-colors duration-200"
         >
           <Eye className="w-4 h-4" />

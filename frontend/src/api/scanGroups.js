@@ -25,6 +25,7 @@ export function toResultView(scan) {
     image: {
       fileName: scan.image?.fileName ?? '',
       analyzedAt: scan.createdAt,
+      imageUrl: scan.image?.imageUrl ?? '',
     },
     prediction: {
       className: scan.prediction?.className ?? '',

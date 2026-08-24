@@ -60,20 +60,18 @@ async function request(path, options = {}) {
   }
   clearTimeout(timeoutId)
 
+  if (response.ok) {
+    let data
+    try {
+      data = await response.json()
+    } catch (err) {
+      throw new AuthError(0, 'Response was not valid JSON.')
+    }
+    return data
+  }
+
   const detail = await readDetail(response)
-
-  if (!response.ok) {
-    throw new AuthError(response.status, detail || 'Request failed.')
-  }
-
-  let data
-  try {
-    data = await response.json()
-  } catch (err) {
-    throw new AuthError(0, 'Response was not valid JSON.')
-  }
-
-  return data
+  throw new AuthError(response.status, detail || 'Request failed.')
 }
 
 export function signup({ name, email, password, preferredLanguage }) {

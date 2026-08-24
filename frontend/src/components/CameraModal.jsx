@@ -55,10 +55,15 @@ function CameraModal({ onCapture, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('camera.useCamera')}
+    >
       <div className="w-full max-w-md card p-6 animate-fade-in-up">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">{t('camera.useCamera')}</h3>
+          <h3 id="camera-modal-title" className="text-lg font-semibold text-gray-900">{t('camera.useCamera')}</h3>
           <button
             onClick={onClose}
             aria-label={t('camera.closeAria')}
