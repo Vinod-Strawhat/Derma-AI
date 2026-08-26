@@ -11,6 +11,12 @@ import Results from './pages/Results'
 import History from './pages/History'
 import Compare from './pages/Compare'
 import Profile from './pages/Profile'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import Disclaimer from './pages/Disclaimer'
+import PrivacyDataUse from './pages/PrivacyDataUse'
+import Research from './pages/Research'
+import HelpCenter from './pages/HelpCenter'
 import { useTheme } from './context/ThemeContext'
 
 function App() {
@@ -54,6 +60,12 @@ function App() {
           <Route path="/history" element={<History />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/privacy-data-use" element={<PrivacyDataUse />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/help" element={<HelpCenter />} />
         </Routes>
       </main>
       <Footer />

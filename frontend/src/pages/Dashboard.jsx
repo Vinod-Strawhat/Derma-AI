@@ -77,7 +77,7 @@ function Dashboard() {
   const hasScans = scans.length > 0
 
   return (
-    <div className="min-h-screen">
+    <div>
       {/* ═══════════════════════════════════════════════════════════
           SECTION A: PREMIUM WELCOME / HERO AREA
           ═══════════════════════════════════════════════════════════ */}
@@ -248,16 +248,18 @@ function Dashboard() {
           ═══════════════════════════════════════════════════════════ */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-8">
 
-        {loading ? (
-          /* Loading state */
+        {/* Loading State */}
+        {loading && (
           <section className="animate-fade-in">
             <div className="card p-12 text-center">
               <div className="w-10 h-10 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin mx-auto mb-4" />
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('dashboard.loading')}</p>
             </div>
           </section>
-        ) : error ? (
-          /* Error state */
+        )}
+
+        {/* Error State */}
+        {!loading && error && (
           <section className="animate-fade-in">
             <div className={`card p-8 text-center border-2 ${darkMode ? 'border-red-800 bg-red-900/20' : 'border-rose-100 bg-rose-50/30'}`}>
               <AlertTriangle className="w-8 h-8 text-rose-500 mx-auto mb-3" />
@@ -267,145 +269,95 @@ function Dashboard() {
               </button>
             </div>
           </section>
-        ) : !hasScans ? (
-          /* ═══ EMPTY STATE - "Your skin analysis journey starts here" ═══ */
+        )}
+
+        {/* Health Overview — only when scans exist */}
+        {!loading && !error && hasScans && (
           <section className="animate-fade-in-up">
-            <div className={`relative overflow-hidden rounded-3xl border p-8 md:p-12 ${darkMode ? 'bg-gradient-to-br from-[#0D1B2A] via-[#111827] to-[#0D1B2A] border-white/5' : 'bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border-primary-100/60'}`}>
-              {/* Background pattern */}
-              <div className="absolute inset-0 pattern-dots opacity-30" />
-              <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary-100/30 rounded-full blur-3xl" />
-              <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-accent-100/20 rounded-full blur-3xl" />
-
-              <div className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                {/* Left visual */}
-                <div className="flex-shrink-0">
-                  <div className="relative w-28 h-28 md:w-36 md:h-36">
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 opacity-10 animate-pulse-gentle" />
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-500/5 to-accent-500/5 flex items-center justify-center">
-                      <ScanSearch className="w-12 h-12 md:w-16 md:h-16 text-primary-400/60" />
-                    </div>
-                    <div className={`absolute inset-0 rounded-2xl border-2 border-dashed ${darkMode ? 'border-primary-500/30' : 'border-primary-200/60'}`} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="group card-interactive p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center group-hover:bg-primary-100 dark:group-hover:bg-primary-900/50 transition-colors">
+                    <Camera className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                   </div>
+                  <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.totalScans')}</span>
                 </div>
+                <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{scans.length}</p>
+              </div>
 
-                {/* Right content */}
-                <div className="text-center lg:text-left flex-1">
-                  <h2 className={`text-2xl md:text-3xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {t('dashboard.noScansTitle')}
-                  </h2>
-                  <p className={`mb-6 max-w-md leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {t('dashboard.noScansDesc')}
+              <div className="group card-interactive p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center group-hover:bg-amber-100 dark:group-hover:bg-amber-900/50 transition-colors">
+                    <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.riskyScans')}</span>
+                </div>
+                <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{dangerScans.length}</p>
+              </div>
+
+              <div className="group card-interactive p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/50 transition-colors">
+                    <Activity className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.lastScan')}</span>
+                </div>
+                <p className={`text-lg font-bold truncate ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  {latestScan ? formatScanDate(latestScan.createdAt) : '\u2014'}
+                </p>
+              </div>
+
+              <div className="group card-interactive p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-accent-50 dark:bg-accent-900/30 flex items-center justify-center group-hover:bg-accent-100 dark:group-hover:bg-accent-900/50 transition-colors">
+                    <Brain className="w-5 h-5 text-accent-600 dark:text-accent-400" />
+                  </div>
+                  <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.latestPrediction')}</span>
+                </div>
+                <p className={`text-lg font-bold truncate ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  {latestPrediction || '\u2014'}
+                </p>
+                {latestConfidence !== null && (
+                  <p className={`text-xs mt-0.5 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                    {(latestConfidence * 100).toFixed(1)}% {t('scancard.aiConfidence').toLowerCase()}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                    <button
-                      onClick={() => navigate('/skin-check')}
-                      className="group btn-primary !px-8 !py-3.5 shadow-medical"
-                    >
-                      <Camera className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      {t('dashboard.startFirstScan')}
-                    </button>
-                    <button
-                      onClick={() => navigate('/skin-check')}
-                      className="btn-secondary !px-6 !py-3.5"
-                    >
-                      {t('dashboard.learnHow')}
-                    </button>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </section>
-        ) : (
-          <>
-            {/* ═══ HEALTH OVERVIEW ═══ */}
-            <section className="animate-fade-in-up">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Total Scans */}
-                <div className="group card-interactive p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center group-hover:bg-primary-100 dark:group-hover:bg-primary-900/50 transition-colors">
-                      <Camera className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                    </div>
-                    <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.totalScans')}</span>
-                  </div>
-                  <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{scans.length}</p>
-                </div>
+        )}
 
-                {/* Risk Scans */}
-                <div className="group card-interactive p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center group-hover:bg-amber-100 dark:group-hover:bg-amber-900/50 transition-colors">
-                      <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-                    </div>
-                    <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.riskyScans')}</span>
-                  </div>
-                  <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{dangerScans.length}</p>
-                </div>
-
-                {/* Last Scan Date */}
-                <div className="group card-interactive p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/50 transition-colors">
-                      <Activity className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                    </div>
-                    <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.lastScan')}</span>
-                  </div>
-                  <p className={`text-lg font-bold truncate ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {latestScan ? formatScanDate(latestScan.createdAt) : '\u2014'}
-                  </p>
-                </div>
-
-                {/* Latest Prediction */}
-                <div className="group card-interactive p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-accent-50 dark:bg-accent-900/30 flex items-center justify-center group-hover:bg-accent-100 dark:group-hover:bg-accent-900/50 transition-colors">
-                      <Brain className="w-5 h-5 text-accent-600 dark:text-accent-400" />
-                    </div>
-                    <span className={`text-xs font-medium uppercase tracking-wide ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.latestPrediction')}</span>
-                  </div>
-                  <p className={`text-lg font-bold truncate ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {latestPrediction || '\u2014'}
-                  </p>
-                  {latestConfidence !== null && (
-                    <p className={`text-xs mt-0.5 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-                      {(latestConfidence * 100).toFixed(1)}% {t('scancard.aiConfidence').toLowerCase()}
-                    </p>
-                  )}
-                </div>
+        {/* Recent Scans — always visible after loading/error resolved */}
+        {!loading && !error && (
+          <section className="animate-fade-in-up">
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('dashboard.recentScans')}</h2>
+                <p className={`text-sm mt-0.5 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.recentScansSubtitle')}</p>
               </div>
-            </section>
+              {scans.length > 3 && (
+                <button
+                  onClick={() => navigate('/history')}
+                  className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 flex items-center gap-1 group"
+                >
+                  {t('dashboard.viewAll')}
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              )}
+            </div>
 
-            {/* ═══ RECENT ANALYSES ═══ */}
-            <section className="animate-fade-in-up">
-              <div className="flex items-center justify-between mb-5">
-                <div>
-                  <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('dashboard.recentScans')}</h2>
-                  <p className={`text-sm mt-0.5 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('dashboard.recentScansSubtitle')}</p>
-                </div>
-                {scans.length > 3 && (
-                  <button
-                    onClick={() => navigate('/history')}
-                    className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 flex items-center gap-1 group"
-                  >
-                    {t('dashboard.viewAll')}
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </button>
-                )}
-              </div>
-
+            {hasScans ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {scans.slice(0, 6).map((scan, index) => {
+                {scans.slice(0, 3).map((scan, index) => {
                   const risk = scan.prediction?.riskLevel ?? 'low'
                   const rc = getRiskConfig(risk)
-                  const RiskIcon = rc.Icon
                   const confidence = scan.prediction?.confidence ?? 0
 
                   return (
                     <div
                       key={scan.scanId}
-                      className={`group card-interactive p-5 flex flex-col animate-stagger-${Math.min(index + 1, 6)} opacity-0`}
+                      className="group card-interactive p-5 flex flex-col"
                     >
-                      {/* Header: date + risk */}
                       <div className="flex items-center justify-between gap-2 mb-3">
                         <span className={`text-xs font-medium ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{formatScanDate(scan.createdAt)}</span>
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${rc.badge}`}>
@@ -414,12 +366,10 @@ function Dashboard() {
                         </span>
                       </div>
 
-                      {/* Prediction class */}
                       <h3 className={`text-base font-semibold mb-3 line-clamp-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                         {scan.prediction?.className ?? '\u2014'}
                       </h3>
 
-                      {/* Confidence bar */}
                       <div className="mt-auto space-y-3">
                         <div>
                           <div className="flex items-center justify-between text-xs mb-1.5">
@@ -447,8 +397,27 @@ function Dashboard() {
                   )
                 })}
               </div>
-            </section>
-          </>
+            ) : (
+              <div className={`card p-8 text-center ${darkMode ? '' : ''}`}>
+                <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
+                  <ScanSearch className="w-6 h-6 text-primary-500 dark:text-primary-400" />
+                </div>
+                <h2 className={`text-lg font-semibold mb-1.5 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  {t('dashboard.noScansTitle')}
+                </h2>
+                <p className={`text-sm mb-5 max-w-sm mx-auto leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  {t('dashboard.noScansDesc')}
+                </p>
+                <button
+                  onClick={() => navigate('/skin-check')}
+                  className="group btn-primary !px-6 !py-2.5 text-sm shadow-medical"
+                >
+                  <Camera className="w-4 h-4 mr-1.5 group-hover:scale-110 transition-transform" />
+                  {t('dashboard.startFirstScan')}
+                </button>
+              </div>
+            )}
+          </section>
         )}
 
         {/* ═══════════════════════════════════════════════════════════
