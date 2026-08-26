@@ -1,4 +1,8 @@
+import { useTheme } from '../context/ThemeContext'
+
 function DermaAILogo({ size = 'md', className = '' }) {
+  const { darkMode } = useTheme()
+
   const sizes = {
     sm: { container: 'w-8 h-8', icon: 20, text: 'text-sm' },
     md: { container: 'w-9 h-9', icon: 22, text: 'text-lg' },
@@ -36,8 +40,8 @@ function DermaAILogo({ size = 'md', className = '' }) {
         </svg>
       </div>
       <span className={`${s.text} font-bold tracking-tight`}>
-        <span className="text-primary-600">Derma</span>
-        <span className="text-gray-900">AI</span>
+        <span className="text-primary-600 dark:text-primary-400">Derma</span>
+        <span className={darkMode ? 'text-white' : 'text-gray-900'}>AI</span>
       </span>
     </div>
   )

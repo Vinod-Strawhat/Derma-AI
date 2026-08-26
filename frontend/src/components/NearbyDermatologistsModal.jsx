@@ -14,6 +14,7 @@ import {
   X,
 } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 import {
   DERM_PROVIDER_AVAILABLE,
   directionsUrl,
@@ -39,6 +40,7 @@ const STATUS = {
 
 function NearbyDermatologistsModal({ isOpen, onClose }) {
   const { t } = useLanguage()
+  const { darkMode } = useTheme()
   const [status, setStatus] = useState(STATUS.INTRO)
   const [results, setResults] = useState([])
   const [searchPoint, setSearchPoint] = useState(null)
@@ -193,10 +195,10 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
   }
 
   const toneClasses = {
-    green: 'text-emerald-700 bg-emerald-50 border-emerald-100',
-    amber: 'text-amber-700 bg-amber-50 border-amber-100',
-    red: 'text-red-700 bg-red-50 border-red-100',
-    gray: 'text-gray-500 bg-gray-50 border-gray-100',
+    green: 'text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-800',
+    amber: 'text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/20 border-amber-100 dark:border-amber-800',
+    red: 'text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800',
+    gray: 'text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 border-gray-100 dark:border-white/10',
   }
 
   const controlsVisible = [
@@ -223,23 +225,23 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
         if (e.target === e.currentTarget) onClose()
       }}
     >
-      <div className="w-full max-w-2xl max-h-[88vh] bg-white rounded-2xl shadow-xl flex flex-col animate-fade-in-up">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+      <div className="w-full max-w-2xl max-h-[88vh] bg-white dark:bg-[#0D1B2A] rounded-2xl shadow-xl flex flex-col animate-fade-in-up">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/5">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-sm">
               <MapPin className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-gray-900">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">
                 {t('dermatologists.title')}
               </h2>
-              <p className="text-xs text-gray-400">{t('dermatologists.subtitle')}</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500">{t('dermatologists.subtitle')}</p>
             </div>
           </div>
           <button
             onClick={onClose}
             aria-label={t('dermatologists.close')}
-            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-700 dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <X className="w-5 h-5" />
           </button>
@@ -247,22 +249,22 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
         <div className="px-6 py-5 overflow-y-auto flex-1 space-y-5">
           {/* Neutral medical-safety note */}
-          <div className="flex items-start gap-2.5 p-3 rounded-xl bg-medical-50 border border-medical-100">
+          <div className="flex items-start gap-2.5 p-3 rounded-xl bg-medical-50 dark:bg-medical-900/20 border border-medical-100 dark:border-medical-800">
             <ShieldCheck className="w-4 h-4 text-medical-600 mt-0.5 flex-shrink-0" />
-            <p className="text-xs text-medical-700 leading-relaxed">
+            <p className="text-xs text-medical-700 dark:text-medical-300 leading-relaxed">
               {t('dermatologists.neutralNote')}
             </p>
           </div>
 
           {status === STATUS.UNAVAILABLE && (
             <div className="text-center py-10">
-              <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-7 h-7 text-gray-400" />
+              <div className="w-14 h-14 rounded-2xl bg-gray-50 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-7 h-7 text-gray-400 dark:text-gray-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 {t('dermatologists.unavailableTitle')}
               </p>
-              <p className="text-sm text-gray-500 max-w-md mx-auto">
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
                 {t('dermatologists.unavailableDesc')}
               </p>
             </div>
@@ -280,10 +282,10 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 text-xs text-gray-400">
-                <span className="h-px bg-gray-200 flex-1" />
+              <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+                <span className="h-px bg-gray-200 dark:bg-white/10 flex-1" />
                 {t('dermatologists.searchByPlace')}
-                <span className="h-px bg-gray-200 flex-1" />
+                <span className="h-px bg-gray-200 dark:bg-white/10 flex-1" />
               </div>
 
               <form onSubmit={handleManualSearch} className="flex gap-2">
@@ -309,7 +311,7 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
           {busy && (
             <div className="flex flex-col items-center justify-center py-12 text-center" role="status" aria-live="polite">
               <Loader2 className="w-9 h-9 text-primary-600 animate-spin" />
-              <p className="mt-4 text-sm font-medium text-gray-700">
+              <p className="mt-4 text-sm font-medium text-gray-700 dark:text-gray-300">
                 {status === STATUS.LOCATING
                   ? t('dermatologists.locating')
                   : t('dermatologists.searching')}
@@ -319,7 +321,7 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
           {status === STATUS.INTRO && (
             <div className="text-center py-6 px-2">
-              <p className="text-sm text-gray-600 leading-relaxed max-w-lg mx-auto">
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg mx-auto">
                 {t('dermatologists.intro')}
               </p>
             </div>
@@ -327,16 +329,16 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
           {status === STATUS.DENIED && (
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mx-auto mb-4">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center mx-auto mb-4">
                 <AlertTriangle className="w-7 h-7 text-amber-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 {t('dermatologists.deniedTitle')}
               </p>
-              <p className="text-sm text-gray-500 max-w-md mx-auto mb-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto mb-1">
                 {t('dermatologists.deniedDesc')}
               </p>
-              <p className="text-xs text-gray-400 max-w-md mx-auto mb-5">
+              <p className="text-xs text-gray-400 dark:text-gray-500 max-w-md mx-auto mb-5">
                 {t('dermatologists.deniedHint')}
               </p>
               <button onClick={handleRetry} className="btn-secondary !px-5 !py-2.5 text-sm">
@@ -348,13 +350,13 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
           {status === STATUS.LOCATION_UNAVAILABLE && (
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-7 h-7 text-gray-400" />
+              <div className="w-14 h-14 rounded-2xl bg-gray-50 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-7 h-7 text-gray-400 dark:text-gray-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 {t('dermatologists.locationUnavailableTitle')}
               </p>
-              <p className="text-sm text-gray-500 max-w-md mx-auto">
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
                 {t('dermatologists.locationUnavailableDesc')}
               </p>
             </div>
@@ -362,13 +364,13 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
           {status === STATUS.NO_RESULTS && (
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-7 h-7 text-gray-400" />
+              <div className="w-14 h-14 rounded-2xl bg-gray-50 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-7 h-7 text-gray-400 dark:text-gray-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 {t('dermatologists.noResultsTitle')}
               </p>
-              <p className="text-sm text-gray-500 max-w-md mx-auto">
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
                 {t('dermatologists.noResultsDesc')}
               </p>
             </div>
@@ -376,13 +378,13 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
           {status === STATUS.LOCATION_NOT_FOUND && (
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-7 h-7 text-gray-400" />
+              <div className="w-14 h-14 rounded-2xl bg-gray-50 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-7 h-7 text-gray-400 dark:text-gray-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 {t('dermatologists.locationNotFoundTitle')}
               </p>
-              <p className="text-sm text-gray-500 max-w-md mx-auto">
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
                 {t('dermatologists.locationNotFoundDesc')}
               </p>
             </div>
@@ -390,13 +392,13 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
           {status === STATUS.ERROR && (
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mx-auto mb-4">
+              <div className="w-14 h-14 rounded-2xl bg-red-50 dark:bg-red-900/20 flex items-center justify-center mx-auto mb-4">
                 <AlertTriangle className="w-7 h-7 text-red-500" />
               </div>
-              <p className="text-sm font-semibold text-gray-900 mb-1">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                 {t('dermatologists.errorTitle')}
               </p>
-              <p className="text-sm text-gray-500 max-w-md mx-auto mb-5">
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto mb-5">
                 {t('dermatologists.errorDesc')}
               </p>
               <button onClick={handleRetry} className="btn-secondary !px-5 !py-2.5 text-sm">
@@ -409,10 +411,10 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
           {status === STATUS.RESULTS && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-gray-900">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
                   {t('dermatologists.resultsHeading')}
                 </h3>
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-gray-400 dark:text-gray-500">
                   {t('dermatologists.resultCount', { n: results.length })}
                 </span>
               </div>
@@ -430,14 +432,14 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
-                          <p className="text-sm font-semibold text-gray-900 break-words">
+                          <p className="text-sm font-semibold text-gray-900 dark:text-white break-words">
                             {item.name}
                           </p>
                           <span
                             className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium mt-1 ${
                               item.category === 'dermatology'
-                                ? 'bg-medical-50 text-medical-700 border border-medical-100'
-                                : 'bg-gray-50 text-gray-600 border border-gray-100'
+                                ? 'bg-medical-50 dark:bg-medical-900/30 text-medical-700 dark:text-medical-300 border border-medical-100 dark:border-medical-800'
+                                : 'bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-100 dark:border-white/10'
                             }`}
                           >
                             {item.category === 'dermatology'
@@ -445,13 +447,13 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
                               : t('dermatologists.healthcareProvider')}
                           </span>
                           {item.address && (
-                            <p className="text-xs text-gray-500 mt-1 break-words">
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 break-words">
                               {item.address}
                             </p>
                           )}
                         </div>
                         {distance && (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-50 border border-primary-100 text-xs font-medium text-primary-700 flex-shrink-0">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800 text-xs font-medium text-primary-700 dark:text-primary-300 flex-shrink-0">
                             <MapPin className="w-3 h-3" />
                             {distance}
                           </span>
@@ -460,11 +462,11 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
                       <div className="flex flex-wrap items-center gap-2 mt-3">
                         {item.rating != null && (
-                          <span className="inline-flex items-center gap-1 text-xs text-gray-600">
+                          <span className="inline-flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400">
                             <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                             {item.rating.toFixed(1)}
                             {item.userRatingsTotal != null && (
-                              <span className="text-gray-400">
+                              <span className="text-gray-400 dark:text-gray-500">
                                 ({t('dermatologists.reviews', {
                                   n: item.userRatingsTotal,
                                 })})
@@ -484,10 +486,10 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
 
                       {item.weekdayText && (
                         <details className="mt-2 group">
-                          <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-600 list-none">
+                          <summary className="text-xs text-gray-400 dark:text-gray-500 cursor-pointer hover:text-gray-600 dark:hover:text-gray-300 list-none">
                             {t('dermatologists.weeklyHours')}
                           </summary>
-                          <ul className="mt-2 space-y-0.5 text-xs text-gray-500">
+                          <ul className="mt-2 space-y-0.5 text-xs text-gray-500 dark:text-gray-400">
                             {item.weekdayText.map((line) => (
                               <li key={line}>{line}</li>
                             ))}
@@ -524,15 +526,15 @@ function NearbyDermatologistsModal({ isOpen, onClose }) {
                 })}
               </ul>
 
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-gray-400 dark:text-gray-500 text-center">
                 {t('dermatologists.providedBy')}
               </p>
             </div>
           )}
 
-          <div className="flex items-start gap-2.5 p-3 rounded-xl bg-amber-50/80 border border-amber-100">
+          <div className="flex items-start gap-2.5 p-3 rounded-xl bg-amber-50/80 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800">
             <ShieldCheck className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
-            <p className="text-xs text-amber-700 leading-relaxed">
+            <p className="text-xs text-amber-700 dark:text-amber-300 leading-relaxed">
               {t('dermatologists.privacyNote')}
             </p>
           </div>

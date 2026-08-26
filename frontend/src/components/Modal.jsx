@@ -38,14 +38,14 @@ function Modal({ isOpen, onClose, title, children, maxWidth = 'max-w-lg' }) {
     >
       <div
         ref={panelRef}
-        className={`w-full ${maxWidth} max-h-[85vh] bg-white rounded-2xl shadow-xl flex flex-col animate-fade-in-up`}
+        className={`w-full ${maxWidth} max-h-[85vh] bg-white dark:bg-[#0D1B2A] rounded-2xl shadow-xl flex flex-col animate-fade-in-up`}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-lg font-bold text-gray-900">{title}</h2>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/10">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">{title}</h2>
           <button
             onClick={onClose}
             aria-label="Close"
-            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-700 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <X className="w-5 h-5" />
           </button>

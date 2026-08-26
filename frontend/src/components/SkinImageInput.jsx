@@ -41,10 +41,10 @@ function SkinImageInput({ image, previewUrl, source, onImageChange, onImageRemov
   return (
     <div>
       {image ? (
-        <div className="relative rounded-2xl overflow-hidden border border-gray-200 bg-gray-900">
+        <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 bg-gray-900">
           <img src={previewUrl} alt={t('skinimage.selectedAlt')} className="w-full h-64 md:h-72 object-cover" />
 
-          <span className="absolute top-3 left-3 inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-medium text-gray-700">
+          <span className="absolute top-3 left-3 inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 dark:bg-[#0D1B2A]/90 backdrop-blur text-xs font-medium text-gray-700 dark:text-gray-300">
             <ImagePlus className="w-3.5 h-3.5 mr-1.5 text-primary-600" />
             {source === 'camera' ? t('skinimage.cameraCapture') : t('skinimage.uploadedImage')}
           </span>
@@ -52,14 +52,14 @@ function SkinImageInput({ image, previewUrl, source, onImageChange, onImageRemov
           <div className="absolute bottom-3 right-3 flex flex-col sm:flex-row gap-2">
             <button
               onClick={openCamera}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-xs font-medium text-gray-700 hover:bg-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/90 dark:bg-[#0D1B2A]/90 backdrop-blur text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-[#1a2a42] transition-colors"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               {t('skinimage.retake')}
             </button>
             <button
               onClick={onImageRemove}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-xs font-medium text-red-600 hover:bg-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/90 dark:bg-[#0D1B2A]/90 backdrop-blur text-xs font-medium text-red-600 hover:bg-white dark:hover:bg-[#1a2a42] transition-colors"
             >
               <Trash2 className="w-3.5 h-3.5" />
               {t('skinimage.remove')}
@@ -67,13 +67,13 @@ function SkinImageInput({ image, previewUrl, source, onImageChange, onImageRemov
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center min-h-[16rem] rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-8 text-center">
-          <div className="w-14 h-14 rounded-2xl bg-primary-50 flex items-center justify-center mb-4">
+        <div className="flex flex-col items-center justify-center min-h-[16rem] rounded-2xl border-2 border-dashed border-gray-200 dark:border-white/10 bg-gray-50/60 dark:bg-white/5 p-8 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-primary-50 dark:bg-primary-500/10 flex items-center justify-center mb-4">
             <Camera className="w-7 h-7 text-primary-600" />
           </div>
 
-          <p className="text-sm text-gray-600 mb-1">{t('skinimage.noImage')}</p>
-          <p className="text-xs text-gray-400 mb-6">{t('skinimage.chooseOption')}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{t('skinimage.noImage')}</p>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mb-6">{t('skinimage.chooseOption')}</p>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <button
@@ -100,15 +100,15 @@ function SkinImageInput({ image, previewUrl, source, onImageChange, onImageRemov
         </div>
       )}
 
-      <p className="flex items-start gap-2 mt-3 text-xs text-gray-400">
+      <p className="flex items-start gap-2 mt-3 text-xs text-gray-400 dark:text-gray-500">
         <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 flex-shrink-0" />
         {t('skinimage.photoTip')}
       </p>
 
       {uploadError && (
-        <div className="flex items-start gap-2.5 mt-3 rounded-xl bg-red-50 border border-red-100 px-3.5 py-2.5">
+        <div className="flex items-start gap-2.5 mt-3 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-100 dark:border-red-500/20 px-3.5 py-2.5">
           <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-          <p className="text-xs text-red-700 flex-1">{uploadError}</p>
+          <p className="text-xs text-red-700 dark:text-red-400 flex-1">{uploadError}</p>
           <button
             onClick={() => setUploadError(null)}
             aria-label={t('errors.dismiss')}

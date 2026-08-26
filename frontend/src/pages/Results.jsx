@@ -19,6 +19,7 @@ import NearbyDermatologistsModal from '../components/NearbyDermatologistsModal'
 import { useSimulatedLoading } from '../hooks/useSimulatedLoading'
 import { mockConfidentResult, mockUncertainResult, mockHighRiskResult } from '../data/mockResults'
 import { useLanguage } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 import { buildImageUrl } from '../api/imageUrl'
 import { diseaseGuidance } from '../data/diseaseGuidance'
 
@@ -58,6 +59,7 @@ function formatTimestamp(iso) {
 
 function Results() {
   const { t } = useLanguage()
+  const { darkMode } = useTheme()
   const location = useLocation()
   const navigate = useNavigate()
   const loading = useSimulatedLoading(600)
@@ -84,11 +86,11 @@ function Results() {
     const guidanceClassName = guidance.className
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+      <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30'}`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
           <button
             onClick={() => navigate('/dashboard')}
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
+            className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${darkMode ? 'text-gray-400 hover:text-primary-400' : 'text-gray-500 hover:text-primary-600'}`}
           >
             <ArrowLeft className="w-4 h-4" />
             {t('results.back')}
@@ -97,17 +99,17 @@ function Results() {
           {/* Header */}
           <section className="animate-fade-in-down">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${darkMode ? 'bg-emerald-900/30' : 'bg-emerald-50'}`}>
+                <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-xs font-medium text-emerald-700">
+              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium ${darkMode ? 'bg-emerald-900/30 border-emerald-800 text-emerald-300' : 'bg-emerald-50 border-emerald-100 text-emerald-700'}`}>
                 {t('results.realBadge')}
               </div>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+            <h1 className={`text-3xl md:text-4xl font-bold tracking-tight mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               {t('results.heading')}
             </h1>
-            <p className="text-base text-gray-500">
+            <p className={`text-base ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
               {t('results.subtitle')}
             </p>
           </section>
@@ -124,15 +126,15 @@ function Results() {
               <section className="animate-fade-in-up animation-delay-300">
                 <div className="card p-6">
                   <div className="flex items-start gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
-                      <ShieldCheck className="w-5 h-5 text-primary-600" />
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${darkMode ? 'bg-primary-900/30' : 'bg-primary-50'}`}>
+                      <ShieldCheck className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900">{t('results.analyzedImage')}</h3>
-                      <p className="text-xs text-gray-400">{result.image?.fileName}</p>
+                      <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.analyzedImage')}</h3>
+                      <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{result.image?.fileName}</p>
                     </div>
                   </div>
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-100 bg-gray-50/60">
+                  <div className={`relative aspect-[4/3] rounded-xl overflow-hidden border ${darkMode ? 'border-white/5 bg-[#0D1B2A]' : 'border-gray-100 bg-gray-50/60'}`}>
                     {result.image?.imageUrl ? (
                       <img
                         src={buildImageUrl(result.image.imageUrl)}
@@ -143,8 +145,8 @@ function Results() {
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center px-4">
                           <ImageIcon className="w-10 h-10 text-primary-500/60 mb-2 mx-auto" />
-                          <p className="text-sm font-medium text-gray-600">{result.image?.fileName}</p>
-                          <p className="text-xs text-gray-400 mt-1">{formatTimestamp(result.image?.analyzedAt)}</p>
+                          <p className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{result.image?.fileName}</p>
+                          <p className={`text-xs mt-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{formatTimestamp(result.image?.analyzedAt)}</p>
                         </div>
                       </div>
                     )}
@@ -155,8 +157,8 @@ function Results() {
               {/* Top predictions */}
               <section className="animate-fade-in-up animation-delay-400">
                 <div className="card p-6">
-                  <h3 className="text-base font-semibold text-gray-900 mb-1">{t('results.topPredictions')}</h3>
-                  <p className="text-sm text-gray-500 mb-5">
+                  <h3 className={`text-base font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.topPredictions')}</h3>
+                  <p className={`text-sm mb-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     {t('results.topPredictionsDesc')}
                   </p>
                   <PredictionList predictions={topPredictions} />
@@ -165,7 +167,7 @@ function Results() {
 
               {/* Grad-CAM - visually prominent */}
               <section className="animate-fade-in-up animation-delay-500">
-                <div className="card p-6 border-2 border-accent-100/60 bg-gradient-to-br from-accent-50/20 to-white">
+                <div className={`card p-6 border-2 ${darkMode ? 'border-accent-800/40 bg-gradient-to-br from-accent-900/20 to-[#0D1B2A]' : 'border-accent-100/60 bg-gradient-to-br from-accent-50/20 to-white'}`}>
                   <GradCamCard
                     imageUrl={result.gradcam?.imageUrl}
                     available={imageAvailable}
@@ -180,10 +182,10 @@ function Results() {
               <section className="animate-fade-in-up animation-delay-300">
                 <div className="card p-6">
                   <div className="flex items-center gap-2.5 mb-4">
-                    <div className="w-9 h-9 rounded-lg bg-primary-50 flex items-center justify-center">
-                      <Calendar className="w-[18px] h-[18px] text-primary-600" />
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${darkMode ? 'bg-primary-900/30' : 'bg-primary-50'}`}>
+                      <Calendar className="w-[18px] h-[18px] text-primary-600 dark:text-primary-400" />
                     </div>
-                    <h3 className="text-base font-semibold text-gray-900">{t('results.scanInfo')}</h3>
+                    <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.scanInfo')}</h3>
                   </div>
                   <dl className="space-y-3 text-sm">
                     {[
@@ -198,8 +200,8 @@ function Results() {
                       ],
                     ].map(([label, value]) => (
                       <div key={label} className="flex items-center justify-between gap-3">
-                        <dt className="flex-1 min-w-0 text-gray-500 leading-snug">{label}</dt>
-                        <dd className="font-medium text-gray-900 text-right flex-shrink-0">{value}</dd>
+                        <dt className={`flex-1 min-w-0 leading-snug ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{label}</dt>
+                        <dd className={`font-medium text-right flex-shrink-0 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{value}</dd>
                       </div>
                     ))}
                   </dl>
@@ -211,8 +213,8 @@ function Results() {
                 <div className="card p-6">
                   <div className="space-y-3">
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900">{t('results.professionalEvaluation')}</h3>
-                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                      <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.professionalEvaluation')}</h3>
+                      <p className={`text-xs mt-1 leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                         {t('results.considerDermatologist')}
                       </p>
                     </div>
@@ -223,7 +225,7 @@ function Results() {
                       <MapPin className="w-4 h-4 mr-2" />
                       {t('results.consultDermatologist')}
                     </button>
-                    <div className="pt-1 border-t border-gray-100" />
+                    <div className={`pt-1 border-t ${darkMode ? 'border-white/5' : 'border-gray-100'}`} />
                     <button
                       onClick={() => navigate('/history')}
                       className="btn-secondary w-full !py-3 text-sm"
@@ -247,16 +249,16 @@ function Results() {
           {/* Guidance */}
           <section className="animate-fade-in-up animation-delay-500">
             <div className="mb-6">
-              <h2 className="text-xl font-bold text-gray-900 tracking-tight mb-1">{t('results.guidanceForClass')}</h2>
+              <h2 className={`text-xl font-bold tracking-tight mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.guidanceForClass')}</h2>
               {guidanceClassName ? (
-                <p className="text-sm text-gray-500">
+                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                   {t('results.aiPrediction')}{' '}
-                  <span className="font-semibold text-gray-700">{guidanceClassName}</span>
+                  <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{guidanceClassName}</span>
                 </p>
               ) : (
-                <p className="text-sm text-gray-500">{t('results.generalGuidance')}</p>
+                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('results.generalGuidance')}</p>
               )}
-              <p className="text-xs text-gray-400 mt-1">{t('results.guidanceSubtext')}</p>
+              <p className={`text-xs mt-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('results.guidanceSubtext')}</p>
             </div>
             <GuidanceCard
               dos={guidance.dos}
@@ -267,9 +269,9 @@ function Results() {
           </section>
 
           {/* Disclaimer */}
-          <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
-            <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <p className="text-sm text-amber-700 leading-relaxed">
+          <section className={`flex items-start gap-3 p-4 rounded-2xl border ${darkMode ? 'bg-amber-900/20 border-amber-800/40' : 'bg-amber-50/80 border-amber-100'}`}>
+            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
+            <p className={`text-sm leading-relaxed ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
               {result.disclaimer || t('results.disclaimer')}
             </p>
           </section>
@@ -284,11 +286,11 @@ function Results() {
   const demoGuidanceClassName = demoGuidance.className
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+    <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30'}`}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         <button
           onClick={() => navigate('/dashboard')}
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
+          className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${darkMode ? 'text-gray-400 hover:text-primary-400' : 'text-gray-500 hover:text-primary-600'}`}
         >
           <ArrowLeft className="w-4 h-4" />
           {t('results.back')}
@@ -296,13 +298,13 @@ function Results() {
 
         {/* Header */}
         <section className="animate-fade-in-down">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 mb-3">
+          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium mb-3 ${darkMode ? 'bg-amber-900/30 border-amber-800 text-amber-300' : 'bg-amber-50 border-amber-100 text-amber-700'}`}>
             {t('results.demoBadge')}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+          <h1 className={`text-3xl md:text-4xl font-bold tracking-tight mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             {t('results.heading')}
           </h1>
-          <p className="text-base text-gray-500">
+          <p className={`text-base ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
             {t('results.subtitle')}
           </p>
         </section>
@@ -310,7 +312,7 @@ function Results() {
         {/* Scenario switcher (demo only) */}
         <section className="animate-fade-in-up animation-delay-200">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-medium text-gray-400 mr-1">{t('results.demoScenario')}</span>
+            <span className={`text-xs font-medium mr-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('results.demoScenario')}</span>
             {availableScenarios.map((scenarioKey) => (
               <button
                 key={scenarioKey}
@@ -318,7 +320,7 @@ function Results() {
                 className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 ${
                   scenario === scenarioKey
                     ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                    : `${darkMode ? 'bg-[#0D1B2A] text-gray-300 border-white/10 hover:bg-[#142538] hover:border-white/20' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'}`
                 }`}
               >
                 {scenarioKey === 'confident'
@@ -348,22 +350,22 @@ function Results() {
                 <section className="animate-fade-in-up animation-delay-400">
                   <div className="card p-6">
                     <div className="flex items-start gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
-                        <ShieldCheck className="w-5 h-5 text-primary-600" />
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${darkMode ? 'bg-primary-900/30' : 'bg-primary-50'}`}>
+                        <ShieldCheck className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                       </div>
                       <div>
-                        <h3 className="text-base font-semibold text-gray-900">{t('results.analyzedImage')}</h3>
-                        <p className="text-xs text-gray-400">{demoResult.image.fileName}</p>
+                        <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.analyzedImage')}</h3>
+                        <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{demoResult.image.fileName}</p>
                       </div>
                     </div>
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-primary-200 via-medical-200 to-accent-200">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-primary-200 via-medical-200 to-accent-200 dark:from-primary-900/40 dark:via-medical-900/30 dark:to-accent-900/40">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center px-4">
-                          <ImageIcon className="w-12 h-12 text-primary-700/60 mb-3 mx-auto" />
-                          <p className="text-sm font-medium text-primary-800">
+                          <ImageIcon className="w-12 h-12 text-primary-700/60 dark:text-primary-300/60 mb-3 mx-auto" />
+                          <p className={`text-sm font-medium ${darkMode ? 'text-primary-200' : 'text-primary-800'}`}>
                             {t('results.demoSkinImage')}
                           </p>
-                          <p className="text-xs text-primary-700/70 mt-1">
+                          <p className={`text-xs mt-1 ${darkMode ? 'text-primary-300/70' : 'text-primary-700/70'}`}>
                             {t('results.uploadedWillAppear')}
                           </p>
                         </div>
@@ -374,8 +376,8 @@ function Results() {
 
                 <section className="animate-fade-in-up animation-delay-500">
                   <div className="card p-6">
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">{t('results.topPredictions')}</h3>
-                    <p className="text-sm text-gray-500 mb-5">
+                    <h3 className={`text-base font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.topPredictions')}</h3>
+                    <p className={`text-sm mb-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                       {t('results.topPredictionsDesc')}
                     </p>
                     <PredictionList predictions={demoResult.prediction.topPredictions} />
@@ -383,7 +385,7 @@ function Results() {
                 </section>
 
                 <section className="animate-fade-in-up animation-delay-600">
-                  <div className="card p-6 border-2 border-accent-100/60 bg-gradient-to-br from-accent-50/20 to-white">
+                  <div className={`card p-6 border-2 ${darkMode ? 'border-accent-800/40 bg-gradient-to-br from-accent-900/20 to-[#0D1B2A]' : 'border-accent-100/60 bg-gradient-to-br from-accent-50/20 to-white'}`}>
                     <GradCamCard />
                   </div>
                 </section>
@@ -393,10 +395,10 @@ function Results() {
                 <section className="animate-fade-in-up animation-delay-400">
                   <div className="card p-6">
                     <div className="flex items-center gap-2.5 mb-4">
-                      <div className="w-9 h-9 rounded-lg bg-primary-50 flex items-center justify-center">
-                        <Calendar className="w-[18px] h-[18px] text-primary-600" />
+                      <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${darkMode ? 'bg-primary-900/30' : 'bg-primary-50'}`}>
+                        <Calendar className="w-[18px] h-[18px] text-primary-600 dark:text-primary-400" />
                       </div>
-                      <h3 className="text-base font-semibold text-gray-900">{t('results.scanInfo')}</h3>
+                      <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.scanInfo')}</h3>
                     </div>
                     <dl className="space-y-3 text-sm">
                       {[
@@ -406,8 +408,8 @@ function Results() {
                         [t('results.bodyRegion'), demoResult.patient.region.charAt(0).toUpperCase() + demoResult.patient.region.slice(1)],
                       ].map(([label, value]) => (
                         <div key={label} className="flex items-center justify-between gap-3">
-                          <dt className="flex-1 min-w-0 text-gray-500 leading-snug">{label}</dt>
-                          <dd className="font-medium text-gray-900 text-right flex-shrink-0">{value}</dd>
+                          <dt className={`flex-1 min-w-0 leading-snug ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{label}</dt>
+                          <dd className={`font-medium text-right flex-shrink-0 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{value}</dd>
                         </div>
                       ))}
                     </dl>
@@ -416,10 +418,10 @@ function Results() {
 
                 <section className="animate-fade-in-up animation-delay-500">
                   <div className="card p-6">
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">{t('results.nextSteps')}</h3>
+                    <h3 className={`text-base font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.nextSteps')}</h3>
                     <ul className="space-y-2.5 mb-6">
                       {t(`guidance.${scenarioGuidanceKey}.next`).map((step) => (
-                        <li key={step} className="flex items-start gap-2.5 text-sm text-gray-600 leading-relaxed">
+                        <li key={step} className={`flex items-start gap-2.5 text-sm leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                           <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-1.5 flex-shrink-0" />
                           {step}
                         </li>
@@ -427,8 +429,8 @@ function Results() {
                     </ul>
                     <div className="space-y-3">
                       <div>
-                        <h3 className="text-base font-semibold text-gray-900">{t('results.professionalEvaluation')}</h3>
-                        <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                        <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.professionalEvaluation')}</h3>
+                        <p className={`text-xs mt-1 leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                           {t('results.considerDermatologist')}
                         </p>
                       </div>
@@ -439,7 +441,7 @@ function Results() {
                         <MapPin className="w-4 h-4 mr-2" />
                         {t('results.consultDermatologist')}
                       </button>
-                      <div className="pt-1 border-t border-gray-100" />
+                      <div className={`pt-1 border-t ${darkMode ? 'border-white/5' : 'border-gray-100'}`} />
                       <button
                         onClick={() => navigate('/history')}
                         className="btn-secondary w-full !py-3 text-sm"
@@ -463,16 +465,16 @@ function Results() {
             {/* Guidance */}
             <section className="animate-fade-in-up animation-delay-600">
               <div className="mb-6">
-                <h2 className="text-xl font-bold text-gray-900 tracking-tight mb-1">{t('results.guidanceForClass')}</h2>
+                <h2 className={`text-xl font-bold tracking-tight mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('results.guidanceForClass')}</h2>
                 {demoGuidanceClassName ? (
-                  <p className="text-sm text-gray-500">
+                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     {t('results.aiPrediction')}{' '}
-                    <span className="font-semibold text-gray-700">{demoGuidanceClassName}</span>
+                    <span className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{demoGuidanceClassName}</span>
                   </p>
                 ) : (
-                  <p className="text-sm text-gray-500">{t('results.generalGuidance')}</p>
+                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('results.generalGuidance')}</p>
                 )}
-                <p className="text-xs text-gray-400 mt-1">{t('results.guidanceSubtext')}</p>
+                <p className={`text-xs mt-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>{t('results.guidanceSubtext')}</p>
               </div>
               <GuidanceCard
                 dos={demoGuidance.dos}
@@ -485,9 +487,9 @@ function Results() {
         )}
 
         {/* Disclaimer */}
-        <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
-          <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-amber-700 leading-relaxed">
+        <section className={`flex items-start gap-3 p-4 rounded-2xl border ${darkMode ? 'bg-amber-900/20 border-amber-800/40' : 'bg-amber-50/80 border-amber-100'}`}>
+          <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
+          <p className={`text-sm leading-relaxed ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
             {t('results.disclaimer')}
           </p>
         </section>

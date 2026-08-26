@@ -13,6 +13,7 @@ import { useAuth } from '../context/AuthContext'
 import { API_MODE } from '../api/predictApi'
 import { fetchMyScans } from '../api/scansApi'
 import { groupScansIntoConcerns } from '../api/scanGroups'
+import { useTheme } from '../context/ThemeContext'
 
 const riskOrder = { high: 3, medium: 2, low: 1, uncertain: 0 }
 
@@ -20,6 +21,7 @@ function History() {
   const { t } = useLanguage()
   const navigate = useNavigate()
   const { user, isAuthenticated } = useAuth()
+  const { darkMode } = useTheme()
 
   const realMode = API_MODE && isAuthenticated && user?.id > 0
 
@@ -159,22 +161,22 @@ function History() {
     : t('history.disclaimer')
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+    <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         {/* Page header */}
         <section className="animate-fade-in-down">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
-              <Clock className="w-5 h-5 text-primary-600" />
+            <div className={`w-10 h-10 rounded-xl ${darkMode ? 'bg-primary-900/30' : 'bg-primary-50'} flex items-center justify-center`}>
+              <Clock className={`w-5 h-5 ${darkMode ? 'text-primary-400' : 'text-primary-600'}`} />
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-xs font-medium text-primary-700">
+            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${darkMode ? 'bg-primary-900/30 border border-primary-800 text-primary-300' : 'bg-primary-50 border border-primary-100 text-primary-700'} text-xs font-medium`}>
               {badge}
             </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+          <h1 className={`text-3xl md:text-4xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight mb-2`}>
             {t('history.heading')}
           </h1>
-          <p className="text-base md:text-lg text-gray-500">
+          <p className={`text-base md:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
             {t('history.subtext')}
           </p>
         </section>
@@ -216,10 +218,10 @@ function History() {
             {/* Skin concern cards */}
             <section className="space-y-4 animate-fade-in-up animation-delay-300">
               {filteredConcerns.length === 0 ? (
-                <div className="card p-8 text-center">
-                  <SearchX className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-                  <p className="text-sm font-medium text-gray-900 mb-1">{t('history.noMatchTitle')}</p>
-                  <p className="text-sm text-gray-500">
+                <div className={`card p-8 text-center ${darkMode ? 'bg-[#0D1B2A]' : ''}`}>
+                  <SearchX className={`w-10 h-10 ${darkMode ? 'text-gray-600' : 'text-gray-300'} mx-auto mb-3`} />
+                  <p className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} mb-1`}>{t('history.noMatchTitle')}</p>
+                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     {t('history.noMatchDesc')}
                   </p>
                 </div>
@@ -253,7 +255,7 @@ function History() {
               )}
             </section>
 
-            <p className="text-xs text-gray-400">
+            <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
               {realMode
                 ? t('history.realCount', { n: totalScans })
                 : t('history.demoCount', { n: totalScans })}
@@ -262,14 +264,14 @@ function History() {
         ) : (
           /* Empty state */
           <section className="animate-fade-in-up animation-delay-200">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-10 md:p-14 text-center max-w-2xl mx-auto">
+            <div className={`relative overflow-hidden rounded-3xl ${darkMode ? 'bg-gradient-to-br from-[#0D1B2A] via-[#0D1B2A] to-[#0D1B2A] border border-gray-800' : 'bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60'} p-10 md:p-14 text-center max-w-2xl mx-auto`}>
               <div className="absolute inset-0 pattern-dots opacity-30" />
               <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-5">
-                  <Camera className="w-8 h-8 text-primary-600" />
+                <div className={`w-16 h-16 rounded-2xl ${darkMode ? 'bg-primary-900/30' : 'bg-primary-100'} flex items-center justify-center mx-auto mb-5`}>
+                  <Camera className={`w-8 h-8 ${darkMode ? 'text-primary-400' : 'text-primary-600'}`} />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900 mb-2">{t('history.emptyTitle')}</h2>
-                <p className="text-sm text-gray-500 leading-relaxed max-w-md mx-auto mb-7">
+                <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} mb-2`}>{t('history.emptyTitle')}</h2>
+                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} leading-relaxed max-w-md mx-auto mb-7`}>
                   {t('history.emptyDesc')}
                 </p>
                 <button
@@ -284,9 +286,9 @@ function History() {
         )}
 
         {/* Disclaimer */}
-        <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
-          <Camera className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-amber-700 leading-relaxed">
+        <section className={`flex items-start gap-3 p-4 rounded-2xl ${darkMode ? 'bg-amber-900/20 border border-amber-800/50' : 'bg-amber-50/80 border border-amber-100'}`}>
+          <Camera className={`w-5 h-5 ${darkMode ? 'text-amber-400' : 'text-amber-600'} mt-0.5 flex-shrink-0`} />
+          <p className={`text-sm ${darkMode ? 'text-amber-300' : 'text-amber-700'} leading-relaxed`}>
             {disclaimer}
           </p>
         </section>

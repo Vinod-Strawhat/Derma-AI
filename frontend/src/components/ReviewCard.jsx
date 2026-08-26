@@ -8,11 +8,11 @@ function ReviewItem({ label, value, valid, notProvided }) {
         {valid ? (
           <CheckCircle2 className="w-[18px] h-[18px] text-emerald-500 flex-shrink-0" />
         ) : (
-          <XCircle className="w-[18px] h-[18px] text-gray-300 flex-shrink-0" />
+          <XCircle className="w-[18px] h-[18px] text-gray-300 dark:text-gray-600 flex-shrink-0" />
         )}
-        <span className={`text-sm ${valid ? 'text-gray-700 font-medium' : 'text-gray-400'}`}>{label}</span>
+        <span className={`text-sm ${valid ? 'text-gray-700 dark:text-gray-300 font-medium' : 'text-gray-400 dark:text-gray-500'}`}>{label}</span>
       </div>
-      <span className={`text-sm ${valid ? 'text-gray-900 font-medium' : 'text-gray-400'}`}>
+      <span className={`text-sm ${valid ? 'text-gray-900 dark:text-white font-medium' : 'text-gray-400 dark:text-gray-500'}`}>
         {valid ? value : notProvided}
       </span>
     </div>
@@ -35,10 +35,10 @@ function ReviewCard({
 
   return (
     <div className="card p-6 flex flex-col">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">{t('review.title')}</h2>
-      <p className="text-sm text-gray-500 mb-4">{t('review.subtitle')}</p>
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{t('review.title')}</h2>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{t('review.subtitle')}</p>
 
-      <div className="divide-y divide-gray-100">
+      <div className="divide-y divide-gray-100 dark:divide-white/10">
         <ReviewItem
           label={t('review.skinImage')}
           value={t('review.imageSelected')}
@@ -87,12 +87,12 @@ function ReviewCard({
         {allComplete ? (
           <button
             onClick={onClear}
-            className="w-full text-sm text-gray-500 hover:text-gray-700 transition-colors"
+            className="w-full text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors"
           >
             {t('review.clearAll')}
           </button>
         ) : (
-          <p className="flex items-center gap-2 text-xs text-gray-400">
+          <p className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
             <AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0" />
             {t('review.provideRequired')}
           </p>
@@ -100,16 +100,16 @@ function ReviewCard({
       </div>
 
       {analysisPending && (
-        <div className="mt-4 rounded-xl bg-medical-50 border border-medical-100 p-4 text-left">
-          <p className="text-sm font-medium text-medical-700 mb-1">{t('review.almostThere')}</p>
-          <p className="text-xs text-medical-700/80 leading-relaxed">
+        <div className="mt-4 rounded-xl bg-medical-50 dark:bg-medical-500/10 border border-medical-100 dark:border-medical-500/20 p-4 text-left">
+          <p className="text-sm font-medium text-medical-700 dark:text-medical-400 mb-1">{t('review.almostThere')}</p>
+          <p className="text-xs text-medical-700/80 dark:text-medical-400/80 leading-relaxed">
             {t('review.pendingDesc')}
           </p>
         </div>
       )}
 
-      <div className="mt-5 pt-4 border-t border-gray-100">
-        <p className="flex items-start gap-2 text-xs text-gray-400 leading-relaxed">
+      <div className="mt-5 pt-4 border-t border-gray-100 dark:border-white/10">
+        <p className="flex items-start gap-2 text-xs text-gray-400 dark:text-gray-500 leading-relaxed">
           <AlertCircle className="w-3.5 h-3.5 text-amber-500 mt-0.5 flex-shrink-0" />
           {t('review.disclaimer')}
         </p>

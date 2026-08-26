@@ -10,6 +10,7 @@ import { mockProfile } from '../data/mockProfile'
 import { languages } from '../data/languages'
 import { useLanguage } from '../context/LanguageContext'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 import { API_MODE } from '../api/predictApi'
 import { fetchMyScans } from '../api/scansApi'
 
@@ -19,6 +20,7 @@ function languageName(code) {
 
 function Profile() {
   const { t } = useLanguage()
+  const { darkMode } = useTheme()
   const navigate = useNavigate()
   const { user, isAuthenticated } = useAuth()
   const [scans, setScans] = useState([])
@@ -58,22 +60,22 @@ function Profile() {
   const hasAnyActivity = profile.stats.totalScans > 0
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+    <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30'}`}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         {/* Page header */}
         <section className="animate-fade-in-down">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
+            <div className={`w-10 h-10 rounded-xl ${darkMode ? 'bg-primary-900/50' : 'bg-primary-50'} flex items-center justify-center`}>
               <User className="w-5 h-5 text-primary-600" />
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-xs font-medium text-primary-700">
+            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${darkMode ? 'bg-primary-900/50 border border-primary-800 text-primary-300' : 'bg-primary-50 border border-primary-100 text-primary-700'} text-xs font-medium`}>
               {t(isAuthenticated ? 'profile.realBadge' : 'profile.demoBadge')}
             </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+          <h1 className={`text-3xl md:text-4xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight mb-2`}>
             {t('profile.heading')}
           </h1>
-          <p className="text-base md:text-lg text-gray-500">
+          <p className={`text-base md:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
             {t('profile.subtext')}
           </p>
         </section>
@@ -86,13 +88,13 @@ function Profile() {
         {/* New user CTA */}
         {isNewUser && (
           <section className="animate-fade-in-up animation-delay-300">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-8 text-center">
+            <div className={`relative overflow-hidden rounded-3xl ${darkMode ? 'bg-[#0D1B2A]/80 border border-primary-800/60' : 'bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60'} p-8 text-center`}>
               <div className="absolute inset-0 pattern-dots opacity-30" />
               <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                <div className={`w-14 h-14 rounded-2xl ${darkMode ? 'bg-primary-900/50' : 'bg-primary-100'} flex items-center justify-center mx-auto mb-4`}>
                   <Camera className="w-7 h-7 text-primary-600" />
                 </div>
-                <h2 className="text-lg font-bold text-gray-900 mb-2">
+                <h2 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'} mb-2`}>
                   {t('profile.newUserCta')}
                 </h2>
                 <button
@@ -116,11 +118,11 @@ function Profile() {
         <section className="animate-fade-in-up animation-delay-400">
           <div className="flex items-center justify-between gap-2 mb-5">
             <div>
-              <h2 className="text-xl font-bold text-gray-900 tracking-tight">{t('profile.activity')}</h2>
-              <p className="text-sm text-gray-500 mt-1">{t('profile.activitySubtext')}</p>
+              <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight`}>{t('profile.activity')}</h2>
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}>{t('profile.activitySubtext')}</p>
             </div>
             {!isAuthenticated && (
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700 flex-shrink-0">
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium flex-shrink-0 ${darkMode ? 'bg-amber-900/30 border border-amber-800 text-amber-300' : 'bg-amber-50 border border-amber-100 text-amber-700'}`}>
                 {t('profile.demoData')}
               </span>
             )}
@@ -129,7 +131,7 @@ function Profile() {
           {statsReady && <ProfileStats stats={profile.stats} isNewUser={isNewUser} />}
 
           {!hasAnyActivity && (
-            <p className="text-xs text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2.5 mt-4">
+            <p className={`text-xs rounded-lg px-3 py-2.5 mt-4 ${darkMode ? 'text-amber-300 bg-amber-900/30 border border-amber-800' : 'text-amber-700 bg-amber-50 border border-amber-100'}`}>
               {t('profile.newUserNoScans')}
             </p>
           )}
@@ -138,8 +140,8 @@ function Profile() {
         {/* Privacy & Safety */}
         <section className="animate-fade-in-up animation-delay-500">
           <div className="mb-5">
-            <h2 className="text-xl font-bold text-gray-900 tracking-tight">{t('profile.privacyHeading')}</h2>
-            <p className="text-sm text-gray-500 mt-1">
+            <h2 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} tracking-tight`}>{t('profile.privacyHeading')}</h2>
+            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}>
               {t('profile.privacySubtext')}
             </p>
           </div>
@@ -152,9 +154,9 @@ function Profile() {
         </section>
 
         {/* Disclaimer */}
-        <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
+        <section className={`flex items-start gap-3 p-4 rounded-2xl ${darkMode ? 'bg-amber-900/20 border border-amber-800' : 'bg-amber-50/80 border border-amber-100'}`}>
           <ShieldCheck className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-amber-700 leading-relaxed">
+          <p className={`text-sm leading-relaxed ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
             {t('profile.disclaimer')}
           </p>
         </section>

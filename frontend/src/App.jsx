@@ -11,9 +11,11 @@ import Results from './pages/Results'
 import History from './pages/History'
 import Compare from './pages/Compare'
 import Profile from './pages/Profile'
+import { useTheme } from './context/ThemeContext'
 
 function App() {
   const location = useLocation()
+  const { darkMode } = useTheme()
 
   useEffect(() => {
     if (location.hash) {
@@ -39,7 +41,7 @@ function App() {
   ].includes(location.pathname)
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50/50">
+    <div className={`min-h-screen flex flex-col ${darkMode ? 'bg-[#07111F] text-gray-100' : 'bg-gray-50/50 text-gray-900'}`}>
       <Header variant={isDashboardArea ? 'dashboard' : 'public'} />
       <main className="flex-1">
         <Routes>

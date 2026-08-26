@@ -4,11 +4,13 @@ import { Mail, Lock, Eye, EyeOff, User, Globe, UserPlus, AlertTriangle } from 'l
 import DermaAILogo from '../components/DermaAILogo'
 import { languages } from '../data/languages'
 import { useLanguage } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 import { useAuth } from '../context/AuthContext'
 import { AuthError } from '../api/authApi'
 
 function SignUp() {
   const { t } = useLanguage()
+  const { darkMode } = useTheme()
   const { signUp } = useAuth()
   const navigate = useNavigate()
   const [name, setName] = useState('')
@@ -56,29 +58,29 @@ function SignUp() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 px-4 py-12">
+    <div className={`min-h-[calc(100vh-64px)] flex items-center justify-center px-4 py-12 ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40'}`}>
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8 animate-fade-in-down">
           <div className="flex justify-center mb-4">
             <DermaAILogo size="lg" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">{t('signup.heading')}</h1>
-          <p className="text-sm text-gray-500">{t('signup.subtitle')}</p>
+          <h1 className={`text-2xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('signup.heading')}</h1>
+          <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('signup.subtitle')}</p>
         </div>
 
         {/* Form Card */}
         <div className="card p-8 animate-fade-in-up">
           {error && (
-            <div className="mb-5 rounded-xl bg-red-50 border border-red-100 p-4 flex items-start gap-3 animate-fade-in-up">
+            <div className="mb-5 rounded-xl bg-red-50 border border-red-100 p-4 flex items-start gap-3 animate-fade-in-up dark:bg-red-900/20 dark:border-red-800">
               <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
-              <p className="text-sm text-red-700 leading-relaxed">{error}</p>
+              <p className="text-sm text-red-700 dark:text-red-300 leading-relaxed">{error}</p>
             </div>
           )}
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="name" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {t('signup.fullName')}
               </label>
               <div className="relative">
@@ -97,7 +99,7 @@ function SignUp() {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="email" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {t('signin.email')}
               </label>
               <div className="relative">
@@ -116,7 +118,7 @@ function SignUp() {
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="password" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {t('signin.password')}
               </label>
               <div className="relative">
@@ -133,7 +135,7 @@ function SignUp() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                   aria-label={showPassword ? t('signin.hidePassword') : t('signin.showPassword')}
                 >
                   {showPassword ? <EyeOff className="w-[18px] h-[18px]" /> : <Eye className="w-[18px] h-[18px]" />}
@@ -143,7 +145,7 @@ function SignUp() {
 
             {/* Confirm Password */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="confirmPassword" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {t('signup.confirmPassword')}
               </label>
               <div className="relative">
@@ -160,8 +162,8 @@ function SignUp() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                  aria-label={showConfirmPassword ? t('signin.hidePassword') : t('signin.showPassword')}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                  aria-label={showPassword ? t('signin.hidePassword') : t('signin.showPassword')}
                 >
                   {showConfirmPassword ? <EyeOff className="w-[18px] h-[18px]" /> : <Eye className="w-[18px] h-[18px]" />}
                 </button>
@@ -170,7 +172,7 @@ function SignUp() {
 
             {/* Preferred Language */}
             <div>
-              <label htmlFor="language" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="language" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {t('signup.preferredLanguage')}
               </label>
               <div className="relative">
@@ -204,9 +206,9 @@ function SignUp() {
         </div>
 
         {/* Sign in link */}
-        <p className="text-center text-sm text-gray-500 mt-6 animate-fade-in-up animation-delay-200">
+        <p className={`text-center text-sm mt-6 animate-fade-in-up animation-delay-200 ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
           {t('signup.haveAccount')}{' '}
-          <Link to="/signin" className="font-semibold text-primary-600 hover:text-primary-700 transition-colors">
+          <Link to="/signin" className="font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors">
             {t('signup.signIn')}
           </Link>
         </p>

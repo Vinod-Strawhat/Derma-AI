@@ -135,14 +135,14 @@ function ScanVisual() {
 
         {/* Measurement / analysis label floating near detection */}
         <div className="absolute top-[22%] right-[12%] animate-fade-in" style={{ animationDelay: '2s', animationFillMode: 'both' }}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-md px-2 py-0.5 shadow-sm border border-primary-100/60">
-            <span className="text-[9px] font-semibold text-primary-600 tracking-wide">92.4%</span>
+          <div className="bg-white/90 dark:bg-[#0D1B2A]/90 backdrop-blur-sm rounded-md px-2 py-0.5 shadow-sm border border-primary-100/60 dark:border-primary-500/20">
+            <span className="text-[9px] font-semibold text-primary-600 dark:text-primary-400 tracking-wide">92.4%</span>
           </div>
         </div>
 
         <div className="absolute bottom-[20%] left-[10%] animate-fade-in" style={{ animationDelay: '3s', animationFillMode: 'both' }}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-md px-2 py-0.5 shadow-sm border border-accent-100/60">
-            <span className="text-[9px] font-semibold text-accent-600 tracking-wide">{t('scanvisual.lowRisk')}</span>
+          <div className="bg-white/90 dark:bg-[#0D1B2A]/90 backdrop-blur-sm rounded-md px-2 py-0.5 shadow-sm border border-accent-100/60 dark:border-accent-500/20">
+            <span className="text-[9px] font-semibold text-accent-600 dark:text-accent-400 tracking-wide">{t('scanvisual.lowRisk')}</span>
           </div>
         </div>
 
@@ -178,13 +178,13 @@ function ScanVisual() {
 
       {/* ── Status label ── */}
       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 z-10">
-        <div className="bg-white px-5 py-2 rounded-full border border-primary-200/80 shadow-[0_2px_12px_rgba(99,133,243,0.1)]">
+        <div className="bg-white dark:bg-[#0D1B2A] px-5 py-2 rounded-full border border-primary-200/80 dark:border-primary-500/20 shadow-[0_2px_12px_rgba(99,133,243,0.1)]">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" style={{ animationDuration: '2s' }} />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500" />
             </span>
-            <span className="text-[11px] font-bold text-primary-700 tracking-[0.15em] uppercase">{t('scanvisual.status')}</span>
+            <span className="text-[11px] font-bold text-primary-700 dark:text-primary-400 tracking-[0.15em] uppercase">{t('scanvisual.status')}</span>
           </div>
         </div>
       </div>

@@ -8,25 +8,25 @@ function ScanCard({ scan }) {
   const riskConfig = {
     low: {
       label: t('risk.lowRisk'),
-      badge: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+      badge: 'bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
       bar: 'from-emerald-400 to-emerald-500',
       Icon: ShieldCheck,
     },
     medium: {
       label: t('risk.mediumRisk'),
-      badge: 'bg-amber-50 text-amber-700 border-amber-100',
+      badge: 'bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
       bar: 'from-amber-400 to-amber-500',
       Icon: AlertTriangle,
     },
     high: {
       label: t('risk.highRisk'),
-      badge: 'bg-red-50 text-red-700 border-red-100',
+      badge: 'bg-red-50 text-red-700 border-red-100 dark:bg-red-500/10 dark:text-red-400 dark:border-red-500/20',
       bar: 'from-red-400 to-red-500',
       Icon: AlertTriangle,
     },
     uncertain: {
       label: t('risk.uncertainRisk'),
-      badge: 'bg-gray-100 text-gray-700 border-gray-200',
+      badge: 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-white/10 dark:text-gray-400 dark:border-white/10',
       bar: 'from-gray-400 to-gray-500',
       Icon: ShieldCheck,
     },
@@ -40,7 +40,7 @@ function ScanCard({ scan }) {
   return (
     <div className="card p-6 flex flex-col h-full">
       <div className="flex items-center justify-between gap-2 mb-4">
-        <span className="text-xs font-medium text-gray-400">{scan.date}</span>
+        <span className="text-xs font-medium text-gray-400 dark:text-gray-500">{scan.date}</span>
         <span
           className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-medium ${risk.badge}`}
         >
@@ -49,14 +49,14 @@ function ScanCard({ scan }) {
         </span>
       </div>
 
-      <h3 className="text-lg font-semibold text-gray-900 mb-3">{scan.condition}</h3>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{scan.condition}</h3>
 
       <div className="mt-auto">
         <div className="flex items-center justify-between text-xs mb-1.5">
-          <span className="text-gray-500">{t('scancard.aiConfidence')}</span>
-          <span className="font-semibold text-primary-600">{scan.confidence}%</span>
+          <span className="text-gray-500 dark:text-gray-400">{t('scancard.aiConfidence')}</span>
+          <span className="font-semibold text-primary-600 dark:text-primary-400">{scan.confidence}%</span>
         </div>
-        <div className="h-2 rounded-full bg-gray-100 overflow-hidden mb-5">
+        <div className="h-2 rounded-full bg-gray-100 dark:bg-white/10 overflow-hidden mb-5">
           <div
             className="h-full rounded-full bg-gradient-to-r from-primary-500 to-medical-500"
             style={{ width: `${scan.confidence}%` }}
@@ -73,7 +73,7 @@ function ScanCard({ scan }) {
                   patient: { age: 48, gender: 'Female', region: scan.region },
                 }
           }
-          className="inline-flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-primary-200 text-sm font-medium text-primary-700 hover:bg-primary-50 transition-colors duration-200"
+          className="inline-flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-primary-200 dark:border-primary-500/20 text-sm font-medium text-primary-700 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-500/10 transition-colors duration-200"
         >
           <Eye className="w-4 h-4" />
           {t('scancard.viewResult')}

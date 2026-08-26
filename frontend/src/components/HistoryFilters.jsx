@@ -22,7 +22,7 @@ function HistoryFilters({ search, riskFilter, sort, onSearchChange, onRiskChange
       <div className="grid gap-3 md:grid-cols-3">
         {/* Search */}
         <div className="md:col-span-2 relative">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" />
           <input
             type="search"
             value={search}
@@ -35,7 +35,7 @@ function HistoryFilters({ search, riskFilter, sort, onSearchChange, onRiskChange
 
         {/* Sort */}
         <div className="relative">
-          <SlidersHorizontal className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+          <SlidersHorizontal className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500 pointer-events-none" />
           <select
             value={sort}
             onChange={(e) => onSortChange(e.target.value)}
@@ -53,7 +53,7 @@ function HistoryFilters({ search, riskFilter, sort, onSearchChange, onRiskChange
 
       {/* Risk filter pills */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium text-gray-400">{t('historyfilter.filter')}:</span>
+        <span className="text-xs font-medium text-gray-400 dark:text-gray-500">{t('historyfilter.filter')}:</span>
         {RISK_FILTERS.map((filter) => (
           <button
             key={filter.value}
@@ -61,7 +61,7 @@ function HistoryFilters({ search, riskFilter, sort, onSearchChange, onRiskChange
             className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
               riskFilter === filter.value
                 ? 'bg-primary-600 text-white border-primary-600'
-                : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                : 'bg-white dark:bg-[#0D1B2A] text-gray-600 dark:text-gray-400 border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5'
             }`}
           >
             {filter.label}
@@ -69,7 +69,7 @@ function HistoryFilters({ search, riskFilter, sort, onSearchChange, onRiskChange
         ))}
       </div>
 
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-gray-400 dark:text-gray-500">
         {t('historyfilter.showing', { n: resultCount })}
       </p>
     </div>

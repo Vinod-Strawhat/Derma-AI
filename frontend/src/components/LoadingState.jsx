@@ -7,8 +7,8 @@ function LoadingState({ message, className, showDemoNote = true }) {
   return (
     <div className={`flex flex-col items-center justify-center py-16 text-center ${className ?? ''}`} role="status" aria-live="polite">
       <Loader2 className="w-10 h-10 text-primary-600 animate-spin" />
-      <p className="mt-4 text-sm font-medium text-gray-700">{message}</p>
-      {showDemoNote && <p className="mt-1 text-xs text-gray-400">{t('loading.demoNote')}</p>}
+      <p className="mt-4 text-sm font-medium text-gray-700 dark:text-gray-300">{message}</p>
+      {showDemoNote && <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{t('loading.demoNote')}</p>}
     </div>
   )
 }

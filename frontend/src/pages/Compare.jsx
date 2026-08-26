@@ -15,6 +15,7 @@ import {
 } from '../data/comparison'
 import { mockSkinConcerns } from '../data/mockHistory'
 import { useLanguage } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 import { useAuth } from '../context/AuthContext'
 import { API_MODE } from '../api/predictApi'
 import {
@@ -31,6 +32,7 @@ import { buildImageUrl } from '../api/imageUrl'
 
 function Compare() {
   const { t } = useLanguage()
+  const { darkMode } = useTheme()
   const location = useLocation()
   const navigate = useNavigate()
   const { user, isAuthenticated } = useAuth()
@@ -213,11 +215,11 @@ function Compare() {
   // ─── Real-mode render ──────────────────────────────────────
   if (realMode) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+      <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30'}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
           <button
             onClick={() => navigate('/history')}
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
+            className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${darkMode ? 'text-gray-400 hover:text-primary-400' : 'text-gray-500 hover:text-primary-600'}`}
           >
             <ArrowLeft className="w-4 h-4" />
             {t('compare.back')}
@@ -228,14 +230,14 @@ function Compare() {
               <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
                 <ArrowRightLeft className="w-5 h-5 text-accent-600" />
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-50 border border-accent-100 text-xs font-medium text-accent-700">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-50 border border-accent-100 text-xs font-medium text-accent-700 dark:bg-accent-900/30 dark:text-accent-300 dark:border-accent-800">
                 {t('compare.realBadge')}
               </div>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+            <h1 className={`text-3xl md:text-4xl font-bold tracking-tight mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               {t('compare.heading')}
             </h1>
-            <p className="text-base md:text-lg text-gray-500 max-w-2xl">
+            <p className={`text-base md:text-lg max-w-2xl ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
               {t('compare.subtext')}
             </p>
           </section>
@@ -270,16 +272,16 @@ function Compare() {
             </section>
           ) : insufficient ? (
             <section className="animate-fade-in-up animation-delay-200">
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-10 text-center max-w-2xl mx-auto">
+              <div className={`relative overflow-hidden rounded-3xl border p-10 text-center max-w-2xl mx-auto ${darkMode ? 'bg-gradient-to-br from-[#0D1B2A] via-[#111827] to-[#0D1B2A] border-white/5' : 'bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border-primary-100/60'}`}>
                 <div className="absolute inset-0 pattern-dots opacity-30" />
                 <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-14 h-14 rounded-2xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
                     <GitCompareArrows className="w-7 h-7 text-primary-600" />
                   </div>
-                  <h2 className="text-lg font-bold text-gray-900 mb-2">
+                  <h2 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     {t('compare.needTwoScans')}
                   </h2>
-                  <p className="text-sm text-gray-500 mb-6">
+                  <p className={`text-sm mb-6 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     {t('compare.thisConcernHas', { n: activeRealConcern?.scans.length ?? 0 })}
                   </p>
                   <button
@@ -300,8 +302,8 @@ function Compare() {
                     <GitCompareArrows className="w-5 h-5 text-accent-600" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-gray-900">{t('compare.selectConcern')}</h2>
-                    <p className="text-sm text-gray-500">{t('compare.selectConcernSubtext')}</p>
+                    <h2 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('compare.selectConcern')}</h2>
+                    <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('compare.selectConcernSubtext')}</p>
                   </div>
                 </div>
                 <CompareSelection
@@ -317,18 +319,18 @@ function Compare() {
                 <div className="card p-5 md:p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                      <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                         {t('compare.skinConcern')}
                       </p>
-                      <h2 className="text-lg md:text-xl font-semibold text-gray-900">
+                      <h2 className={`text-lg md:text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                         {activeRealConcern?.concernName}
                       </h2>
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                      <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                         {t('compare.bodyRegion')}
                       </p>
-                      <p className="text-base font-medium text-gray-700">
+                      <p className={`text-base font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                         {activeRealConcern?.bodyRegion.charAt(0).toUpperCase() + activeRealConcern?.bodyRegion.slice(1)}
                       </p>
                     </div>
@@ -357,8 +359,8 @@ function Compare() {
 
               <section className="animate-fade-in-up animation-delay-400">
                 <div className="mb-4">
-                  <h2 className="text-lg font-bold text-gray-900">{t('compare.aiResultHeading')}</h2>
-                  <p className="text-sm text-gray-500">{t('compare.aiResultSubtext')}</p>
+                  <h2 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('compare.aiResultHeading')}</h2>
+                  <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('compare.aiResultSubtext')}</p>
                 </div>
                 <ComparisonSummary comparison={comparison} />
               </section>
@@ -374,8 +376,8 @@ function Compare() {
                       <Sparkles className="w-5 h-5 text-accent-600" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900">{t('compare.aiAttentionHeading')}</h3>
-                      <p className="text-sm text-gray-500">{t('compare.aiAttentionSubtext')}</p>
+                      <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('compare.aiAttentionHeading')}</h3>
+                      <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('compare.aiAttentionSubtext')}</p>
                     </div>
                   </div>
 
@@ -390,13 +392,13 @@ function Compare() {
                       return (
                         <div key={panel.label}>
                           <div className="mb-2">
-                            <span className={`inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border ${panel.accent ? 'text-accent-700 bg-accent-50 border-accent-100' : 'text-primary-700 bg-primary-50 border-primary-100'}`}>
+                            <span className={`inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border ${panel.accent ? 'text-accent-700 bg-accent-50 border-accent-100 dark:bg-accent-900/30 dark:text-accent-300 dark:border-accent-800' : 'text-primary-700 bg-primary-50 border-primary-100 dark:bg-primary-900/30 dark:text-primary-300 dark:border-primary-800'}`}>
                               <Sparkles className={`w-3.5 h-3.5 ${panel.accent ? 'text-accent-500' : 'text-primary-400'}`} />
                               {panel.label}
                             </span>
                           </div>
                           {available ? (
-                            <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
+                            <div className={`rounded-xl overflow-hidden border ${darkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}>
                               <img
                                 src={url}
                                 alt={t('gradcam.availableAlt')}
@@ -405,9 +407,9 @@ function Compare() {
                               />
                             </div>
                           ) : (
-                            <div className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center">
-                              <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
-                                <Sparkles className="w-3.5 h-3.5 text-gray-400" />
+                            <div className={`rounded-xl border-2 border-dashed p-6 text-center ${darkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50/60'}`}>
+                              <span className={`inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border ${darkMode ? 'text-gray-500 bg-white/10 border-white/10' : 'text-gray-400 bg-white border-gray-100'}`}>
+                                <Sparkles className={`w-3.5 h-3.5 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} />
                                 {t('gradcam.unavailable')}
                               </span>
                             </div>
@@ -417,7 +419,7 @@ function Compare() {
                     })}
                   </div>
 
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className={`text-xs leading-relaxed ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                     {t('compare.attentionDescReal')}
                   </p>
                 </div>
@@ -442,9 +444,9 @@ function Compare() {
             </>
           )}
 
-          <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
+          <section className={`flex items-start gap-3 p-4 rounded-2xl border ${darkMode ? 'bg-amber-900/20 border-amber-800' : 'bg-amber-50/80 border-amber-100'}`}>
             <GitCompareArrows className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-            <p className="text-sm text-amber-700 leading-relaxed">
+            <p className={`text-sm leading-relaxed ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
               {t('compare.realDisclaimer')}
             </p>
           </section>
@@ -455,11 +457,11 @@ function Compare() {
 
   // ─── Demo-mode render ──────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30">
+    <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-[#07111F] via-[#0D1B2A] to-[#07111F]' : 'bg-gradient-to-br from-primary-50/40 via-white to-accent-50/30'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6">
         <button
           onClick={() => navigate('/history')}
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
+          className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${darkMode ? 'text-gray-400 hover:text-primary-400' : 'text-gray-500 hover:text-primary-600'}`}
         >
           <ArrowLeft className="w-4 h-4" />
           {t('compare.back')}
@@ -470,14 +472,14 @@ function Compare() {
             <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
               <ArrowRightLeft className="w-5 h-5 text-accent-600" />
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-xs font-medium text-amber-700">
+            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium ${darkMode ? 'bg-amber-900/30 border-amber-800 text-amber-300' : 'bg-amber-50 border-amber-100 text-amber-700'}`}>
               {t('compare.demoBadge')}
             </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+          <h1 className={`text-3xl md:text-4xl font-bold tracking-tight mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             {t('compare.heading')}
           </h1>
-          <p className="text-base md:text-lg text-gray-500 max-w-2xl">
+          <p className={`text-base md:text-lg max-w-2xl ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
             {t('compare.subtext')}
           </p>
         </section>
@@ -498,8 +500,8 @@ function Compare() {
                       <GitCompareArrows className="w-5 h-5 text-accent-600" />
                     </div>
                     <div>
-                      <h2 className="text-lg font-semibold text-gray-900">{t('compare.selectConcern')}</h2>
-                      <p className="text-sm text-gray-500">{t('compare.selectConcernSubtext')}</p>
+                      <h2 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('compare.selectConcern')}</h2>
+                      <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('compare.selectConcernSubtext')}</p>
                     </div>
                   </div>
                   <CompareSelection
@@ -517,18 +519,18 @@ function Compare() {
                   <div className="card p-5 md:p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                        <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                           {t('compare.skinConcern')}
                         </p>
-                        <h2 className="text-lg md:text-xl font-semibold text-gray-900">
+                        <h2 className={`text-lg md:text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                           {activeConcern.concernName}
                         </h2>
                       </div>
                       <div className="min-w-0">
-                        <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-1">
+                        <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                           {t('compare.bodyRegion')}
                         </p>
-                        <p className="text-base font-medium text-gray-700">
+                        <p className={`text-base font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                           {activeConcern.bodyRegion.charAt(0).toUpperCase() + activeConcern.bodyRegion.slice(1)}
                         </p>
                       </div>
@@ -544,16 +546,16 @@ function Compare() {
 
                 {!canSelect ? (
                   <section className="animate-fade-in-up animation-delay-300">
-                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border border-primary-100/60 p-10 text-center max-w-2xl mx-auto">
+                    <div className={`relative overflow-hidden rounded-3xl border p-10 text-center max-w-2xl mx-auto ${darkMode ? 'bg-gradient-to-br from-[#0D1B2A] via-[#111827] to-[#0D1B2A] border-white/5' : 'bg-gradient-to-br from-primary-50/80 via-white to-accent-50/50 border-primary-100/60'}`}>
                       <div className="absolute inset-0 pattern-dots opacity-30" />
                       <div className="relative">
-                        <div className="w-14 h-14 rounded-2xl bg-primary-100 flex items-center justify-center mx-auto mb-4">
+                        <div className="w-14 h-14 rounded-2xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
                           <GitCompareArrows className="w-7 h-7 text-primary-600" />
                         </div>
-                        <h2 className="text-lg font-bold text-gray-900 mb-2">
+                        <h2 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                           {t('compare.needTwoScans')}
                         </h2>
-                        <p className="text-sm text-gray-500 mb-6">
+                        <p className={`text-sm mb-6 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                           {t('compare.thisConcernHas', { n: scans.length })}
                         </p>
                         <button
@@ -572,7 +574,7 @@ function Compare() {
                       <div className="card p-5">
                         <div className="grid gap-4 md:grid-cols-2">
                           <div>
-                            <label htmlFor="previous-scan" className="block text-sm font-medium text-gray-700 mb-1.5">
+                            <label htmlFor="previous-scan" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                               {t('compare.previousScan')}
                             </label>
                             <select
@@ -589,7 +591,7 @@ function Compare() {
                             </select>
                           </div>
                           <div>
-                            <label htmlFor="current-scan" className="block text-sm font-medium text-gray-700 mb-1.5">
+                            <label htmlFor="current-scan" className={`block text-sm font-medium mb-1.5 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                               {t('compare.currentScan')}
                             </label>
                             <select
@@ -606,7 +608,7 @@ function Compare() {
                             </select>
                           </div>
                         </div>
-                        <p className="text-xs text-gray-400 mt-3">
+                        <p className={`text-xs mt-3 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                           {t('compare.note')}
                         </p>
                       </div>
@@ -627,8 +629,8 @@ function Compare() {
 
                     <section className="animate-fade-in-up animation-delay-500">
                       <div className="mb-4">
-                        <h2 className="text-lg font-bold text-gray-900">{t('compare.aiResultHeading')}</h2>
-                        <p className="text-sm text-gray-500">{t('compare.aiResultSubtext')}</p>
+                        <h2 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('compare.aiResultHeading')}</h2>
+                        <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('compare.aiResultSubtext')}</p>
                       </div>
                       <ComparisonSummary comparison={demoComparison} />
                     </section>
@@ -644,8 +646,8 @@ function Compare() {
                             <Sparkles className="w-5 h-5 text-accent-600" />
                           </div>
                           <div>
-                            <h3 className="text-base font-semibold text-gray-900">{t('compare.aiAttentionHeading')}</h3>
-                            <p className="text-sm text-gray-500">{t('compare.aiAttentionSubtext')}</p>
+                            <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('compare.aiAttentionHeading')}</h3>
+                            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('compare.aiAttentionSubtext')}</p>
                           </div>
                         </div>
 
@@ -654,8 +656,8 @@ function Compare() {
                             { label: t('compare.prevScan'), accent: false },
                             { label: t('compare.curScan'), accent: true },
                           ].map((panel) => (
-                            <div key={panel.label} className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-6 text-center">
-                              <span className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 px-3 py-1.5 rounded-full bg-white border border-gray-100">
+                            <div key={panel.label} className={`rounded-xl border-2 border-dashed p-6 text-center ${darkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50/60'}`}>
+                              <span className={`inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full border ${darkMode ? 'text-gray-500 bg-white/10 border-white/10' : 'text-gray-400 bg-white border-gray-100'}`}>
                                 <Sparkles className={`w-3.5 h-3.5 ${panel.accent ? 'text-accent-500' : 'text-primary-400'}`} />
                                 {panel.label}
                               </span>
@@ -663,7 +665,7 @@ function Compare() {
                           ))}
                         </div>
 
-                        <p className="text-xs text-gray-400 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
                           {t('compare.attentionDesc')}
                         </p>
                       </div>
@@ -697,9 +699,9 @@ function Compare() {
           </>
         )}
 
-        <section className="flex items-start gap-3 p-4 rounded-2xl bg-amber-50/80 border border-amber-100">
+        <section className={`flex items-start gap-3 p-4 rounded-2xl border ${darkMode ? 'bg-amber-900/20 border-amber-800' : 'bg-amber-50/80 border-amber-100'}`}>
           <GitCompareArrows className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-amber-700 leading-relaxed">
+          <p className={`text-sm leading-relaxed ${darkMode ? 'text-amber-300' : 'text-amber-700'}`}>
             {t('compare.disclaimer')}
           </p>
         </section>
@@ -709,6 +711,8 @@ function Compare() {
 }
 
 function CompareSelection({ concerns, onSelect, scanCountLabel }) {
+  const { darkMode } = useTheme()
+
   return (
     <div className="space-y-3">
       {concerns.map((item) => (
@@ -718,8 +722,8 @@ function CompareSelection({ concerns, onSelect, scanCountLabel }) {
           className="card-interactive p-4 w-full text-left flex items-center justify-between gap-3"
         >
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-gray-900">{item.concernName}</p>
-            <p className="text-xs text-gray-500">{scanCountLabel(item)}</p>
+            <p className={`text-sm font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{item.concernName}</p>
+            <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{scanCountLabel(item)}</p>
           </div>
           <GitCompareArrows className="w-5 h-5 text-primary-500 flex-shrink-0" />
         </button>

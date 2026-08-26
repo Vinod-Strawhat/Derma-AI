@@ -20,6 +20,12 @@ body {
   color: #1e293b;
 }
 
+.dark body,
+.dark {
+  background-color: #07111F;
+  color: #e2e8f0;
+}
+
 :focus-visible {
   outline: 2px solid #3461f7;
   outline-offset: 2px;
@@ -77,6 +83,11 @@ body {
     @apply bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-300;
   }
 
+  .dark .card,
+  .dark .card-interactive {
+    @apply bg-[#0D1B2A] border-white/5;
+  }
+
   .card-interactive {
     @apply card hover:shadow-card-hover hover:-translate-y-0.5;
   }
@@ -85,12 +96,24 @@ body {
     @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-white;
   }
 
+  .dark .input-field {
+    @apply border-white/10 bg-white/5 text-gray-100 placeholder-gray-500 focus:bg-white/10;
+  }
+
   .section-heading {
     @apply text-3xl md:text-4xl font-bold text-gray-900 tracking-tight;
   }
 
+  .dark .section-heading {
+    @apply text-white;
+  }
+
   .section-subtext {
     @apply text-lg text-gray-500 max-w-2xl mx-auto;
+  }
+
+  .dark .section-subtext {
+    @apply text-gray-400;
   }
 
   /* Premium glass morphism */
@@ -98,8 +121,16 @@ body {
     @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg;
   }
 
+  .dark .glass {
+    @apply bg-white/10 border-white/10;
+  }
+
   .glass-strong {
     @apply bg-white/80 backdrop-blur-2xl border border-white/30 shadow-xl;
+  }
+
+  .dark .glass-strong {
+    @apply bg-white/10 border-white/10;
   }
 
   /* Medical surface */
@@ -107,9 +138,17 @@ body {
     @apply bg-white rounded-2xl border border-gray-100/80;
   }
 
+  .dark .surface {
+    @apply bg-[#0D1B2A] border-white/5;
+  }
+
   /* Hero gradient background */
   .hero-gradient {
     background: linear-gradient(135deg, #eef4ff 0%, #f0f7ff 25%, #faf5ff 50%, #f0f7ff 75%, #eef4ff 100%);
+  }
+
+  .dark .hero-gradient {
+    background: linear-gradient(135deg, #07111F 0%, #0D1B2A 25%, #111827 50%, #0D1B2A 75%, #07111F 100%);
   }
 }
 

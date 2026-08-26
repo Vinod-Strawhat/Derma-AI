@@ -25,7 +25,7 @@ function PatientInfoForm({ age, gender, region, onChange }) {
   return (
     <div className="grid sm:grid-cols-2 gap-5">
       <div>
-        <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="age" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
           {t('patient.age')}
         </label>
         <input
@@ -43,7 +43,7 @@ function PatientInfoForm({ age, gender, region, onChange }) {
       </div>
 
       <div>
-        <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="gender" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
           {t('patient.gender')}
         </label>
         <select
@@ -62,7 +62,7 @@ function PatientInfoForm({ age, gender, region, onChange }) {
       </div>
 
       <div className="sm:col-span-2">
-        <label htmlFor="region" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="region" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
           {t('patient.bodyRegion')}
         </label>
         <select

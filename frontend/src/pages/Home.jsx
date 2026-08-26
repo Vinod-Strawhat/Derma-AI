@@ -4,15 +4,17 @@ import ScanVisual from '../components/ScanVisual'
 import ParticlesBackground from '../components/ParticlesBackground'
 import DermaAILogo from '../components/DermaAILogo'
 import { useLanguage } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 
 function Home() {
   const { t } = useLanguage()
+  const { darkMode } = useTheme()
 
   const features = [
-    { icon: Brain, title: t('home.f1Title'), description: t('home.f1Desc'), color: 'text-primary-600', bgColor: 'bg-primary-50', hoverBg: 'group-hover:bg-primary-100' },
-    { icon: Eye, title: t('home.f2Title'), description: t('home.f2Desc'), color: 'text-accent-600', bgColor: 'bg-accent-50', hoverBg: 'group-hover:bg-accent-100' },
-    { icon: Sparkles, title: t('home.f3Title'), description: t('home.f3Desc'), color: 'text-medical-600', bgColor: 'bg-medical-50', hoverBg: 'group-hover:bg-medical-100' },
-    { icon: Stethoscope, title: t('home.f4Title'), description: t('home.f4Desc'), color: 'text-emerald-600', bgColor: 'bg-emerald-50', hoverBg: 'group-hover:bg-emerald-100' },
+    { icon: Brain, title: t('home.f1Title'), description: t('home.f1Desc'), color: 'text-primary-600 dark:text-primary-400', bgColor: 'bg-primary-50 dark:bg-primary-900/30', hoverBg: 'group-hover:bg-primary-100 dark:group-hover:bg-primary-900/50' },
+    { icon: Eye, title: t('home.f2Title'), description: t('home.f2Desc'), color: 'text-accent-600 dark:text-accent-400', bgColor: 'bg-accent-50 dark:bg-accent-900/30', hoverBg: 'group-hover:bg-accent-100 dark:group-hover:bg-accent-900/50' },
+    { icon: Sparkles, title: t('home.f3Title'), description: t('home.f3Desc'), color: 'text-medical-600 dark:text-medical-400', bgColor: 'bg-medical-50 dark:bg-medical-900/30', hoverBg: 'group-hover:bg-medical-100 dark:group-hover:bg-medical-900/50' },
+    { icon: Stethoscope, title: t('home.f4Title'), description: t('home.f4Desc'), color: 'text-emerald-600 dark:text-emerald-400', bgColor: 'bg-emerald-50 dark:bg-emerald-900/30', hoverBg: 'group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/50' },
   ]
 
   const steps = [
@@ -41,20 +43,20 @@ function Home() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Hero Text */}
             <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-primary-100 shadow-sm mb-6">
+              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-sm border shadow-sm mb-6 ${darkMode ? 'bg-[#0D1B2A]/80 border-primary-800' : 'bg-white/80 border-primary-100'}`}>
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500" />
                 </span>
-                <span className="text-xs font-medium text-primary-700">{t('home.badge')}</span>
+                <span className={`text-xs font-medium ${darkMode ? 'text-primary-300' : 'text-primary-700'}`}>{t('home.badge')}</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 {t('home.title1')}{' '}
                 <span className="text-gradient-medical">{t('home.title2')}</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-500 leading-relaxed mb-8 max-w-xl">
+              <p className={`text-lg md:text-xl leading-relaxed mb-8 max-w-xl ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                 {t('home.subtitle')}
               </p>
 
@@ -71,16 +73,16 @@ function Home() {
               {/* Trust indicators */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-primary-500" />
-                  <span className="text-xs text-gray-500">{t('home.trustPrivacy')}</span>
+                  <Shield className="w-4 h-4 text-primary-500 dark:text-primary-400" />
+                  <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('home.trustPrivacy')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-primary-500" />
-                  <span className="text-xs text-gray-500">{t('home.trustInstant')}</span>
+                  <Zap className="w-4 h-4 text-primary-500 dark:text-primary-400" />
+                  <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('home.trustInstant')}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-primary-500" />
-                  <span className="text-xs text-gray-500">{t('home.trustExplainable')}</span>
+                  <Activity className="w-4 h-4 text-primary-500 dark:text-primary-400" />
+                  <span className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{t('home.trustExplainable')}</span>
                 </div>
               </div>
             </div>
@@ -94,14 +96,14 @@ function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="scroll-mt-20 py-20 md:py-28 bg-white relative z-10">
+      <section id="features" className={`scroll-mt-20 py-20 md:py-28 relative z-10 ${darkMode ? 'bg-[#0a1929]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="section-heading mb-4">
+            <h2 className={`section-heading mb-4 ${darkMode ? 'text-white' : ''}`}>
               {t('home.featuresHeading1')}{' '}
               <span className="text-gradient-medical">{t('home.featuresHeading2')}</span>
             </h2>
-            <p className="section-subtext">
+            <p className={`section-subtext ${darkMode ? 'text-gray-400' : ''}`}>
               {t('home.featuresSubtext')}
             </p>
           </div>
@@ -116,8 +118,8 @@ function Home() {
                 <div className={`w-12 h-12 rounded-xl ${feature.bgColor} ${feature.hoverBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300`}>
                   <feature.icon className={`w-6 h-6 ${feature.color}`} />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
+                <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{feature.title}</h3>
+                <p className={`text-sm leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{feature.description}</p>
               </div>
             ))}
           </div>
@@ -125,21 +127,21 @@ function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="scroll-mt-20 py-20 md:py-28 bg-gradient-to-b from-gray-50/80 to-white relative z-10">
+      <section id="how-it-works" className={`scroll-mt-20 py-20 md:py-28 relative z-10 ${darkMode ? 'bg-gradient-to-b from-[#07111F] to-[#0a1929]' : 'bg-gradient-to-b from-gray-50/80 to-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="section-heading mb-4">
+            <h2 className={`section-heading mb-4 ${darkMode ? 'text-white' : ''}`}>
               {t('home.stepsHeading1')}{' '}
               <span className="text-gradient-medical">{t('home.stepsHeading2')}</span>
             </h2>
-            <p className="section-subtext">
+            <p className={`section-subtext ${darkMode ? 'text-gray-400' : ''}`}>
               {t('home.stepsSubtext')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
             {/* Connector line (desktop only) */}
-            <div className="hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-primary-200 via-accent-200 to-primary-200" />
+            <div className={`hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r ${darkMode ? 'from-primary-800 via-accent-800 to-primary-800' : 'from-primary-200 via-accent-200 to-primary-200'}`} />
 
             {steps.map((step, index) => (
               <div
@@ -147,19 +149,19 @@ function Home() {
                 className="relative text-center animate-fade-in-up group"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="relative z-10 w-16 h-16 mx-auto mb-6 rounded-2xl bg-white border-2 border-primary-100 shadow-sm flex items-center justify-center group-hover:border-primary-300 group-hover:shadow-medical transition-all duration-300">
-                  <step.icon className="w-7 h-7 text-primary-600" />
+                <div className={`relative z-10 w-16 h-16 mx-auto mb-6 rounded-2xl border-2 shadow-sm flex items-center justify-center transition-all duration-300 ${darkMode ? 'bg-[#0D1B2A] border-primary-800 group-hover:border-primary-600 group-hover:shadow-primary-900/20' : 'bg-white border-primary-100 group-hover:border-primary-300 group-hover:shadow-medical'}`}>
+                  <step.icon className={`w-7 h-7 ${darkMode ? 'text-primary-400' : 'text-primary-600'}`} />
                 </div>
 
-                <span className="text-xs font-bold text-primary-400 tracking-widest uppercase mb-2 block">
+                <span className={`text-xs font-bold tracking-widest uppercase mb-2 block ${darkMode ? 'text-primary-300' : 'text-primary-400'}`}>
                   {t('home.step')} {step.step}
                 </span>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">{step.description}</p>
+                <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{step.title}</h3>
+                <p className={`text-sm leading-relaxed max-w-xs mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{step.description}</p>
 
                 {index < steps.length - 1 && (
                   <div className="lg:hidden flex justify-center my-4">
-                    <ChevronRight className="w-5 h-5 text-gray-300 rotate-90" />
+                    <ChevronRight className={`w-5 h-5 rotate-90 ${darkMode ? 'text-gray-600' : 'text-gray-300'}`} />
                   </div>
                 )}
               </div>

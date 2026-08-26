@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, LogOut } from 'lucide-react'
+import { Menu, X, LogOut, Sun, Moon } from 'lucide-react'
 import LanguageSelector from './LanguageSelector'
 import DermaAILogo from './DermaAILogo'
 import { useLanguage } from '../context/LanguageContext'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 
 function Header({ variant = 'public' }) {
   const { t } = useLanguage()
   const { logOut } = useAuth()
+  const { darkMode, toggleTheme } = useTheme()
   const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -65,8 +67,8 @@ function Header({ variant = 'public' }) {
     const active = isActive(link)
     return `${base} ${
       active
-        ? 'text-primary-600 bg-primary-50/80'
-        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/80'
+        ? 'text-primary-600 bg-primary-50/80 dark:text-primary-400 dark:bg-primary-900/30'
+        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-white/5'
     }`
   }
 
@@ -74,8 +76,12 @@ function Header({ variant = 'public' }) {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-100/60'
-          : 'bg-white/60 backdrop-blur-lg border-b border-transparent'
+          ? darkMode
+            ? 'bg-[#07111F]/90 backdrop-blur-xl shadow-sm border-b border-white/5'
+            : 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-100/60'
+          : darkMode
+            ? 'bg-[#07111F]/60 backdrop-blur-lg border-b border-transparent'
+            : 'bg-white/60 backdrop-blur-lg border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,11 +120,18 @@ function Header({ variant = 'public' }) {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-100/80 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-white/10 transition-all duration-200"
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {darkMode ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
+            </button>
             <LanguageSelector />
             {isDashboard ? (
               <button
                 onClick={handleLogout}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:text-gray-900 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:text-gray-900 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 dark:text-gray-400 dark:border-white/10 dark:hover:text-gray-100 dark:hover:bg-white/5"
                 aria-label={t('nav.logout')}
               >
                 <LogOut className="w-4 h-4" />
@@ -128,7 +141,7 @@ function Header({ variant = 'public' }) {
               <>
                 <Link
                   to="/signin"
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-200"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-200 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-white/5"
                 >
                   {t('nav.signIn')}
                 </Link>
@@ -143,13 +156,22 @@ function Header({ variant = 'public' }) {
           </div>
 
           {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100/80 transition-colors"
-            aria-label={t('nav.toggleMenu')}
-          >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-gray-500 hover:bg-gray-100/80 dark:text-gray-400 dark:hover:bg-white/10 transition-colors"
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {darkMode ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100/80 dark:text-gray-400 dark:hover:bg-white/10 transition-colors"
+              aria-label={t('nav.toggleMenu')}
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
@@ -185,14 +207,14 @@ function Header({ variant = 'public' }) {
                   </Link>
                 )
               })}
-              <div className="border-t border-gray-100 mt-2 pt-2">
+              <div className="border-t border-gray-100 dark:border-white/10 mt-2 pt-2">
                 <LanguageSelector />
               </div>
               {isDashboard ? (
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleLogout}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:bg-gray-50 transition-colors"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:bg-gray-50 transition-colors dark:text-gray-400 dark:border-white/10 dark:hover:bg-white/5"
                   >
                     <LogOut className="w-4 h-4" />
                     {t('nav.logout')}
@@ -203,7 +225,7 @@ function Header({ variant = 'public' }) {
                   <Link
                     to="/signin"
                     onClick={() => setMobileOpen(false)}
-                    className="flex-1 text-center px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:bg-gray-50 transition-colors"
+                    className="flex-1 text-center px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 border border-gray-200/80 hover:bg-gray-50 transition-colors dark:text-gray-400 dark:border-white/10 dark:hover:bg-white/5"
                   >
                     {t('nav.signIn')}
                   </Link>

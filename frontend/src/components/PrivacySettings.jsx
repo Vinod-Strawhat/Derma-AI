@@ -31,21 +31,21 @@ function PrivacySettings() {
 
         return (
           <div key={item.key} className="card p-5 flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-500/10 flex items-center justify-center flex-shrink-0">
               <ItemIcon className="w-5 h-5 text-primary-600" />
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="text-sm font-semibold text-gray-900">{item.title}</h3>
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{item.title}</h3>
                 {!item.demo && (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-50 border border-gray-100 text-[10px] font-medium text-gray-500">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-[10px] font-medium text-gray-500 dark:text-gray-400">
                     <Info className="w-3 h-3" />
                     {t('privacy.informational')}
                   </span>
                 )}
               </div>
-              <p className="text-sm text-gray-500 mt-1 leading-relaxed">{item.description}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{item.description}</p>
             </div>
 
             <button
@@ -54,7 +54,7 @@ function PrivacySettings() {
               aria-checked={enabled}
               aria-label={t('privacy.toggle', { title: item.title })}
               className={`relative w-11 h-6 rounded-full transition-colors duration-200 flex-shrink-0 mt-1 ${
-                enabled ? 'bg-primary-600' : 'bg-gray-200'
+                enabled ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-600'
               }`}
             >
               <span
@@ -67,8 +67,8 @@ function PrivacySettings() {
         )
       })}
 
-      <p className="flex items-start gap-2 text-xs text-gray-400 leading-relaxed">
-        <Info className="w-3.5 h-3.5 text-gray-300 mt-0.5 flex-shrink-0" />
+      <p className="flex items-start gap-2 text-xs text-gray-400 dark:text-gray-500 leading-relaxed">
+        <Info className="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 mt-0.5 flex-shrink-0" />
         {t('privacy.note')}
       </p>
     </div>

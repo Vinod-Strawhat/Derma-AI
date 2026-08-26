@@ -21,15 +21,15 @@ function PersonalInformation({ profile }) {
   return (
     <form onSubmit={handleSave} className="card p-6 md:p-8">
       <div className="flex items-center gap-2.5 mb-5">
-        <div className="w-9 h-9 rounded-lg bg-primary-50 flex items-center justify-center">
+        <div className="w-9 h-9 rounded-lg bg-primary-50 dark:bg-primary-500/10 flex items-center justify-center">
           <User className="w-4 h-4 text-primary-600" />
         </div>
-        <h3 className="text-base font-semibold text-gray-900">{t('personal.heading')}</h3>
+        <h3 className="text-base font-semibold text-gray-900 dark:text-white">{t('personal.heading')}</h3>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="profile-name" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="profile-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
             {t('personal.fullName')}
           </label>
           <input
@@ -42,7 +42,7 @@ function PersonalInformation({ profile }) {
         </div>
 
         <div>
-          <label htmlFor="profile-email" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="profile-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
             {t('personal.email')}
           </label>
           <input
@@ -55,7 +55,7 @@ function PersonalInformation({ profile }) {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="profile-language" className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="profile-language" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
             {t('personal.preferredLanguage')}
           </label>
           <select
@@ -78,13 +78,13 @@ function PersonalInformation({ profile }) {
           {t('personal.saveChanges')}
         </button>
         {saved && (
-          <span className="text-sm font-medium text-emerald-600 animate-fade-in">
+          <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400 animate-fade-in">
             {t('personal.saved')}
           </span>
         )}
       </div>
 
-      <p className="text-xs text-gray-400 mt-4">
+      <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
         {t('personal.notPersisted')}
       </p>
     </form>
